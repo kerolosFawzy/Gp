@@ -1,0 +1,38 @@
+<html>
+  <head></head>
+
+  <body>
+    <p>Getting started with Firebase</p>
+    <h1 id="bigOne"></h1>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBc_myd7VPOGA2Uk65Bmk8Vgf81GfKUmd4",
+        authDomain: "gp-project-9231d.firebaseapp.com",
+        databaseURL: "https://gp-project-9231d.firebaseio.com",
+        projectId: "gp-project-9231d",
+        storageBucket: "gp-project-9231d.appspot.com",
+        messagingSenderId: "756048925389"
+      };
+      firebase.initializeApp(config);
+      var bigOne = document.getElementById("bigOne");
+      var dbRef = firebase
+        .database()
+        .ref()
+        .child("users");
+
+     // var usersRef = ref().child("users");
+     // var userRef = dbRef.push();
+      var userRef = dbRef.push({
+        name: "Christopher",
+        description: "I eat too much ice cream",
+        age:20,
+        gender: "male"
+      });
+
+      dbRef.on("value", snap => (bigOne.innerText = snap.val()));
+
+    </script>
+  </body>
+</html>
