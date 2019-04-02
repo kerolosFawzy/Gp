@@ -1,12 +1,10 @@
 <html>
-  <head></head>
-
   <body>
-    <p>Getting started with Firebase</p>
-    <h1 id="bigOne"></h1>
+    <h1 id="test"></h1>
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
     <script>
       // Initialize Firebase
+      // TODO: Replace with your project's customized code snippet
       var config = {
         apiKey: "AIzaSyBc_myd7VPOGA2Uk65Bmk8Vgf81GfKUmd4",
         authDomain: "gp-project-9231d.firebaseapp.com",
@@ -16,23 +14,22 @@
         messagingSenderId: "756048925389"
       };
       firebase.initializeApp(config);
-      var bigOne = document.getElementById("bigOne");
-      var dbRef = firebase
-        .database()
-        .ref()
-        .child("users");
 
-     // var usersRef = ref().child("users");
-     // var userRef = dbRef.push();
-      var userRef = dbRef.push({
-        name: "Christopher",
-        description: "I eat too much ice cream",
-        age:20,
-        gender: "male"
-      });
+      var dbRef = firebase.database().ref();
 
-      dbRef.on("value", snap => (bigOne.innerText = snap.val()));
+      var usersRef = dbRef.child("users");
+      var user = {
+        name: "kero",
+        age: 20
+      };
 
+     // usersRef.push(user);
+      //dbRef.ref("users/" + userId).set(user);
+      var data ; 
+      dbRef
+        .child("users/-LbPy1HctKIw9GL8JDpa")
+        .update({name : "mina2" , gender : true , trall :202});
+      document.write(data);
     </script>
   </body>
 </html>
