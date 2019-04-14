@@ -1,4 +1,4 @@
-var firebase = require("firebase");
+const firebase = require("firebase");
 
 var config = {
     apiKey: "AIzaSyBc_myd7VPOGA2Uk65Bmk8Vgf81GfKUmd4",
@@ -8,10 +8,14 @@ var config = {
     storageBucket: "gp-project-9231d.appspot.com",
     messagingSenderId: "756048925389"
 };
+
 firebase.initializeApp(config);
 
 var dbRef = firebase
     .database()
     .ref();
 
-module.exports = dbRef;
+module.exports = {
+    dbRef: dbRef,
+    firebase: firebase
+};
