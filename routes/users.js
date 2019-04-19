@@ -7,7 +7,8 @@ const firebase = require('firebase');
 router.use(bodyParser.json());
 
 router.use('/', (req, res, next) => {
-    res.render('index', {title: user.displayName});
+    console.log('here in user ');
+    res.render('index', {title: 'true'});
 });
 
 router.post('/login', (req, res, next) => {

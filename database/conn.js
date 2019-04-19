@@ -15,6 +15,10 @@ var dbRef = firebase
     .database()
     .ref();
 
+// var storage = firebase.storage();
+// var storageRef = storage.ref('profileImages');
+
+
 module.exports = {
     dbRef: dbRef,
     firebase: firebase
