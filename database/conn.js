@@ -13,7 +13,7 @@ firebase.initializeApp(config);
 
 var dbRef = firebase
     .database()
-    .ref();
+.ref();
 
 // var storage = firebase.storage();
 // var storageRef = storage.ref('profileImages');

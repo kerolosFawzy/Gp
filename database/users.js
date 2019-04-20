@@ -2,23 +2,35 @@ var db = require("./conn");
 var usersRef = db
     .dbRef
     .child("users");
-
+let userUid;
+let mUser;
 module.exports.login = (user) => {
-    let newUser = '';
+
     db
         .firebase
         .auth()
         .signInWithEmailAndPassword(user.email, user.password)
         .then((user) => {
-            newUser = user.user.uid;
+            userUid = user.user.uid;
         })
         .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
             console.log(errorMessage);
         });
-    return newUser;
+    this.getUser(userUid);
+    return mUser;
 }
+
+module.exports.getUser = (userId) => {
+    db
+        .dbRef
+        .child("users")
+        .child(userId.toString())
+        .on('value', (snap) => {
+            return mUser = snap.val();
+        });
+};
 
 module.exports.signUp = (user) => {
     db
@@ -29,11 +41,11 @@ module.exports.signUp = (user) => {
             let uid = logedInUser.user.uid;
             user.password = null;
             usersRef
-                .child(uid)
+                .child(uid.toString())
                 .set(user, function (error) {
                     if (error) {
                         console.log(error)
-                    } 
+                    }
                 });
         })
         .catch(function (error) {
@@ -43,10 +55,7 @@ module.exports.signUp = (user) => {
                 console.log(errorMessage);
             }
         });
-}
-
-// module.exports.userPush = user => {     user.password = null;
-// usersRef.push(user); };
+};
 
 module.exports.userUpdate = (userId, user) => {
     db
@@ -62,11 +71,7 @@ module.exports.userRemove = (userId) => {
         .set(null);
 };
 
-module.exports.getUser = (userId) => {
-    db
-        .dbRef
-        .ref("users/" + userId)
-        .on('value', function (snap) {
-            return snap.val();
-        });
+module.exports = {
+    uid: userUid,
+    user = mUser
 };
