@@ -6,12 +6,15 @@ router.use(bodyParser.json());
 
 /* GET home page. */
 router.get('/login', function (req, res, next) {
-    res.render('login');
+    res.render('login' , {err:null});
 });
-router.get('/', function (req, res, next) {
+
+router.all('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
 });
 
-
+router.get('/signup', function (req, res, next) {
+    res.render('signUp' , {err:null});
+});
 
 module.exports = router;

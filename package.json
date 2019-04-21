@@ -12,7 +12,7 @@
     "ejs": "^2.6.1",
     "express": "~4.16.0",
     "express-handlebars": "^3.0.2",
-    "firebase": "^5.9.3",
+    "firebase": "^5.10.0",
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
@@ -21,7 +21,7 @@
   },
   "main": "app.js",
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.11"
   },
   "author": "kero",
   "license": "ISC",

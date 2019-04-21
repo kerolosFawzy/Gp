@@ -5,7 +5,11 @@ var usersRef = db
 let userUid;
 let mUser;
 module.exports.login = (user) => {
-
+    // if (mUser || userUid) {
+    //     mUser = null;
+    //     userUid = null;
+    // }
+    console.log(user.password);
     db
         .firebase
         .auth()
@@ -18,8 +22,15 @@ module.exports.login = (user) => {
             var errorMessage = error.message;
             console.log(errorMessage);
         });
-    this.getUser(userUid);
-    return mUser;
+        console.log(userUid);
+
+    if (userUid) {
+        console.log('logged in');
+        this.getUser(userUid);
+        console.log(mUser);
+        return mUser;
+    }
+    return null;
 }
 
 module.exports.getUser = (userId) => {
@@ -71,7 +82,4 @@ module.exports.userRemove = (userId) => {
         .set(null);
 };
 
-module.exports = {
-    uid: userUid,
-    user = mUser
-};
+// module.exports = {     uid: userUid,     user: mUser };
