@@ -24,11 +24,60 @@
 
     <link href="/css/style-responsive.css" rel="stylesheet" />
 
+    <style>
+        .gender {
+            margin-bottom: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        label.radio {
+            cursor: pointer;
+            text-indent: 35px;
+            overflow: visible;
+            display: inline-block;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        label.radio:before {
+            background: #3a57af;
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: -12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+        }
+
+        label.radio:after {
+            opacity: 0;
+            content: '';
+            position: absolute;
+            width: 0.5em;
+            height: 0.25em;
+            background: transparent;
+            top: 7.5px;
+            left: 4.5px;
+            border: 3px solid #ffffff;
+            border-top: none;
+            border-right: none;
+
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+    </style>
+
 </head>
 
 <body class="login-img3-body">
 
     <div class="container">
+
         <form class="login-form signup-form" action="/user/signup" method="POST">
             <div class="login-wrap">
 
@@ -54,6 +103,26 @@
                     <label>Password</label>
                     <input name="password" id="password" type="password" class="form-control" placeholder="Password"
                         required>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Gender
+                    </label>
+                    <br />
+                    <div class="form-check-inline">
+                        <input type="radio" class="form-check-input " name="Gender" value="Male">
+
+                        <label class="form-check-label gender">
+                            Male
+                        </label>
+
+                        <input type="radio" class="form-check-input " name="Gender" value="Female">
+
+                        <label class="form-check-label gender">
+                            Female
+                        </label>
+                    </div>
                 </div>
 
                 <%- include('includes/address_html.ejs')%>
@@ -89,50 +158,17 @@
                     <input name="pic" type="file" class="form-control-file">
                 </div>
 
-                <div class="form-group" style="padding:20px">
-
-                    <select id="chkveg" multiple="multiple">
-
-                        <option value="cheese">Cheese</option>
-
-                        <option value="tomatoes">Tomatoes</option>
-
-                        <option value="mozarella">Mozzarella</option>
-
-                        <option value="mushrooms">Mushrooms</option>
-
-                        <option value="pepperoni">Pepperoni</option>
-
-                        <option value="onions">Onions</option>
-
-                    </select>
-
-                </div>
-
-
                 <% if(err) { %>
                 <label class="alert alert-danger">
                     <%= err %></label>
                 <% } %>
 
                 <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>
+
             </div>
         </form>
 
     </div>
-    <script>
-        $(function () {
-
-            $('#chkveg').multiselect({
-                includeSelectAllOption: true
-            });
-
-            $('#btnget').click(function () {
-                alert($('#chkveg').val());
-            })
-
-        });
-    </script>
 
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>

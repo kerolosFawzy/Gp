@@ -6,57 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        .multiselect-container>li>a>label {
-            padding: 4px 20px 3px 20px;
-        }
-    </style>
+
 </head>
 
 <body>
-    
-    <form id="form1">
 
-        <div style="padding:20px">
+    <div id="treeCheckbox">
+        <ul>
+            <li>
+                 Root Node
+                <ul>
+                    <li data-jstree='{ "selected" : true }'>
+                        <a href="#">Selected Node</a>
+                    </li>
+                    <li data-jstree='{ "opened" : true }'>
+                         Opened Node
+                        <ul>
+                            <li data-jstree='{ "disabled" : true }'>
+                                 Disabled Node
+                            </li>
+                            <li data-jstree='{ "type" : "file" }'>
+                                 Child Node
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-jstree='{ "icon" : "fa fa-picture-o" }'>
+                         Custom Icon
+                    </li>
+                    <li data-jstree='{ "icon" : "assets/images/icon.png" }'>
+                         Custom Icon Image
+                    </li>
+                </ul>
+            </li>
+            <li class="colored">
+                 Colored
+            </li>
+            <li class="colored-icon">
+                 Colored Icon Only
+            </li>
+            <li class="folder">
+                 Folder Style
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="/public/jstree/jstree.js"></script>
 
-            <select id="chkveg" multiple="multiple">
-
-                <option value="cheese">Cheese</option>
-
-                <option value="tomatoes">Tomatoes</option>
-
-                <option value="mozarella">Mozzarella</option>
-
-                <option value="mushrooms">Mushrooms</option>
-
-                <option value="pepperoni">Pepperoni</option>
-
-                <option value="onions">Onions</option>
-
-            </select><br /><br />
-
-            <input type="button" id="btnget" value="Get Selected Values" />
-
-        </div>
-
-    </form>
-    <script>
-        $(function () {
-
-            $('#chkveg').multiselect({
-
-                includeSelectAllOption: true
-
-            });
-
-            $('#btnget').click(function () {
-
-                alert($('#chkveg').val());
-
-            })
-
-        });
-    </script>
 </body>
 
 </html>
