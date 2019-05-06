@@ -9910,3 +9910,10 @@ span.customSelect.changed {
 #sendmessage.show, #errormessage.show, .show {
 	display:block;
 }
+
+
+.small_icon {
+    width: 36pt;
+    margin-left: 10pt;
+    margin-right: 10pt; 
+}

@@ -17,6 +17,10 @@ router.post('/login', (req, res, next) => {
 
 });
 
+router.get('/profile', function (req, res, next) {
+    res.render('profile');
+});
+
 router.use('/signup', (req, res, next) => {
     DbUser.signUp({name: 'kero', age: 30, email: "kerofawzy2055@gmail.com", password: "123456789"});
     res.render('index', {title: 'done'});

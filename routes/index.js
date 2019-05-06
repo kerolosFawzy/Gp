@@ -17,4 +17,6 @@ router.get('/signup', function (req, res, next) {
     res.render('signUp' , {err:null});
 });
 
+
+
 module.exports = router;
