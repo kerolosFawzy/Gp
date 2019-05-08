@@ -22,7 +22,7 @@ module.exports.login = (user) => {
             var errorMessage = error.message;
             console.log(errorMessage);
         });
-        console.log(userUid);
+    console.log(userUid);
 
     if (userUid) {
         console.log('logged in');

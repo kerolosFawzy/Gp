@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%- include('includes/head.ejs') %>
 
     <title>SignUp Page</title>
 
@@ -25,53 +25,8 @@
     <link href="/css/style-responsive.css" rel="stylesheet" />
     <link href="/css/signup.css" rel="stylesheet" />
 
-    <!-- <style>
-        .gender {
-            margin-bottom: 10px;
-            margin-left: 10px;
-            margin-right: 10px;
-        }
 
-        label.radio {
-            cursor: pointer;
-            text-indent: 35px;
-            overflow: visible;
-            display: inline-block;
-            position: relative;
-            margin-bottom: 15px;
-        }
 
-        label.radio:before {
-            background: #3a57af;
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: -12px;
-            width: 20px;
-            height: 20px;
-            border-radius: 100%;
-        }
-
-        label.radio:after {
-            opacity: 0;
-            content: '';
-            position: absolute;
-            width: 0.5em;
-            height: 0.25em;
-            background: transparent;
-            top: 7.5px;
-            left: 4.5px;
-            border: 3px solid #ffffff;
-            border-top: none;
-            border-right: none;
-
-            -webkit-transform: rotate(-45deg);
-            -moz-transform: rotate(-45deg);
-            -o-transform: rotate(-45deg);
-            -ms-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-        }
-    </style> -->
 
 </head>
 
@@ -116,6 +71,36 @@
 
                 <%- include('includes/address_html.ejs')%>
 
+                <div class="form-group">
+                    <dl class="dropdown">
+                        <dt>
+                            <a href="#">
+                                <span class="hida">Select</span>
+                                <p class="multiSel"></p>
+                            </a>
+                        </dt>
+
+                        <dd>
+                            <div class="mutliSelect">
+                                <ul>
+                                    <li>
+                                        <input type="checkbox" value="Apple" />Apple</li>
+                                    <li>
+                                        <input type="checkbox" value="Blackberry" />Blackberry</li>
+                                    <li>
+                                        <input type="checkbox" value="HTC" />HTC</li>
+                                    <li>
+                                        <input type="checkbox" value="Sony Ericson" />Sony Ericson</li>
+                                    <li>
+                                        <input type="checkbox" value="Motorola" />Motorola</li>
+                                    <li>
+                                        <input type="checkbox" value="Nokia" />Nokia</li>
+                                </ul>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+
 
                 <label for="job">Job Role:</label>
                 <select id="job" name="user_job">
@@ -145,14 +130,14 @@
                 <div class="form-group">
                     <label>Years of Experience
                     </label>
-                    <input name="experience" id="fullName" type="number class=" form-control"
+                    <input name="experience" id="experience" type="number" class="form-control"
                         placeholder="Number For Years of Experience" autofocus required>
                 </div>
 
                 <div class="form-group">
                     <label>Describe yourself
                     </label>
-                    <textarea name="description" id="fullName" type="text" class="md-textarea form-control" rows="5"
+                    <textarea name="description" id="description" type="text" class="md-textarea form-control" rows="5"
                         placeholder="Your Description" autofocus> </textarea>
                 </div>
 
@@ -180,6 +165,41 @@
 
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script>
+
+        $(".dropdown dt a").on('click', function () {
+            $(".dropdown dd ul").slideToggle('fast');
+        });
+
+        $(".dropdown dd ul li a").on('click', function () {
+            $(".dropdown dd ul").hide();
+        });
+
+        function getSelectedValue(id) {
+            return $("#" + id).find("dt a span.value").html();
+        }
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+        });
+
+        $('.mutliSelect input[type="checkbox"]').on('click', function () {
+            var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+                title = $(this).val() + ",";
+
+            if ($(this).is(':checked')) {
+                var html = '<span title="' + title + '">' + title + '</span>';
+                $('.multiSel').append(html);
+                $(".hida").hide();
+            } else {
+                $('span[title="' + title + '"]').remove();
+                var ret = $(".hida");
+                $('.dropdown dt a').append(ret);
+            }
+        });
+    </script>
 </body>
 
 </html>
