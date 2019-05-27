@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="img/favicon.png">
+  <%- include('includes/head.ejs') %>
 
   <title>Login Page</title>
 
@@ -41,7 +39,7 @@
           <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
         </label>
         <% if(err) { %>
-          
+
         <label class="alert alert-danger"> <%= err %></label>
         <% } %>
         <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>

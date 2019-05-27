@@ -4,37 +4,45 @@ var usersRef = db
     .child("users");
 let userUid;
 let mUser;
-module.exports.login = (user) => {
-    // if (mUser || userUid) {
-    //     mUser = null;
-    //     userUid = null;
-    // }
-    console.log(user.password);
-    db
+module.exports.login = async (user) => {
+
+    await db
         .firebase
         .auth()
         .signInWithEmailAndPassword(user.email, user.password)
         .then((user) => {
-            userUid = user.user.uid;
+            if (user) {
+                userUid = user.user.uid;
+            }
         })
         .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
             console.log(errorMessage);
-        });
-    console.log(userUid);
 
+        });
+
+    await db
+        .firebase
+        .auth()
+        .onAuthStateChanged((user) => {
+            if (user) {
+                userUid = user.uid;
+            }
+        });
+    
+    console.log(userUid);
     if (userUid) {
-        console.log('logged in');
-        this.getUser(userUid);
-        console.log(mUser);
-        return mUser;
+        console.log('found UId');
+     this.getUser(userUid);
+        return {user:mUser , err: null};
     }
-    return null;
+    return {user:null , err:"error "};
+
 }
 
-module.exports.getUser = (userId) => {
-    db
+module.exports.getUser =async (userId) => {
+    await db
         .dbRef
         .child("users")
         .child(userId.toString())

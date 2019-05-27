@@ -5,14 +5,14 @@ const bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 
-router.post('/login', (req, res, next) => {
-    var user = DbUser.login({ email: req.body.email, password: req.body.password });
-    console.log(user);
+router.post('/login',async (req, res, next) => {
+    var response =await DbUser.login({ email: req.body.email, password: req.body.password });
+    console.log(response);
 
-    if (user) {
-        res.render('index', { title: user.name });
+    if (response.user) {
+        res.render('index', { title: response.user.name });
     } else {
-        res.render('login', { err: 'Email or Password is\'t right' });
+        res.render('login', { err: response.err });
     }
 
 });
