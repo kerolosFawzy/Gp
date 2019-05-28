@@ -5,20 +5,20 @@ const bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 
-router.post('/login',async (req, res, next) => {
-    var response =await DbUser.login({ email: req.body.email, password: req.body.password });
+router.post('/login', async (req, res, next) => {
+    var response = await DbUser.login({ email: req.body.email, password: req.body.password });
     console.log(response);
 
     if (response.user) {
-        res.render('index', { title: response.user.name });
+        return res.render('index', { title: response.user.name });
     } else {
-        res.render('login', { err: response.err });
+        return res.render('login', { err: response.err });
     }
 
 });
 
 router.get('/profile', function (req, res, next) {
-    res.render('profile');
+    return res.render('profile');
 });
 
 router.use('/signup', (req, res, next) => {
@@ -36,7 +36,7 @@ router.use('/signup', (req, res, next) => {
         experience_years: val.experience,
         description: val.description
     });
-    res.render('index', { title: 'done' });
+    return res.render('index', { title: 'done' });
 });
 
 module.exports = router;
