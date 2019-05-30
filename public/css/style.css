@@ -1743,7 +1743,7 @@ div[data-role="editor-toolbar"] {
 
 .page-header {
 
-  margin: 12px 0 20px;
+  margin: 0px 0 20px;
 
   border-bottom: none;
 
@@ -9917,3 +9917,6 @@ span.customSelect.changed {
     margin-left: 10pt;
     margin-right: 10pt; 
 }
+
+
+
