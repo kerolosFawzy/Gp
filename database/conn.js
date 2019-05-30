@@ -1,4 +1,6 @@
-const firebase = require("firebase");
+var firebase = require("firebase");
+require("firebase/firestore");
+require("firebase/auth");
 
 var config = {
     apiKey: "AIzaSyBc_myd7VPOGA2Uk65Bmk8Vgf81GfKUmd4",
@@ -11,12 +13,14 @@ var config = {
 
 firebase.initializeApp(config);
 
+var storage = require('@google-cloud/storage')
+
+var bucket = storage.bucket("gs://gp-project-9231d.appspot.com");
 var dbRef = firebase
     .database()
 .ref();
 
-// var storage = firebase.storage();
-// var storageRef = storage.ref('profileImages');
+
 
 
 module.exports = {
