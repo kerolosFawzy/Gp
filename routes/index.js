@@ -52,5 +52,10 @@ router.get('/adress_html', function (req, res, next) {
 
 });
 
+router.get('/details', function (req, res, next) {
+    res.render('job-details');
+
+});
+
 
 module.exports = router;

@@ -9920,3 +9920,12 @@ span.customSelect.changed {
 
 
 
+
+.apply {
+    width: 15%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
