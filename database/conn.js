@@ -1,3 +1,15 @@
+var admin = require("firebase-admin");
+
+var serviceAccount = require("../gp-project-9231d-firebase-adminsdk-mvyb0-bba66f750d.json");
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    storageBucket: "gp-project-9231d.appspot.com"
+});
+
+var bucket = admin.storage().bucket();
+
+
 var firebase = require("firebase");
 require("firebase/firestore");
 require("firebase/auth");
@@ -13,15 +25,10 @@ var config = {
 
 firebase.initializeApp(config);
 
-var storage = require('@google-cloud/storage')
 
-var bucket = storage.bucket("gs://gp-project-9231d.appspot.com");
 var dbRef = firebase
     .database()
-.ref();
-
-
-
+    .ref();
 
 module.exports = {
     dbRef: dbRef,
