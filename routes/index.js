@@ -49,14 +49,12 @@ router.get('/adress_html', function(req, res, next) {
 router.get('/search', function(req, res, next) {
   res.render('search');
 });
-<<<<<<< HEAD
-
-router.get('/details', function (req, res, next) {
-    res.render('job-details');
-
+router.get('/ten', function(req, res, next) {
+  res.render('topten');
 });
 
-=======
->>>>>>> feature/Search_view
+router.get('/details', function(req, res, next) {
+  res.render('job-details');
+});
 
 module.exports = router;
