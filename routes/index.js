@@ -56,5 +56,8 @@ router.get('/ten', function(req, res, next) {
 router.get('/details', function(req, res, next) {
   res.render('job-details');
 });
+router.get('/applied', function(req, res, next) {
+  res.render('applicants-applied');
+});
 
 module.exports = router;
