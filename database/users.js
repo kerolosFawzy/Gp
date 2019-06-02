@@ -4,8 +4,11 @@ var usersRef = db
     .child("users");
 let userUid;
 let mUser;
-module.exports.login = async (user) => {
+let Error;
 
+
+module.exports.login = async (user) => {
+    Error = "Error Undefined";
     await db
         .firebase
         .auth()
@@ -18,8 +21,7 @@ module.exports.login = async (user) => {
         .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
-            console.log(errorMessage);
-
+            Error = errorMessage;
         });
 
     await db
@@ -30,18 +32,18 @@ module.exports.login = async (user) => {
                 userUid = user.uid;
             }
         });
-    
+
     console.log(userUid);
     if (userUid) {
         console.log('found UId');
-     this.getUser(userUid);
-        return {user:mUser , err: null};
+        this.getUser(userUid);
+        return { user: mUser, err: null };
     }
-    return {user:null , err:"error "};
+    return { user: null, err: Error };
 
 }
 
-module.exports.getUser =async (userId) => {
+module.exports.getUser = async (userId) => {
     await db
         .dbRef
         .child("users")
@@ -51,21 +53,26 @@ module.exports.getUser =async (userId) => {
         });
 };
 
-module.exports.signUp = (user) => {
-    db
+module.exports.signUp = async (user) => {
+    console.log(user)
+
+    await db
         .firebase
         .auth()
         .createUserWithEmailAndPassword(user.email, user.password)
         .then((logedInUser) => {
             let uid = logedInUser.user.uid;
+            console.log(uid);
+
             user.password = null;
             usersRef
                 .child(uid.toString())
                 .set(user, function (error) {
-                    if (error) {
-                        console.log(error)
-                    }
+                    console.log(error)
                 });
+            console.log('before upload');
+            uploadProfilePic(uid, user.profile_pic);
+            uploadCv(uid, user.cv);
         })
         .catch(function (error) {
             var errorCode = error.code;
@@ -84,10 +91,30 @@ module.exports.userUpdate = (userId, user) => {
 };
 
 module.exports.userRemove = (userId) => {
-    db
-        .dbRef
+    db.dbRef
         .ref("users/" + userId)
         .set(null);
 };
 
+module.exports.uploadProfilePic = async (userId, picPath) => {
+    await db.bucket.upload(picPath, {
+        destination: "pic/" + userId,
+        metadata: {
+            cacheControl: 'public, max-age=31536000'
+        }
+    }, (err, file) => {
+        return;
+    });
+};
+
+module.exports.uploadCv = async (userId, cvPath) => {
+    await db.bucket.upload(cvPath, {
+        destination: "cv/" + userId,
+        metadata: {
+            cacheControl: 'public, max-age=31536000'
+        }
+    }, (err, file) => {
+        return;
+    });
+};
 // module.exports = {     uid: userUid,     user: mUser };

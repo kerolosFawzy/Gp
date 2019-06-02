@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 
-router.post('/login',async (req, res, next) => {
-    var response =await DbUser.login({ email: req.body.email, password: req.body.password });
+router.post('/login', async (req, res, next) => {
+    var response = await DbUser.login({ email: req.body.email, password: req.body.password });
     console.log(response);
 
     if (response.user) {
@@ -21,21 +21,25 @@ router.get('/profile', function (req, res, next) {
     res.render('profile');
 });
 
-router.use('/signup', (req, res, next) => {
+router.use('/signup', async (req, res, next) => {
     var val = req.body;
-    DbUser.signUp({
+    let user = {
         name: val.name,
-        age: 30,
         email: val.email,
         password: val.password,
-        gender: val.val.gender,
+        gender: val.Gender,
         country: val.country,
         city: val.city,
         address: val.address,
         role: val.user_job,
         experience_years: val.experience,
-        description: val.description
-    });
+        description: val.description,
+        skills: val.skills,
+        cv: val.cv,
+        profile_pic: val.pic
+    };
+
+    await DbUser.signUp(user);
     res.render('index', { title: 'done' });
 });
 
