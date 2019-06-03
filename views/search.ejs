@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!--<%- include('includes/header.ejs') %>
-    -->
+
+    <%- include('includes/head.ejs') %>
     <!-- Required Meta Tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,54 +30,27 @@
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/styles.css" />
 
-    <style>
-        .form-inline my-2 my-lg-0 {
-          padding-right: 10%;
-        }
+   
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
     
-        .logo {
-          margin: 1%;
-        }
-    
-        .nav-link {
-          background-color: rgba(238, 243, 245, 0.986);
-          /* Green */
-          border: none;
-          color: white;
-          padding: 20px 40px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 25px;
-          margin: 4px 2px;
-          cursor: pointer;
-    
-        }
-    
-        .nav-link:hover {
-          background-color: rgba(146, 166, 219, 0.986)
-        }
-    
-        ;
-    
-        .nav-link:active {
-          background-color: #38e438;
-          box-shadow: 0 5px #666;
-          transform: translateY(4px);
-        }
-      </style>
-      
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
+
+
   </head>
 
   <body>
-    <section id="container" class="">
-      <!-- Preloader Starts -->
-      <div class="preloader">
-        <div class="spinner"></div>
-      </div>
-      <%- include('includes/header.ejs') %>
+    <%- include('includes/header.ejs') %>
 
-      <!-- Preloader End -->
+    <!-- Preloader Starts -->
+    <div class="preloader">
+      <div class="spinner"></div>
+    </div>
+    <!-- Preloader End -->
+    <section id="container" class="">
       <header class="header-area single-page">
         <div class="page-title text-center">
           <div class="container">
@@ -117,7 +90,6 @@
                     <option value="5">Noakhali</option>
                   </select>
                   <input
-                    type="text"
                     placeholder="Search Keyword"
                     onfocus="this.placeholder = ''"
                     onblur="this.placeholder = 'Search Keyword'"
