@@ -24,19 +24,11 @@ module.exports.login = async (user) => {
             Error = errorMessage;
         });
 
-    await db
-        .firebase
-        .auth()
-        .onAuthStateChanged((user) => {
-            if (user) {
-                userUid = user.uid;
-            }
-        });
-
     console.log(userUid);
     if (userUid) {
         console.log('found UId');
-        this.getUser(userUid);
+        await this.getUser(userUid);
+
         return { user: mUser, err: null };
     }
     return { user: null, err: Error };
@@ -49,7 +41,8 @@ module.exports.getUser = async (userId) => {
         .child("users")
         .child(userId.toString())
         .on('value', (snap) => {
-            return mUser = snap.val();
+            mUser = snap.val();
+            return;
         });
 };
 
