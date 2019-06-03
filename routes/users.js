@@ -41,6 +41,7 @@ router.use('/signup', upload.any(), async (req, res, next) => {
         experience_years: val.experience,
         description: val.description,
         skills: val.skills,
+        role:2,
         files:files
     };
 
@@ -49,6 +50,35 @@ router.use('/signup', upload.any(), async (req, res, next) => {
 
     if (err!=null ) {
         return res.render('signUp', { err: err });
+    }
+    res.render('index', { title: 'done' });
+});
+
+router.post('/signupcompany', upload.any(), async (req, res, next) => {
+    console.log('here');
+    var val = req.body;
+    var files = req.files;
+    console.log(files);
+
+    let user = {
+        name: val.name,
+        email: val.email,
+        password: val.password,
+        company_name: val.company_name,
+        country: val.country,
+        city: val.city,
+        address: val.address,
+        Foundation: val.Foundation,
+        description: val.description,
+        role:3,
+        files:files
+    };
+
+    var err = await DbUser.CompanysignUp(user);
+    console.log("err = " + err)
+
+    if (err!=null ) {
+        return res.render('signUpCompany', { err: err });
     }
     res.render('index', { title: 'done' });
 });

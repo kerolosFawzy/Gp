@@ -17,6 +17,9 @@ router.get('/signup', function (req, res, next) {
     res.render('signUp' , {err:null});
 });
 
+router.get('/companysignup', function (req, res, next) {
+    res.render('signUpCompany' , {err:null});
+});
 
 router.get('/hr', function (req, res, next) {
     res.render('HR');

@@ -101,6 +101,48 @@ module.exports.signUp = async (user) => {
 
 };
 
+
+module.exports.CompanysignUp = async (user) => {
+    console.log(user)
+
+    await db
+        .firebase
+        .auth()
+        .createUserWithEmailAndPassword(user.email, user.password)
+        .then((logedInUser) => {
+            let uid = logedInUser.user.uid;
+            if (user.files)
+                this.uploadProfilePic(uid, user.files[0]);
+            user.password = null;
+            user.files = null;
+
+            usersRef
+                .child(uid.toString())
+                .set(user, function (error) {
+                    if (error) {
+                        console.log(error);
+                        Error = error;
+                    }
+                });
+        })
+        .catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorMessage) {
+                Error = errorMessage;
+                console.log(Error);
+            }
+        });
+
+    if (Error) {
+        console.log("error before return " + Error)
+        return Error;
+    }
+    return null;
+
+};
+
+
 module.exports.userUpdate = (userId, user) => {
     db
         .dbRef
@@ -150,4 +192,6 @@ module.exports.uploadCv = async (userId, Cv) => {
         return;
     });
 };
+
+
 // module.exports = {     uid: userUid,     user: mUser };
