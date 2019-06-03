@@ -51,6 +51,14 @@ router.get('/adress_html', function (req, res, next) {
     res.render('adress_html');
 
 });
+router.get('/search', function (req, res, next) {
+    res.render('search');
+});
+
+router.get('/editpost', function (req, res, next) {
+    res.render('editpost');
+});
+
 
 
 module.exports = router;

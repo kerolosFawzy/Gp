@@ -11,64 +11,487 @@
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="/css/animate-3.7.0.css">
+    <link rel="stylesheet" href="/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="/fonts/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="/css/bootstrap-4.1.3.min.css">
+    <link rel="stylesheet" href="/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="/css/nice-select.css">
+    <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
 <style type="text/css">
  body{
     background: -webkit-linear-gradient(left, rgb(238, 237, 247), #e5e5e6);
 }
 .require {
-    color: #666;
-}
-label small {
-    color: #999;
-    font-weight: normal;
+		color: #666;
+	 }
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea,
+select {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 30px;
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 4px 8px 0;
+}
+
+select {
+  padding: 6px;
+  height: 32px;
+  border-radius: 2px;
+}
+
+fieldset {
+  margin-bottom: 30px;
+  border: none;
+}
+
+legend {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+
+.number {
+  background-color: #5fcf80;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 100%;
+}
+
+@media screen and (min-width: 480px) {
+  form {
+    max-width: 480px;
+  }
+}
+
+.dropdown {
+  transform: translateY(-50%);
+  margin-top: 30pt;
+}
+
+a {
+  color: #fff;
+}
+
+.dropdown dd,
+.dropdown dt {
+  margin: 0px;
+  padding: 0px;
+}
+
+.dropdown ul {
+  margin: -1px 0 0 0;
+}
+
+.dropdown dd {
+  position: relative;
+}
+
+.dropdown a,
+.dropdown a:visited {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  font-size: 12px;
+}
+
+.dropdown dt a {
+  background-color: #4f6877;
+  display: block;
+  padding: 8px 20px 5px 10px;
+  min-height: 25px;
+  line-height: 24px;
+  overflow: hidden;
+  border: 0;
+  width: 272px;
+}
+
+.dropdown dt a span,
+.multiSel span {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 3px 2px 0;
+}
+
+.dropdown dd ul {
+  background-color: #4f6877;
+  border: 0;
+  color: #fff;
+  display: none;
+  left: 0px;
+  padding: 2px 15px 2px 5px;
+  position: absolute;
+  top: 2px;
+  width: 280px;
+  list-style: none;
+  height: 100px;
+  overflow: auto;
+}
+
+.dropdown span.value {
+  display: none;
+}
+
+.dropdown dd ul li a {
+  padding: 5px;
+  display: block;
+}
+
+.dropdown dd ul li a:hover {
+	background-color: #fff;
+	
+}
+
+
+
 </style>
+     <link rel="stylesheet" href="/css/headerStyle.css">
+
 </head>
-<div class="container">
-	<div class="row">
-	    
-	    <div class="col-md-8 col-md-offset-2">
-	        
-    		<h1>Create post</h1>
-    		
-    		<form action="" method="POST">
-    		    
-    		    <div class="form-group has-error">
-    		        <label for="slug">Slug <span class="require">*</span> <small>(This field use in url path.)</small></label>
-    		        <input type="text" class="form-control" name="slug" />
-    		        <span class="help-block">Field not entered!</span>
-    		    </div>
-    		    
-    		    <div class="form-group">
-    		        <label for="title">Title <span class="require">*</span></label>
-    		        <input type="text" class="form-control" name="title" />
-    		    </div>
-    		    
-    		    <div class="form-group">
-    		        <label for="description">Description</label>
-    		        <textarea rows="5" class="form-control" name="description" ></textarea>
-    		    </div>
-    		    
-    		    <div class="form-group">
-    		        <p><span class="require">*</span> - required fields</p>
-    		    </div>
-    		    
-    		    <div class="form-group">
-    		        <button type="submit" class="btn btn-primary">
-    		            Create
-    		        </button>
-    		        <button class="btn btn-default">
-    		            Cancel
-    		        </button>
-    		    </div>
-    		    
-    		</form>
-		</div>
+<body>
+
+		<%- include('includes/header.ejs') %>
+
+	
 		
-	</div>
-</div>
+	
+		
+		
+	
+		<div class="site-section bg-light">
+		  <div class="container">
+			<div class="row">
+		   
+			  <div class="col-md-12 col-lg-8 mb-5">
+			  
+				
+			  
+				<form action="#" class="p-5 bg-white">
+					
+					<label for="job">Job Role:</label>
+                <select id="job" name="user_job">
+                    <optgroup label="Web">
+                        <option value="frontend_developer">Front-End Developer</option>
+                        <option value="php_developor">PHP Developer</option>
+                        <option value="python_developer">Python Developer</option>
+                        <option value="rails_developer"> Rails Developer</option>
+                        <option value="web_designer">Web Designer</option>
+                        <option value="WordPress_developer">WordPress Developer</option>
+                    </optgroup>
+                    <optgroup label="Mobile">
+                        <option value="Android_developer">Androild Developer</option>
+                        <option value="iOS_developer">iOS Developer</option>
+                        <option value="mobile_designer">Mobile Designer</option>
+                    </optgroup>
+                    <optgroup label="Business">
+                        <option value="business_owner">Business Owner</option>
+                        <option value="freelancer">Freelancer</option>
+                    </optgroup>
+                    <optgroup label="Other">
+                        <option value="secretary">Secretary</option>
+                        <option value="maintenance">Maintenance</option>
+                    </optgroup>
+                </select>
+
+								<div class="container">
+										<div class="row">
+											 <div class="col-lg-12">
+													<h2>Button Dropdown with Checkboxes</h2>
+													<div class="btn-group" role="group" aria-label="...">
+														 
+														 <div class="btn-group">
+																<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
+																<ul class="dropdown-menu">
+																	 <li>
+																			 <h3>Skills</h3>
+																	 </li>
+																	 <li>
+																			 <label class="dropdown-menu-item checkbox">
+																					 <input type="checkbox" />
+																					 <span class="glyphicon glyphicon-unchecked"></span>
+																					 java
+																			 </label>
+																	 </li>
+																	 <li>
+																			 <label class="dropdown-menu-item checkbox">
+																					 <input type="checkbox" />
+																					 <span class="glyphicon glyphicon-unchecked"></span>
+																					 c++
+																			 </label>
+																	 </li>
+																	 <li>
+																			 <label class="dropdown-menu-item checkbox">
+																					 <input type="checkbox" />
+																					 <span class="glyphicon glyphicon-unchecked"></span>
+																					 C#
+																			 </label>
+																	 </li> 
+																	 <li>
+																			<label class="dropdown-menu-item checkbox">
+																					<input type="checkbox" />
+																					<span class="glyphicon glyphicon-unchecked"></span>
+																					Orical
+																			</label>
+																	</li> 
+																	<li>
+																			<label class="dropdown-menu-item checkbox">
+																					<input type="checkbox" />
+																					<span class="glyphicon glyphicon-unchecked"></span>
+																					java script
+																			</label>
+																	</li> 
+																	<li>
+																			<label class="dropdown-menu-item checkbox">
+																					<input type="checkbox" />
+																					<span class="glyphicon glyphicon-unchecked"></span>
+																					Html
+																			</label>
+																	</li> 
+																		
+														 </div>
+													</div>
+											 </div>
+										</div>
+	
+				  
+	
+				  <div class="row form-group mb-5">
+					<div class="col-md-12 mb-3 mb-md-0">
+					  <label class="font-weight-bold" for="fullname">Company</label>
+					  <input type="text" id="fullname" class="form-control" placeholder="eg. Facebook, Inc.">
+					</div>
+					</div>
+					
+	
+	
+	
+				  <div class="row form-group">
+					<div class="col-md-12"><h3>Job Type</h3></div>
+					<div class="col-md-12 mb-3 mb-md-0">
+					  <label for="option-job-type-1">
+						<input type="radio" id="option-job-type-1" name="job-type"> Full Time
+					  </label>
+					</div>
+					<div class="col-md-12 mb-3 mb-md-0">
+					  <label for="option-job-type-2">
+						<input type="radio" id="option-job-type-2" name="job-type"> Part Time
+					  </label>
+					</div>
+	
+					<div class="col-md-12 mb-3 mb-md-0">
+					  <label for="option-job-type-3">
+						<input type="radio" id="option-job-type-3" name="job-type"> Freelance
+					</div>
+					<div class="col-md-12 mb-3 mb-md-0">
+					  <label for="option-job-type-4">
+						<input type="radio" id="option-job-type-4" name="job-type"> Internship
+					  </label>
+					</div>
+					<div class="col-md-12 mb-3 mb-md-0">
+					  <label for="option-job-type-4">
+						<input type="radio" id="option-job-type-4" name="job-type"> Termporary
+					  </label>
+					</div>
+	
+				  </div>
+	
+					
+				
+
+
+
+				  <div class="row form-group mb-4">
+					<div class="col-md-12"><h3>Location</h3></div>
+					<div class="col-md-12 mb-3 mb-md-0">
+					  <input type="text" class="form-control" placeholder="New York City">
+					</div>
+				  </div>
+	
+				  <div class="row form-group">
+					<div class="col-md-12"><h3>Job Description</h3></div>
+					<div class="col-md-12 mb-3 mb-md-0">
+					  <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+					</div>
+				  </div>
+	
+				  <div class="row form-group">
+					<div class="col-md-12">
+					  <input type="submit" value="Post a Job" class="btn btn-primary  py-2 px-5">
+					</div>
+					</div>
+					
+				
+					
+	  
+				</form>
+			  </div>
+	
+		
+		
+	
+	
+		
+		<footer class="site-footer">
+		  <div class="container">
+			
+	
+			<div class="row">
+			  <div class="col-md-4">
+				<h3 class="footer-heading mb-4 text-white">About</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat quos rem ullam, placeat amet.</p>
+				<p><a href="#" class="btn btn-primary pill text-white px-4">Read More</a></p>
+			  </div>
+			  <div class="col-md-6">
+				<div class="row">
+				  <div class="col-md-6">
+					<h3 class="footer-heading mb-4 text-white">Quick Menu</h3>
+					  <ul class="list-unstyled">
+						<li><a href="#">About</a></li>
+						<li><a href="#">Services</a></li>
+						<li><a href="#">Approach</a></li>
+						<li><a href="#">Sustainability</a></li>
+						<li><a href="#">News</a></li>
+						<li><a href="#">Careers</a></li>
+					  </ul>
+				  </div>
+				  <div class="col-md-6">
+					<h3 class="footer-heading mb-4 text-white">Categories</h3>
+					  <ul class="list-unstyled">
+						<li><a href="#">Full Time</a></li>
+						<li><a href="#">Freelance</a></li>
+						<li><a href="#">Temporary</a></li>
+						<li><a href="#">Internship</a></li>
+					  </ul>
+				  </div>
+				</div>
+			  </div>
+	
+			  
+			  <div class="col-md-2">
+				<div class="col-md-12"><h3 class="footer-heading mb-4 text-white">Social Icons</h3></div>
+				  <div class="col-md-12">
+					<p>
+					  <a href="#" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
+					  <a href="#" class="p-2"><span class="icon-twitter"></span></a>
+					  <a href="#" class="p-2"><span class="icon-instagram"></span></a>
+					  <a href="#" class="p-2"><span class="icon-vimeo"></span></a>
+	
+					</p>
+				  </div>
+			  </div>
+			</div>
+			<div class="row pt-5 mt-5 text-center">
+			  <div class="col-md-12">
+				<p>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				Copyright &copy; <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> All Rights Reserved | This template is made with <i class="icon-heart text-warning" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</p>
+			  </div>
+			  
+			</div>
+		  </div>
+		</footer>
+	  </div>
+	
+	  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script>
+
+        $(".dropdown dt a").on('click', function () {
+            $(".dropdown dd ul").slideToggle('fast');
+        });
+
+        $(".dropdown dd ul li a").on('click', function () {
+            $(".dropdown dd ul").hide();
+        });
+
+        function getSelectedValue(id) {
+            return $("#" + id).find("dt a span.value").html();
+        }
+
+        $(document).bind('click', function (e) {
+            var $clicked = $(e.target);
+            if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+        });
+
+        $('.mutliSelect input[type="checkbox"]').on('click', function () {
+            var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+                title = $(this).val() + ",";
+
+            if ($(this).is(':checked')) {
+                var html = '<span title="' + title + '">' + title + '</span>';
+                $('.multiSel').append(html);
+                $(".hida").hide();
+            } else {
+                $('span[title="' + title + '"]').remove();
+                var ret = $(".hida");
+                $('.dropdown dt a').append(ret);
+            }
+				});
+
+
+				$(function(){
+    $( '.dropdown-menu li' ).on( 'click', function( event ) {
+        var $checkbox = $(this).find('.checkbox');
+        if (!$checkbox.length) {
+            return;
+        }
+        var $input = $checkbox.find('input');
+        var $icon = $checkbox.find('span.glyphicon');
+        if ($input.is(':checked')) {
+            $input.prop('checked',false);
+            $icon.removeClass('glyphicon-check').addClass('glyphicon-unchecked')
+        } else {
+            $input.prop('checked',true);
+            $icon.removeClass('glyphicon-unchecked').addClass('glyphicon-check')
+        }
+        return false;
+    }); 
+});
+
+				
+				
+    </script>
 </body>
 </html>   

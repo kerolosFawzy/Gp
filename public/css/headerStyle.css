@@ -1,0 +1,34 @@
+.form-inline my-2 my-lg-0 {
+    padding-right: 10%;
+  }
+
+  .logo {
+    margin: 1%;
+  }
+
+  .nav-link {
+    background-color: rgba(238, 243, 245, 0.986);
+    /* Green */
+    border: none;
+    color: white;
+    padding: 20px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+  }
+
+  .nav-link:hover {
+    background-color: rgba(146, 166, 219, 0.986)
+  }
+
+  ;
+
+  .nav-link:active {
+    background-color: #38e438;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
