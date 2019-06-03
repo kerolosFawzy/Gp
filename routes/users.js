@@ -2,7 +2,10 @@ var express = require('express');
 var router = express.Router();
 const DbUser = require('../database/users');
 const bodyParser = require('body-parser');
-
+const multer = require('multer');
+var upload = multer({
+    dest: 'uploads'
+});
 router.use(bodyParser.json());
 
 router.post('/login', async (req, res, next) => {
@@ -21,8 +24,11 @@ router.get('/profile', function (req, res, next) {
     res.render('profile');
 });
 
-router.use('/signup', async (req, res, next) => {
+router.use('/signup', upload.any(), async (req, res, next) => {
     var val = req.body;
+    var files = req.files;
+    console.log(files);
+
     let user = {
         name: val.name,
         email: val.email,
@@ -35,11 +41,15 @@ router.use('/signup', async (req, res, next) => {
         experience_years: val.experience,
         description: val.description,
         skills: val.skills,
-        cv: val.cv,
-        profile_pic: val.pic
+        files:files
     };
 
-    await DbUser.signUp(user);
+    var err = await DbUser.signUp(user);
+    console.log("err = " + err)
+
+    if (err!=null ) {
+        return res.render('signUp', { err: err });
+    }
     res.render('index', { title: 'done' });
 });
 

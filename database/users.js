@@ -62,25 +62,43 @@ module.exports.signUp = async (user) => {
         .createUserWithEmailAndPassword(user.email, user.password)
         .then((logedInUser) => {
             let uid = logedInUser.user.uid;
-            console.log(uid);
+
+            if (user.files.length == 2) {
+                this.uploadCv(uid, user.files[0]);
+
+                this.uploadProfilePic(uid, user.files[1]);
+
+            } else {
+                this.uploadCv(uid, user.files[0]);
+            }
 
             user.password = null;
+            user.files = null;
+
             usersRef
                 .child(uid.toString())
                 .set(user, function (error) {
-                    console.log(error)
+                    if (error) {
+                        console.log(error);
+                        Error = error;
+                    }
                 });
-            console.log('before upload');
-            uploadProfilePic(uid, user.profile_pic);
-            uploadCv(uid, user.cv);
         })
         .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
             if (errorMessage) {
-                console.log(errorMessage);
+                Error = errorMessage;
+                console.log(Error);
             }
         });
+
+    if (Error) {
+        console.log("error before return " + Error)
+        return Error;
+    }
+    return null;
+
 };
 
 module.exports.userUpdate = (userId, user) => {
@@ -96,24 +114,39 @@ module.exports.userRemove = (userId) => {
         .set(null);
 };
 
-module.exports.uploadProfilePic = async (userId, picPath) => {
-    await db.bucket.upload(picPath, {
+module.exports.uploadProfilePic = async (userId, Picture) => {
+    console.log(Picture);
+
+    await db.bucket.upload(Picture.path, {
         destination: "pic/" + userId,
         metadata: {
+            contentType: Picture.mimetype,
             cacheControl: 'public, max-age=31536000'
         }
     }, (err, file) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('done');
+        }
         return;
     });
 };
 
-module.exports.uploadCv = async (userId, cvPath) => {
-    await db.bucket.upload(cvPath, {
-        destination: "cv/" + userId,
+module.exports.uploadCv = async (userId, Cv) => {
+    console.log(Cv.path);
+    await db.bucket.upload(Cv.path, {
+        destination: "Cv/" + userId,
         metadata: {
+            contentType: Cv.mimetype,
             cacheControl: 'public, max-age=31536000'
         }
     }, (err, file) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('done');
+        }
         return;
     });
 };
