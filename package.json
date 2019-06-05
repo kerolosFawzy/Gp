@@ -27,6 +27,7 @@
   },
   "main": "app.js",
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
     "nodemon": "^1.19.1"
   },
   "author": "kero",
