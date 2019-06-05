@@ -53,9 +53,11 @@ router.get('/adress_html', function(req, res, next) {
 router.get('/search', function(req, res, next) {
   res.render('search');
 });
+
 router.get('/ten', function(req, res, next) {
   res.render('topten');
 });
+
 router.get('/search', function (req, res, next) {
     res.render('search');
 });
@@ -68,6 +70,7 @@ router.get('/editpost', function (req, res, next) {
 router.get('/details', function(req, res, next) {
   res.render('job-details');
 });
+
 router.get('/applied', function(req, res, next) {
   res.render('applicants-applied');
 });
