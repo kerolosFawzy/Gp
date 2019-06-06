@@ -1,5 +1,5 @@
-var dbRef = require("./conn");
-
+var db = require("./conn");
+var dbRef = db.dbRef;
 var postsRef = dbRef.child("posts");
 
 module.exports.pushPost = post => {

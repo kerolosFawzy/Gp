@@ -13,11 +13,11 @@ router.all('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/signup', function(req, res, next) {
+router.get('/signupapplicant', function(req, res, next) {
   res.render('signUp', { err: null });
 });
 
-router.get('/companysignup', function (req, res, next) {
+router.get('/signupcompany', function (req, res, next) {
     res.render('signUpCompany' , {err:null});
 });
 
