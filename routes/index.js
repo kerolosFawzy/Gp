@@ -18,13 +18,19 @@ router.get('/login', function (req, res, next) {
 });
 
 router.all('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
+  var bool = false;
+  if (req.session.uid)
+    bool = true;
+  res.render('index', {
+    title: 'Express',
+    logged: bool
+  });
 });
 
-router.get('/signup', async (req, res, next) => {
+router.get('/signupapplicant', async (req, res, next) => {
   let data = await skillsRef.getSkills();
   console.log(data);
-  res.render('signUp', {err: null , data: data });
+  res.render('signUp', { err: null, data: data });
 });
 
 

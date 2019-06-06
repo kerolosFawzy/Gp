@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const fileUpload = require('express-fileupload');
 
+var session = require('express-session');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -19,9 +20,10 @@ app.set('view engine', 'ejs');
 // app.use(fileUpload({
 //     useTempFiles:true 
 // }));
+app.use(session({ secret: 'gp', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
 
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 //app.use(bodyParser.urlencoded({ extended: false }));
 

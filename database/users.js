@@ -30,7 +30,7 @@ module.exports.login = async (user) => {
     if (userUid) {
         console.log('found UId');
         await this.getUser(userUid);
-
+        mUser.uid = userUid; 
         return { user: mUser, err: null };
     }
     return { user: null, err: Error };

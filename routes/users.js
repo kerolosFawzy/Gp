@@ -13,6 +13,8 @@ router.post('/login', async (req, res, next) => {
     console.log(response);
 
     if (response.user) {
+        req.session.uid = response.user.uid;
+
         res.render('index', { title: response.user.name });
     } else {
         res.render('login', { err: response.err });
