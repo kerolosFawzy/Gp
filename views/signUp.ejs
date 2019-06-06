@@ -50,7 +50,7 @@
                     <label >Skills </label>
                     <dl class="dropdown">
                         <dt>
-                            <a href="#">
+                            <a>
                                 <span class="hida">Select</span>
                                 <p class="multiSel"></p>
                             </a>
@@ -59,18 +59,10 @@
                         <dd>
                             <div class="mutliSelect" >
                                 <ul>
+                                    <% for(var skill in data ) {%>
                                     <li>
-                                        <input name="skills" type="checkbox" value="Apple" />Apple</li>
-                                    <li>
-                                        <input name="skills" type="checkbox" value="Blackberry" />Blackberry</li>
-                                    <li>
-                                        <input name="skills" type="checkbox" value="HTC" />HTC</li>
-                                    <li>
-                                        <input name="skills" type="checkbox" value="Sony Ericson" />Sony Ericson</li>
-                                    <li>
-                                        <input name="skills" type="checkbox" value="Motorola" />Motorola</li>
-                                    <li>
-                                        <input name="skills" type="checkbox" value="Nokia" />Nokia</li>
+                                        <input name="skills" type="checkbox" value=<%= skill%> /><%= skill%></li>
+                                        <%}%>
                                 </ul>
                             </div>
                         </dd>

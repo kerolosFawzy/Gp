@@ -2,6 +2,8 @@ var db = require("./conn");
 var usersRef = db
     .dbRef
     .child("users");
+
+let storage = require('./storage');
 let userUid;
 let mUser;
 let Error;
@@ -57,12 +59,12 @@ module.exports.signUp = async (user) => {
             let uid = logedInUser.user.uid;
 
             if (user.files.length == 2) {
-                this.uploadCv(uid, user.files[0]);
+                storage.uploadCv(uid, user.files[0]);
 
-                this.uploadProfilePic(uid, user.files[1]);
+                storage.uploadProfilePic(uid, user.files[1]);
 
             } else {
-                this.uploadCv(uid, user.files[0]);
+                storage.uploadCv(uid, user.files[0]);
             }
 
             user.password = null;
@@ -105,7 +107,7 @@ module.exports.CompanysignUp = async (user) => {
         .then((logedInUser) => {
             let uid = logedInUser.user.uid;
             if (user.files)
-                this.uploadProfilePic(uid, user.files[0]);
+                storage.uploadProfilePic(uid, user.files[0]);
             user.password = null;
             user.files = null;
 
@@ -149,42 +151,7 @@ module.exports.userRemove = (userId) => {
         .set(null);
 };
 
-module.exports.uploadProfilePic = async (userId, Picture) => {
-    console.log(Picture);
 
-    await db.bucket.upload(Picture.path, {
-        destination: "pic/" + userId,
-        metadata: {
-            contentType: Picture.mimetype,
-            cacheControl: 'public, max-age=31536000'
-        }
-    }, (err, file) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('done');
-        }
-        return;
-    });
-};
-
-module.exports.uploadCv = async (userId, Cv) => {
-    console.log(Cv.path);
-    await db.bucket.upload(Cv.path, {
-        destination: "Cv/" + userId,
-        metadata: {
-            contentType: Cv.mimetype,
-            cacheControl: 'public, max-age=31536000'
-        }
-    }, (err, file) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('done');
-        }
-        return;
-    });
-};
 
 
 // module.exports = {     uid: userUid,     user: mUser };

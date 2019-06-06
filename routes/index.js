@@ -2,7 +2,15 @@ var express = require('express');
 var router = express.Router();
 const bodyParser = require('body-parser');
 
+var storage = require('../database/storage');
+var skillsRef = require('../database/skills');
+
 router.use(bodyParser.json());
+
+router.all('/test', function (req, res, next) {
+  storage.getPicUrl('OzW16EmVGQMnOKRm0uCcQfw7eIE3');
+  return;
+});
 
 /* GET home page. */
 router.get('/login', function(req, res, next) {
@@ -13,8 +21,9 @@ router.all('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/signupapplicant', function(req, res, next) {
-  res.render('signUp', { err: null });
+router.get('/signupapplicant', function (req, res, next) {
+  var data = skillsRef.getSkills();
+  res.render('signUp', data);
 });
 
 router.get('/signupcompany', function (req, res, next) {
