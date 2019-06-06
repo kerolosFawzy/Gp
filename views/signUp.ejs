@@ -47,7 +47,7 @@
                 <%- include('includes/address_html.ejs')%>
 
                 <div class="form-group">
-                    <label >Skills </label>
+                    <label>Skills </label>
                     <dl class="dropdown">
                         <dt>
                             <a>
@@ -55,14 +55,14 @@
                                 <p class="multiSel"></p>
                             </a>
                         </dt>
-
                         <dd>
-                            <div class="mutliSelect" >
+                            <div class="mutliSelect">
                                 <ul>
-                                    <% for(var skill in data ) {%>
-                                    <li>
-                                        <input name="skills" type="checkbox" value=<%= skill%> /><%= skill%></li>
-                                        <%}%>
+                                    <% for(i=1 ; i< data.length ; i++ ) { %>
+                                    <% var skill = data[i] ;  %>
+                                        <li>
+                                        <input name="skills" type="checkbox" value= <%= skill %> /> <%= skill %></li>
+                                    <% } %>
                                 </ul>
                             </div>
                         </dd>
@@ -120,13 +120,13 @@
                 </div>
 
                 <% if(err) { %>
-                <label class="alert alert-danger">
-                    <%= err %></label>
-                <% } %>
+                                    <label class="alert alert-danger">
+                                        <%= err %></label>
+                                    <% } %>
 
-                <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>
+                                    <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>
 
-            </div>
+                            </div>
         </form>
 
     </div>
