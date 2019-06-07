@@ -1,6 +1,6 @@
 var db = require("./conn");
-var dbRef = db.dbRef;
-var postsRef = dbRef.child("posts");
+
+var temp;
 
 module.exports.pushPost = post => {
   postsRef.push(post);
@@ -14,10 +14,14 @@ module.exports.removePost = (postId) => {
   dbRef.ref("posts/" + postId).set(null);
 };
 
-module.exports.getPost = (postId) => {
-    dbRef.ref("posts/" + postId).on('value', function (snap) {
-        return snap.val();
+module.exports.getPost = async (postId) => {
+
+  await db.dbRef.child("posts").child(postId).on('value', function (snap) {
+    temp = snap.val();
+    return;
   });
+
+  return temp;
 };
 
 

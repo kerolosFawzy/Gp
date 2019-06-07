@@ -1,6 +1,11 @@
 var express = require('express');
 var router = express.Router();
+const DbPost = require('../database/posts');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+var upload = multer({
+  dest: 'uploads'
+});
 
 var storage = require('../database/storage');
 var skillsRef = require('../database/skills');
@@ -20,7 +25,6 @@ router.get('/login', function (req, res, next) {
 
 router.all('/', function (req, res, next) {
   let bool = checkSession(req);
-
   res.render('index', {
     title: 'Express',
     logged: bool
@@ -95,16 +99,12 @@ router.get('/ten', function (req, res, next) {
 
   res.render('topten', { logged: bool });
 });
+router.get('/search', function (req, res, next) {
+  res.render('search');
+});
 
 router.get('/editpost', function (req, res, next) {
   res.render('editpost');
-});
-
-
-router.get('/details', function (req, res, next) {
-  let bool = checkSession(req);
-
-  res.render('job-details', { logged: bool });
 });
 
 router.get('/applied', function (req, res, next) {
@@ -112,6 +112,14 @@ router.get('/applied', function (req, res, next) {
 
   res.render('applicants-applied', { logged: bool });
 });
+
+router.get('/details', async (req, res, next) => {
+  let bool = checkSession(req);
+  var post = await DbPost.getPost(1);
+
+  res.render('job-details', { data: post, logged: bool });
+});
+
 
 function checkSession(req) {
   var bool = false;
