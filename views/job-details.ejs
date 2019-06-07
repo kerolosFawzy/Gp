@@ -36,21 +36,20 @@
     <div class="container">
         <form class="form">
 
-            <h1><b>Senior Mobile Application Developer - React Native</b> </h1><br>
-            <h3>Job Description : </h3><br>
-            <p>We are looking for a motivated Mobile Developers who can combine the programming skills with the art of
-                design. This role is responsible for translating wireframes or prototypes into functional UI/UX code.
-                This role is a bridge between system analyst/project manager, back-end developer, tester and the graphic
-                designer.</p> <br>
-            <h3>Responsibilities :</h3><br>
-            <p>
-                -Designing, developing, testing, and debugging UI for mobile applications<br>
-                -Build reusable code and libraries for future use<br>
-                -Accurately translate wireframes or prototypes into functional frontend code</p><br>
-            <h3> Skills needed :</h3><br>
-            <h3>Salary : </h3><br>
-            <h3>Company address : </h3> <br>
-            <h3> HR Email :</h3><br>
+            <h1><b><%= data.jobTitle %></b></h1>
+            <h3>Job Description : </h3>
+            <p><%= data.jobDesc %></p> 
+            <h3>Responsibilities :</h3>
+            <p> <%= data.Resposibilities %></p>
+            <h3> Skills needed :</h3>
+            <ul>
+                <% for(var skill of data.skills) { %>
+                <li><%= skill %></li>
+                <% } %>
+            </ul>
+            <h3>Salary : </h3><p><%= data.salary %></p>
+            <h3>Company address : </h3><p><%= data.companyAddress %></p> 
+            <h3> HR Email :</h3><p><%= data.HrEmail %></p>
 
         </form>
         <form><button class="btn btn-primary btn-lg btn-block apply" type="submit">Apply</button></form>
