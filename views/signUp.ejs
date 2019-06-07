@@ -60,8 +60,8 @@
                                 <ul>
                                     <% for(i=1 ; i< data.length ; i++ ) { %>
                                     <% var skill = data[i] ;  %>
-                                        <li>
-                                        <input name="skills" type="checkbox" value= <%= skill %> /> <%= skill %></li>
+                                    <li>
+                                        <input name="skills" type="checkbox" value=<%= skill %> /> <%= skill %></li>
                                     <% } %>
                                 </ul>
                             </div>
@@ -111,22 +111,23 @@
 
                 <div class="form-group">
                     <label class="custom-file-label" for="validatedCustomFile">Upload Your CV</label>
-                    <input name="cv" type="file" class="custom-file-input" id="validatedCustomFile" required>
+                    <input name="cv" type="file" accept=".doc , .pdf" class="custom-file-input" id="validatedCustomFile"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label>Upload Your Profile Picture</label>
-                    <input name="pic" id="pic" type="file" class="form-control-file">
+                    <input name="pic" id="pic" type="file" accept="image/*" class="form-control-file">
                 </div>
 
                 <% if(err) { %>
-                                    <label class="alert alert-danger">
-                                        <%= err %></label>
-                                    <% } %>
+                <label class="alert alert-danger">
+                    <%= err %></label>
+                <% } %>
 
-                                    <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>
+                <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>
 
-                            </div>
+            </div>
         </form>
 
     </div>

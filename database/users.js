@@ -64,7 +64,7 @@ module.exports.signUp = async (user) => {
                 storage.uploadProfilePic(uid, user.files[1]);
 
             } else {
-                storage.uploadCv(uid, user.files[0]);
+                storage.uploadProfilePic(uid, user.files[0]);
             }
 
             user.password = null;
@@ -150,8 +150,5 @@ module.exports.userRemove = (userId) => {
         .ref("users/" + userId)
         .set(null);
 };
-
-
-
 
 // module.exports = {     uid: userUid,     user: mUser };

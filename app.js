@@ -20,7 +20,7 @@ app.set('view engine', 'ejs');
 // app.use(fileUpload({
 //     useTempFiles:true 
 // }));
-app.use(session({ secret: 'gp', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
+app.use(session({ secret: 'gp', cookie: { maxAge: 6000000 , expires:6000000 }, resave: false, saveUninitialized: false }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
