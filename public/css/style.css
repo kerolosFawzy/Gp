@@ -7188,12 +7188,9 @@ span.customSelect.changed {
   margin-left: 10pt;
   margin-right: 10pt;
 }
-<<<<<<< HEAD
 
 
 
-
-<<<<<<< HEAD
 .dropdown-menu > li > .dropdown-menu-item {
     clear: both;
      color: #333;
@@ -7209,6 +7206,7 @@ span.customSelect.changed {
      -moz-user-select: none;
      user-select: none;
  }
+
  .dropdown-menu > li:hover .dropdown-menu-item,
  .dropdown-menu > li:focus .dropdown-menu-item{
      background-color: #f5f5f5;
@@ -7221,8 +7219,8 @@ span.customSelect.changed {
  .dropdown-menu > li > .dropdown-menu-item.checkbox input {
      display: none;
  }
-=======
-.apply {
+
+ .apply {
     width: 15%;
     margin-top: 50px;
     margin-bottom: 30px;
@@ -7230,6 +7228,3 @@ span.customSelect.changed {
     align-items: center;
     justify-content: center;
   }
-=======
->>>>>>> feature/Search_view
->>>>>>> 3b99b13c45b5c69b5fa70c733cb2e99236a96063

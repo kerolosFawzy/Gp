@@ -30,16 +30,20 @@
 <body class="login-img3-body">
     <div class="container">
 
-        <form class="login-form signup-form" action="/user/signup" method="POST">
+        <form class="login-form signup-form" action="/user/signupcompany" method="post" enctype="multipart/form-data">
             <div class="login-wrap">
+
                 <%- include('includes/signupCommon.ejs')%>
+
                 <div class="form-group">
                     <label>Company Name
                     </label>
                     <input name="company_name" id="company_name" type="text" class="form-control"
                         placeholder="Enter Your Company Name" autofocus required>
                 </div>
+
                 <%- include('includes/address_html.ejs')%>
+
                 <div class="form-group">
                     <label>Foundation Year
                     </label>
@@ -48,7 +52,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Company Description 
+                    <label>Company Description
                     </label>
                     <textarea name="description" id="description" type="text" class="md-textarea form-control" rows="5"
                         placeholder="Your Description" autofocus> </textarea>
@@ -73,6 +77,7 @@
 
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
 </body>
 
 </html>
