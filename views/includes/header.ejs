@@ -1,121 +1,99 @@
+<nav class="navbar navbar-expand-md header dark-bg ">
+  <div class="container-fluid">
+    <div class="navbar-brand">
+      <a href="/">
+        <img src="/img/logo.png" style="height: 10%;width:10% ;margin-right: 10px ">
+      </a>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a href="/" id="brand" style="margin-right: 10px">Inter<span class="lite" style="margin-left: 2px">Jobs</span></a>
 
-    <a href="/" class="logo"><img src="/img/logo.png" class="small_icon" /></a>
+      <a href="/search">
+        <span class="primary-bg"> Search Page </span>
+      </a>
 
-    <a href="/" class="logo">Inter <span class="lite">Jobs</span></a>
-
-
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index">Home</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="about">about <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact-us">ContactUs</a>
-        </li>
-      </ul>
     </div>
+    <ul class="navbar-nav pull-right navbar-ml top-menu">
+      <% if(false) { %>
+      <li id="mail_notificatoin_bar" class="dropdown">
 
-    <div class="top-nav notification-row">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#" style=" color: #bdbdbd; font-size: 15pt">
+          Notification
+          <span class="badge badge-light">1</span>
+        </a>
 
-      <ul class="nav pull-right top-menu">
+        <ul class="dropdown-menu extended tasks-bar">
+          <div class="notify-arrow notify-arrow-blue"></div>
 
-        <li id="mail_notificatoin_bar" class="dropdown">
-          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-            <i class="icon-envelope-l"></i>
-            <span class="badge bg-important">5</span>
-          </a>
-          <ul class="dropdown-menu extended inbox">
-            <div class="notify-arrow notify-arrow-blue"></div>
-            <li>
-              <p class="blue">You have 1 new messages</p>
-            </li>
-            <li>
-              <a href="#">
-                <span class="photo"><img alt="avatar" src="./img/avatar-mini.jpg"></span>
-                <span class="subject">
-                  <span class="from">Greg Martin</span>
-                  <span class="time">1 min</span>
-                </span>
-                <span class="message">
-                  I really like this admin panel.
-                </span>
-              </a>
-            </li>
+          <li>
+            <p class="light-bg" style="padding: 10pt ; background-color: #688a7e ; color: blanchedalmond">You have 5 new
+              Notification</p>
+          </li>
+          <li>
+            <a href="#">
+              <span class="photo"><img alt="avatar" src="./img/avatar-mini.jpg"></span>
+              <span class="message">
+                I really like this admin panel.
+              </span>
+            </a>
+          </li>
+        </ul>
 
-            <li>
-              <a href="#">See all messages</a>
-            </li>
-          </ul>
-        </li>
-        <!-- inbox notificatoin end -->
-        <!-- alert notification start-->
-        <li id="alert_notificatoin_bar" class="dropdown">
-          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+      </li>
 
-            <i class="icon-bell-l"></i>
-            <span class="badge bg-important">7</span>
-          </a>
-          <ul class="dropdown-menu extended notification">
-            <div class="notify-arrow notify-arrow-blue"></div>
-            <li>
-              <p class="blue">You have 4 new notifications</p>
-            </li>
-            <li>
-              <a href="#">
-                <span class="label label-primary"><i class="icon_profile"></i></span>
-                Friend Request
-                <span class="small ita
-                  lic pull-right">5 mins</span>
-              </a>
-            </li>
-            <li>
-              <a href="#">See all notifications</a>
-            </li>
-          </ul>
-        </li>
-        <!-- alert notification end-->
-        <!-- user login dropdown start-->
-        <li class="dropdown">
-          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-            <span class="profile-ava">
-              <img alt="" src="/img/avatar1_small.jpg">
-            </span>
-            <span class="username">Jenifer Smith</span>
+      <li id="mail_notificatoin_bar" class="dropdown">
 
-          </a>
-          <ul class="dropdown-menu extended logout">
-            <div class="log-arrow-up"></div>
-            <li class="eborder-top">
-              <a href="/user/profile"><i class="icon_profile"></i> My Profile</a>
-            </li>
-            <li>
-              <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-            </li>
-            <li>
-              <a href="/login"><i class="icon_key_alt"></i> Log Out</a>
-            </li>
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="color: #bdbdbd ; font-size: 15pt">
+          Mail
+          <span class="badge badge-light">1</span>
+        </a>
 
-          </ul>
-        </li>
-        <!-- user login dropdown end -->
-      </ul>
-      <!-- notificatoin dropdown end-->
-    </div>
+        <ul class="dropdown-menu extended tasks-bar">
+          <li>
+            <p class="light-bg" style="padding: 10pt ; background-color: #688a7e ; color: blanchedalmond">You have 5 new
+              messages</p>
+          </li>
+          <li>
+            <a href="#">
+              <span class="photo"><img alt="avatar" src="./img/avatar-mini.jpg"></span>
+              <span class="subject">
+                <span class="from">Greg Martin</span>
+              </span>
+              <span class="message">
+                I really like this admin panel.
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
 
-  </nav>
+      <li class="dropdown">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+          <span class="profile-ava">
+            <img alt="" src="/img/avatar1_small.jpg">
+          </span>
+          <span id="username">Jenifer Smith</span>
+          <b class="caret"></b>
+        </a>
+
+        <ul class="dropdown-menu extended logout">
+          <div class="log-arrow-up"></div>
+
+          <li class="eborder-top">
+            <a href="#"><i class="icon_profile"></i> My Profile</a>
+          </li>
+          <li>
+            <a href="/login"><i class="icon_key_alt"></i> Logout </a>
+          </li>
+        </ul>
+      </li>
+      <% }else{ %>
+      <li class="nav-item">
+        <a class="btn btn-primary" href="/login" style="margin-right: 20pt">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-success" href="/switch">Join Us Now</a>
+      </li>
+      <%}%>
+    </ul>
+  </div>
+</nav>

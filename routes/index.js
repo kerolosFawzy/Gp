@@ -26,6 +26,11 @@ router.get('/companysignup', function (req, res, next) {
   res.render('signUpCompany', { err: null });
 });
 
+router.get('/switch', function (req, res, next) {
+  res.render('signupSwitch' , {err:null});
+});
+
+
 router.get('/hr', function (req, res, next) {
   res.render('HR');
 });
