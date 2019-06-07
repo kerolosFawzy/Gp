@@ -18,9 +18,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 //app.use(bodyParser.urlencoded({ extended: false }));
+console.log("fvfvkkf");
 
 app.use('/', indexRouter);
-app.use('/user', usersRouter);
+app.use('/users', usersRouter);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

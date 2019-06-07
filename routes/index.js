@@ -40,9 +40,7 @@ router.get('/about', function(req, res, next) {
 router.get('/contact-us', function(req, res, next) {
   res.render('contact-us');
 });
-router.get('/index', function(req, res, next) {
-  res.render('index');
-});
+
 router.get('/adress_html', function(req, res, next) {
   res.render('adress_html');
 });
@@ -64,6 +62,7 @@ router.get('/editpost', function (req, res, next) {
 router.get('/details', function(req, res, next) {
   res.render('job-details');
 });
+
 router.get('/applied', function(req, res, next) {
   res.render('applicants-applied');
 });

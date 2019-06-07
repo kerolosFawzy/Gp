@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
 const DbUser = require('../database/users');
+const DbPosts = require('../database/posts');
+
 const bodyParser = require('body-parser');
 
 router.use(bodyParser.json());
 
-router.post('/login',async (req, res, next) => {
-    var response =await DbUser.login({ email: req.body.email, password: req.body.password });
+router.post('/login', async (req, res, next) => {
+    var response = await DbUser.login({ email: req.body.email, password: req.body.password });
     console.log(response);
 
     if (response.user) {
@@ -20,7 +22,26 @@ router.post('/login',async (req, res, next) => {
 router.get('/profile', function (req, res, next) {
     res.render('profile');
 });
+router.post('/addpost', function (req, res, next) {
+    console.log(req.body);
+    var valu = req.body;
+     var data = {
+         role: valu.user_job,
+         majorSkills : valu.skills,
+         position : valu.position,
+        jopTypw : valu.jop-type,
+         location : valu.location,    
+         jop_description : valu.Job_Description,   
+         salary : valu.Salary    
+    
+        
+     };
+     console.log(valu)
+    DbPosts.pushPost(valu);
+   
+    res.render('index', { title: 'done' });
 
+});
 router.use('/signup', (req, res, next) => {
     var val = req.body;
     DbUser.signUp({

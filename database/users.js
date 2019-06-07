@@ -90,4 +90,4 @@ module.exports.userRemove = (userId) => {
         .set(null);
 };
 
-// module.exports = {     uid: userUid,     user: mUser };
+ module.exports = {     uid: userUid,     user: mUser };

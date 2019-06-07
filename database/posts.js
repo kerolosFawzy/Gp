@@ -1,9 +1,12 @@
-var dbRef = require("./conn");
+var db = require("./conn");
 
-var postsRef = dbRef.child("posts");
+
+
 
 module.exports.pushPost = post => {
-  postsRef.push(post);
+  console.log('income code'+post);
+  db.dbRef.child("posts").push(post);
+  console.log('done');
 };
 
 module.exports.updatePost = (postId, post) => {
