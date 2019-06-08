@@ -3,9 +3,11 @@ var router = express.Router();
 const DbUser = require('../database/users');
 const bodyParser = require('body-parser');
 const multer = require('multer');
+
 var upload = multer({
     dest: 'uploads'
 });
+
 router.use(bodyParser.json());
 
 router.post('/login', async (req, res, next) => {
@@ -14,8 +16,10 @@ router.post('/login', async (req, res, next) => {
 
     if (response.user) {
         req.session.uid = response.user.uid;
+        req.session.user = response.user; 
+        
         var bool = checkSession(req);
-        res.render('index', { title: response.user.name, logged: bool});
+        res.render('index', { title: response.user.name, logged: response.user});
     } else {
         res.render('login', { err: response.err });
     }
@@ -84,11 +88,17 @@ router.post('/signupcompany', upload.any(), async (req, res, next) => {
     res.render('index', { title: 'done' });
 });
 
-function checkSession(req) {
-    var bool = false;
-    if (req.session.uid)
-        bool = true;
+router.get('/logout', (req, res, next) => {
+    req.session.destroy();
 
+    res.render('login', { err: null });
+});
+
+
+function checkSession(req) {
+    var bool;
+    if (req.session.uid)
+        bool = req.session.user;
     return bool;
 }
 

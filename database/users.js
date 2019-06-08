@@ -26,12 +26,14 @@ module.exports.login = async (user) => {
             Error = errorMessage;
         });
 
-    console.log(userUid);
     if (userUid) {
-        console.log('found UId');
-        await this.getUser(userUid);
-        mUser.uid = userUid; 
-        return { user: mUser, err: null };
+        console.log(userUid);
+        let data;
+        data = await this.getUser(userUid);
+        if (data) {
+            data.uid = userUid;
+            return { user: data, err: null };
+        }
     }
     return { user: null, err: Error };
 
@@ -46,6 +48,7 @@ module.exports.getUser = async (userId) => {
             mUser = snap.val();
             return;
         });
+    return mUser;
 };
 
 module.exports.signUp = async (user) => {
@@ -151,4 +154,3 @@ module.exports.userRemove = (userId) => {
         .set(null);
 };
 
-// module.exports = {     uid: userUid,     user: mUser };

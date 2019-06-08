@@ -122,10 +122,9 @@ router.get('/details', async (req, res, next) => {
 
 
 function checkSession(req) {
-  var bool = false;
+  var bool;
   if (req.session.uid)
-    bool = true;
-
+      bool = req.session.user;
   return bool;
 }
 

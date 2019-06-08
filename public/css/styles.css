@@ -3119,3 +3119,9 @@ form .template-btn {
 .tab-item li:hover {
   color: #ff9902;
 }
+.box {
+  padding: 10%;
+  border-style: solid;
+  border-width: 1px;
+  background-color: #f1f1f1;
+}
