@@ -44,7 +44,6 @@ module.exports.getPicUrl = async (userId) => {
     await db.bucket.getFiles({ prefix: 'pic/' + userId }).then((file) => {
         var token = file[0][0].metadata.metadata.firebaseStorageDownloadTokens;
         baseUrl = baseUrl + userId + '?alt=media&token=' + token;
-        return;
     }).catch((err) => {
         console.log(err.message);
     });

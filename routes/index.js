@@ -131,8 +131,11 @@ router.post('/addpost', function (req, res, next) {
 
 function checkSession(req) {
   var bool;
-  if (req.session.uid)
-    bool = req.session.user;
+  
+  if (req.session.uid) {
+    bool.user = req.session.user;
+  }
+
   return bool;
 }
 

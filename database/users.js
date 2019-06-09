@@ -32,6 +32,7 @@ module.exports.login = async (user) => {
         data = await this.getUser(userUid);
         if (data) {
             data.uid = userUid;
+            data.img = await storage.getPicUrl(userUid);
             return { user: data, err: null };
         }
     }
