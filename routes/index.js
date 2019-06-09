@@ -12,10 +12,10 @@ var skillsRef = require('../database/skills');
 
 router.use(bodyParser.json());
 
-// router.all('/test', function (req, res, next) {
-//   storage.getPicUrl('OzW16EmVGQMnOKRm0uCcQfw7eIE3');
-//   return;
-// });
+router.all('/test', function (req, res, next) {
+  storage.getPicUrl('OzW16EmVGQMnOKRm0uCcQfw7eIE3');
+  return;
+});
 
 /* GET home page. */
 router.get('/login', function (req, res, next) {
@@ -65,10 +65,13 @@ router.get('/profile', function (req, res, next) {
   res.render('profile', { logged: bool });
 });
 
-router.get('/addpost', function (req, res, next) {
+router.get('/addpost', async (req, res, next) => {
   let bool = checkSession(req);
 
-  res.render('addpost', { logged: bool });
+  let data = await skillsRef.getSkills();
+
+
+  res.render('addpost', { logged: bool, data: data });
 });
 
 router.get('/about', function (req, res, next) {
@@ -120,11 +123,16 @@ router.get('/details', async (req, res, next) => {
   res.render('job-details', { data: post, logged: bool });
 });
 
+router.post('/addpost', function (req, res, next) {
+  var valu = req.body;
+  DbPost.pushPost(valu);
+  res.render('index', { title: 'done' });
+});
 
 function checkSession(req) {
   var bool;
   if (req.session.uid)
-      bool = req.session.user;
+    bool = req.session.user;
   return bool;
 }
 

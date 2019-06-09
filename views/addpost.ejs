@@ -5,61 +5,20 @@
 	<%- include('includes/head.ejs') %>
 
 	<title>AddPost</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-	<!------ Include the above in your HEAD tag ---------->
 	<link rel="stylesheet" href="/css/animate-3.7.0.css">
-	<link rel="stylesheet" href="/css/font-awesome-4.7.0.min.css">
 	<link rel="stylesheet" href="/fonts/flat-icon/flaticon.css">
 	<link rel="stylesheet" href="/css/bootstrap-4.1.3.min.css">
 	<link rel="stylesheet" href="/css/owl-carousel.min.css">
 	<link rel="stylesheet" href="/css/nice-select.css">
-	<link rel="stylesheet" href="/css/elegant-icons-style.css" />
 
 	<link rel="stylesheet" href="/css/addpost.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/styles.css">
 
-	<style>
-		.dropdown-menu>li>.dropdown-menu-item {
-			clear: both;
-			color: #333;
-			display: block;
-			padding: 3px 20px;
-			white-space: nowrap;
-			margin: 5px 0;
-			width: 100%;
-			text-align: left;
-			text-decoration: none;
-			outline: none;
-			cursor: pointer;
-			-moz-user-select: none;
-			user-select: none;
-		}
-
-		.dropdown-menu>li:hover .dropdown-menu-item,
-		.dropdown-menu>li:focus .dropdown-menu-item {
-			background-color: #f5f5f5;
-			color: #262625;
-		}
-
-		.dropdown-menu>li>.dropdown-menu-item.checkbox {
-			margin: 0;
-			font-weight: normal;
-		}
-
-		.dropdown-menu>li>.dropdown-menu-item.checkbox input {
-			display: none;
-		}
-	</style>
-	
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/elegant-icons-style.css" />
 	<link rel="stylesheet" href="/css/headerStyle.css">
 
 </head>
@@ -68,259 +27,174 @@
 
 	<%- include('includes/header.ejs') %>
 
-	<div class="site-section bg-light">
-		<div class="container">
-			<div class="row">
+	<div class="container">
+		<div class="fix">
+			<form action="/addpost" method="POST" class="p-5 bg-white">
 
-				<div class="col-md-12 col-lg-8 mb-5">
-
-					<form action="#" class="p-5 bg-white">
-
-						<label for="job">Job Role:</label>
-						<select id="job" name="user_job">
-							<optgroup label="Web">
-								<option value="frontend_developer">Front-End Developer</option>
-								<option value="php_developor">PHP Developer</option>
-								<option value="python_developer">Python Developer</option>
-								<option value="rails_developer"> Rails Developer</option>
-								<option value="web_designer">Web Designer</option>
-								<option value="WordPress_developer">WordPress Developer</option>
-							</optgroup>
-							<optgroup label="Mobile">
-								<option value="Android_developer">Androild Developer</option>
-								<option value="iOS_developer">iOS Developer</option>
-								<option value="mobile_designer">Mobile Designer</option>
-							</optgroup>
-							<optgroup label="Business">
-								<option value="business_owner">Business Owner</option>
-								<option value="freelancer">Freelancer</option>
-							</optgroup>
-							<optgroup label="Other">
-								<option value="secretary">Secretary</option>
-								<option value="maintenance">Maintenance</option>
-							</optgroup>
-						</select>
-
-						<div class="container">
-							<div class="row">
-								<div class="col-lg-12">
-									<h2>Button Dropdown with Checkboxes</h2>
-									<div class="btn-group" role="group" aria-label="...">
-
-										<div class="btn-group">
-											<button type="button" class="btn btn-default dropdown-toggle"
-												data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>
-												<span class="caret"></span></button>
-											<ul class="dropdown-menu">
-												<li>
-													<h3>Skills</h3>
-												</li>
-												<li>
-													<label class="dropdown-menu-item checkbox">
-														<input type="checkbox" />
-														<span class="glyphicon glyphicon-unchecked"></span>
-														java
-													</label>
-												</li>
-												<li>
-													<label class="dropdown-menu-item checkbox">
-														<input type="checkbox" />
-														<span class="glyphicon glyphicon-unchecked"></span>
-														c++
-													</label>
-												</li>
-												<li>
-													<label class="dropdown-menu-item checkbox">
-														<input type="checkbox" />
-														<span class="glyphicon glyphicon-unchecked"></span>
-														C#
-													</label>
-												</li>
-												<li>
-													<label class="dropdown-menu-item checkbox">
-														<input type="checkbox" />
-														<span class="glyphicon glyphicon-unchecked"></span>
-														Orical
-													</label>
-												</li>
-												<li>
-													<label class="dropdown-menu-item checkbox">
-														<input type="checkbox" />
-														<span class="glyphicon glyphicon-unchecked"></span>
-														java script
-													</label>
-												</li>
-												<li>
-													<label class="dropdown-menu-item checkbox">
-														<input type="checkbox" />
-														<span class="glyphicon glyphicon-unchecked"></span>
-														Html
-													</label>
-												</li>
-
-										</div>
-									</div>
-								</div>
-							</div>
-
-
-
-							<div class="row form-group mb-5">
-								<div class="col-md-12 mb-3 mb-md-0">
-									<label class="font-weight-bold" for="fullname">Company</label>
-									<input type="text" id="fullname" class="form-control"
-										placeholder="eg. Facebook, Inc.">
-								</div>
-							</div>
-
-
-
-
-							<div class="row form-group">
-								<div class="col-md-12">
-									<h3>Job Type</h3>
-								</div>
-								<div class="col-md-12 mb-3 mb-md-0">
-									<label for="option-job-type-1">
-										<input type="radio" id="option-job-type-1" name="job-type"> Full Time
-									</label>
-								</div>
-								<div class="col-md-12 mb-3 mb-md-0">
-									<label for="option-job-type-2">
-										<input type="radio" id="option-job-type-2" name="job-type"> Part Time
-									</label>
-								</div>
-
-								<div class="col-md-12 mb-3 mb-md-0">
-									<label for="option-job-type-3">
-										<input type="radio" id="option-job-type-3" name="job-type"> Freelance
-								</div>
-								<div class="col-md-12 mb-3 mb-md-0">
-									<label for="option-job-type-4">
-										<input type="radio" id="option-job-type-4" name="job-type"> Internship
-									</label>
-								</div>
-								<div class="col-md-12 mb-3 mb-md-0">
-									<label for="option-job-type-4">
-										<input type="radio" id="option-job-type-4" name="job-type"> Termporary
-									</label>
-								</div>
-
-							</div>
-
-							<div class="row form-group mb-4">
-								<div class="col-md-12">
-									<h3>Location</h3>
-								</div>
-								<div class="col-md-12 mb-3 mb-md-0">
-									<input type="text" class="form-control" placeholder="New York City">
-								</div>
-							</div>
-
-							<div class="row form-group">
-								<div class="col-md-12">
-									<h3>Job Description</h3>
-								</div>
-								<div class="col-md-12 mb-3 mb-md-0">
-									<textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
-								</div>
-							</div>
-
-							<div class="row form-group">
-								<div class="col-md-12">
-									<input type="submit" value="Post a Job" class="btn btn-primary  py-2 px-5">
-								</div>
-							</div>
-
-
-
-
-					</form>
+				<div class="form-group" style="padding-left: 15px">
+					<label for="job">Job Role:</label>
+					<select id="job" name="user_job">
+						<optgroup label="Web">
+							<option value="frontend_developer">Front-End Developer</option>
+							<option value="php_developor">PHP Developer</option>
+							<option value="python_developer">Python Developer</option>
+							<option value="rails_developer"> Rails Developer</option>
+							<option value="web_designer">Web Designer</option>
+							<option value="WordPress_developer">WordPress Developer</option>
+						</optgroup>
+						<optgroup label="Mobile">
+							<option value="Android_developer">Androild Developer</option>
+							<option value="iOS_developer">iOS Developer</option>
+							<option value="mobile_designer">Mobile Designer</option>
+						</optgroup>
+						<optgroup label="Business">
+							<option value="business_owner">Business Owner</option>
+							<option value="freelancer">Freelancer</option>
+						</optgroup>
+						<optgroup label="Other">
+							<option value="secretary">Secretary</option>
+							<option value="maintenance">Maintenance</option>
+						</optgroup>
+					</select>
 				</div>
 
-
-
-
-
-
-				<footer class="site-footer">
-					<div class="container">
-
-
-						<div class="row">
-							<div class="col-md-4">
-								<h3 class="footer-heading mb-4 text-white">About</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat quos rem ullam,
-									placeat amet.</p>
-								<p><a href="#" class="btn btn-primary pill text-white px-4">Read More</a></p>
+				<div class="form-group" style="padding-left: 15px ; padding-bottom: 5%">
+					<label>Skills:</label>
+					<dl class="dropdown">
+						<dt>
+							<a>
+								<span class="hida">Select</span>
+								<p class="multiSel"></p>
+							</a>
+						</dt>
+						<dd>
+							<div class="mutliSelect">
+								<ul>
+									<% for(i=1 ; i< data.length ; i++ ) { %>
+									<% var skill = data[i] ;  %>
+									<li>
+										<input name="skills" type="checkbox" value=<%= skill %> /> <%= skill %></li>
+									<% } %>
+								</ul>
 							</div>
-							<div class="col-md-6">
-								<div class="row">
-									<div class="col-md-6">
-										<h3 class="footer-heading mb-4 text-white">Quick Menu</h3>
-										<ul class="list-unstyled">
-											<li><a href="#">About</a></li>
-											<li><a href="#">Services</a></li>
-											<li><a href="#">Approach</a></li>
-											<li><a href="#">Sustainability</a></li>
-											<li><a href="#">News</a></li>
-											<li><a href="#">Careers</a></li>
-										</ul>
-									</div>
-									<div class="col-md-6">
-										<h3 class="footer-heading mb-4 text-white">Categories</h3>
-										<ul class="list-unstyled">
-											<li><a href="#">Full Time</a></li>
-											<li><a href="#">Freelance</a></li>
-											<li><a href="#">Temporary</a></li>
-											<li><a href="#">Internship</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
+						</dd>
+					</dl>
+				</div>
 
+				<div class=" form-group">
+					<div class="col-md-12 mb-3 mb-md-0">
+						<label class="font-weight-bold" for="fullname">Company</label>
+						<input type="text" id="fullname" name="company" class="form-control "
+							placeholder="eg. Facebook, Inc.">
+					</div>
+				</div>
 
-							<div class="col-md-2">
-								<div class="col-md-12">
-									<h3 class="footer-heading mb-4 text-white">Social Icons</h3>
-								</div>
-								<div class="col-md-12">
-									<p>
-										<a href="#" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
-										<a href="#" class="p-2"><span class="icon-twitter"></span></a>
-										<a href="#" class="p-2"><span class="icon-instagram"></span></a>
-										<a href="#" class="p-2"><span class="icon-vimeo"></span></a>
+				<div class="form-group">
+					<div class="col-md-12">
+						<h3>Job Type</h3>
+					</div>
+					<div class="col-md-12 mb-3 mb-md-0">
+						<input type="radio" id="option-job-type-1" value="Full Time" name="jobtype"> Full Time
+					</div>
+					<div class="col-md-12 mb-3 mb-md-0">
+						<input type="radio" id="option-job-type-2" value="Part Time" name="jobtype"> Part Time
+					</div>
+					<div class="col-md-12 mb-3 mb-md-0">
+						<input type="radio" id="option-job-type-3" value="Freelance" name="jobtype"> Freelance
+					</div>
+					<div class="col-md-12 mb-3 mb-md-0">
+						<input type="radio" id="option-job-type-4" value=" Internship" name="jobtype">
+						Internship
+					</div>
+					<div class="col-md-12 mb-3 mb-md-0">
+						<input type="radio" id="option-job-type-4" value="Termporary" name="jobtype"> Termporary
+					</div>
 
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="row pt-5 mt-5 text-center">
-							<div class="col-md-12">
-								<p>
-									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-									Copyright &copy;
-									<script data-cfasync="false"
-										src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-									<script>document.write(new Date().getFullYear());</script> All Rights Reserved |
-									This template is made
-									with <i class="icon-heart text-warning" aria-hidden="true"></i> by <a
-										href="https://colorlib.com" target="_blank">Colorlib</a>
-									<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								</p>
-							</div>
+				</div>
 
+				<div class="form-group">
+					<div class="col-md-12">
+						<h3>Location</h3>
+					</div>
+					<div class="col-md-12 mb-3 mb-md-0">
+						<input type="text" class="form-control" name="position" placeholder="New York City">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-12">
+						<h3>Job Description</h3>
+					</div>
+					<div class="col-md-12 mb-3 mb-md-0">
+						<textarea name="Description" class="form-control" name="Job_Description" cols="30"
+							rows="5"></textarea>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div>
+						<label style="padding-left: 15px">Salary</label>
+						<div class="col-10">
+							<input class="form-control" type="number" name="Salary" id="example-number-input">
 						</div>
 					</div>
-				</footer>
-			</div>
+					<div>
+						<div class="col-md-12 mb-3 mb-md-0">
+							<input type="radio" id="option-job-type-1" value="Dollar" name="cunn">Dollar
+						</div>
+						<div class="col-md-12 mb-3 mb-md-0">
+							<input type="radio" id="option-job-type-2" value="Pound" name="cunn"> Pound
+						</div>
+					</div>
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-lg">Submit</button>
+				</div>
 
-			<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-			<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+			</form>
+		</div>
 
-			<script src="/js/skills_scripts.js">
 
-			</script>
+
+	</div>
+
+
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script>
+
+		$(".dropdown dt a").on('click', function () {
+			$(".dropdown dd ul").slideToggle('fast');
+		});
+
+		$(".dropdown dd ul li a").on('click', function () {
+			$(".dropdown dd ul").hide();
+		});
+
+		function getSelectedValue(id) {
+			return $("#" + id).find("dt a span.value").html();
+		}
+
+		$(document).bind('click', function (e) {
+			var $clicked = $(e.target);
+			if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+		});
+
+		$('.mutliSelect input[type="checkbox"]').on('click', function () {
+			var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+				title = $(this).val() + ",";
+
+			if ($(this).is(':checked')) {
+				var html = '<span title="' + title + '">' + title + '</span>';
+				$('.multiSel').append(html);
+				$(".hida").hide();
+			} else {
+				$('span[title="' + title + '"]').remove();
+				var ret = $(".hida");
+				$('.dropdown dt a').append(ret);
+			}
+		});
+	</script>
 
 </body>
 

@@ -1,9 +1,9 @@
 var db = require("./conn");
-
 var temp;
 
 module.exports.pushPost = post => {
-  postsRef.push(post);
+  console.log(post);
+  db.dbRef.child('posts').push(post);
 };
 
 module.exports.updatePost = (postId, post) => {
