@@ -102,13 +102,16 @@ router.get('/ten', function (req, res, next) {
 
   res.render('topten', { logged: bool });
 });
-router.get('/search', function (req, res, next) {
-  res.render('search');
-});
 
 router.get('/editpost', function (req, res, next) {
   res.render('editpost');
 });
+
+router.get('/editprofile', (req, res, next) => {
+  console.log('here');
+  res.render('editprofile');
+});
+
 
 router.get('/applied', function (req, res, next) {
   let bool = checkSession(req);
@@ -133,7 +136,7 @@ function checkSession(req) {
   var bool;
   
   if (req.session.uid) {
-    bool.user = req.session.user;
+    bool = req.session.user;
   }
 
   return bool;
