@@ -11,6 +11,7 @@ let Error;
 
 module.exports.login = async (user) => {
     Error = "Error Undefined";
+    userUid = null;
     await db
         .firebase
         .auth()
@@ -32,12 +33,10 @@ module.exports.login = async (user) => {
         data = await this.getUser(userUid);
         if (data) {
             data.uid = userUid;
-            data.img = await storage.getPicUrl(userUid);
             return { user: data, err: null };
         }
     }
     return { user: null, err: Error };
-
 }
 
 module.exports.getUser = async (userId) => {
@@ -59,17 +58,14 @@ module.exports.signUp = async (user) => {
         .firebase
         .auth()
         .createUserWithEmailAndPassword(user.email, user.password)
-        .then((logedInUser) => {
+        .then(async (logedInUser) => {
             let uid = logedInUser.user.uid;
 
-            if (user.files.length == 2) {
-                storage.uploadCv(uid, user.files[0]);
+            storage.uploadCv(uid, user.files[0]);
+            storage.uploadProfilePic(uid, user.files[1]);
 
-                storage.uploadProfilePic(uid, user.files[1]);
-
-            } else {
-                storage.uploadProfilePic(uid, user.files[0]);
-            }
+            user.cv = await storage.getCvUrl(uid);
+            user.img = await storage.getPicUrl(uid);
 
             user.password = null;
             user.files = null;
@@ -82,6 +78,7 @@ module.exports.signUp = async (user) => {
                         Error = error;
                     }
                 });
+            console.log(user);
         })
         .catch(function (error) {
             var errorCode = error.code;
@@ -108,10 +105,11 @@ module.exports.CompanysignUp = async (user) => {
         .firebase
         .auth()
         .createUserWithEmailAndPassword(user.email, user.password)
-        .then((logedInUser) => {
+        .then(async (logedInUser) => {
             let uid = logedInUser.user.uid;
-            if (user.files)
-                storage.uploadProfilePic(uid, user.files[0]);
+            storage.uploadProfilePic(uid, user.files[0]);
+            user.img = await storage.getPicUrl(uid);
+
             user.password = null;
             user.files = null;
 
