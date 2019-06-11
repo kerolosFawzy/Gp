@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('includes/head.ejs') %>
+
+    <!-- Page Title -->
+    <title>Edit Job Post</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/images/logo/favicon.png" type="image/x-icon">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/css/animate-3.7.0.css">
+    <link rel="stylesheet" href="/css/font-awesome-4.7.0.min.css">
+    <link rel="stylesheet" href="/fonts/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="/css/bootstrap-4.1.3.min.css">
+    <link rel="stylesheet" href="/css/owl-carousel.min.css">
+    <link rel="stylesheet" href="/css/nice-select.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Preloader Starts -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- Header Area Starts -->
+    <%- include('includes/header.ejs') %>
+    <!-- Header Area End -->
+
+
+    <!-- Details Area Starts -->
+    <div class="container">
+        <form>
+<br><br><br><br><br><br>
+
+
+
+            <h1><b>Job Title: <input type="text" id="inputHelpBlock" class="form-control f" aria-describedby="helpBlock"></b></h1>
+            <h3>Job Description : <textarea id="inputHelpBlock" class="form-control f" aria-describedby="helpBlock"></textarea></h3>
+             
+            <h3>Responsibilities :<textarea id="inputHelpBlock" class="form-control f" aria-describedby="helpBlock"></textarea></h3>
+            
+            <h3> Skills needed :<br>
+                <div class="form-group">
+                        <dl class="dropdown">
+                            <dt>
+                                <a href="#">
+                                    <span class="hida">Select</span>
+                                    <p class="multiSel"></p>
+                                </a>
+                            </dt>
+    
+                            <dd>
+                                <div class="mutliSelect" >
+                                    <ul>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.1 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.2 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.3 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.4 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.5 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.6 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.7 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.8 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.9 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.10 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.11 %></li>                
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.12 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.13 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.14 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.15 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.16 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.17 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.18 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.19 %></li>
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.20 %></li>                        
+                                        <li>
+                                            <input name="skills" type="checkbox" value="Nokia" /><%= select.21 %></li>                        
+                                            
+                                        </ul>
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
+    
+            </h3>
+            <br>
+            <h3>Salary : <input type="number" id="inputHelpBlock" class="form-control f" aria-describedby="helpBlock"></h3><p></p>
+            <h3>Company address : <input type="text" id="inputHelpBlock" class="form-control f" aria-describedby="helpBlock"></h3><p></p> 
+            <h3> HR Email :<input type="email" id="inputHelpBlock" class="form-control f" aria-describedby="helpBlock"></h3><p></p>
+            <button class="btn btn-primary btn-lg btn-block apply" type="submit">Edit Post</button>
+        </form>
+        
+    </div>
+    
+    <script src="/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/js/vendor/bootstrap-4.1.3.min.js"></script>
+    <script src="/js/vendor/wow.min.js"></script>
+    <script src="/js/vendor/owl-carousel.min.js"></script>
+    <script src="/js/vendor/jquery.nice-select.min.js"></script>
+    <script src="/js/vendor/ion.rangeSlider.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+        
+
+        $(".dropdown dt a").on('click', function () {
+            $(".dropdown dd ul").slideToggle('fast');
+        });
+
+        $(".dropdown dd ul li a").on('click', function () {
+            $(".dropdown dd ul").hide();
+        });
+
+        function getSelectedValue(id) {
+            return $("#" + id).find("dt a span.value").html();
+        }
+
+    </script>
+</body>
+
+</html>

@@ -81,8 +81,30 @@ router.get('/details', async (req, res, next) => {
   res.render('job-details' , {data:post});
 });
 
+router.get('/editJobPost', async (req, res, next) => {
+  var edit = await DbPost.updatePost(1);
+  console.log(edit);
+  res.render('editJobPost', {select:skills});
+});
+
+
 router.get('/applied', function (req, res, next) {
   res.render('applicants-applied');
+});
+
+router.get('/editprofile', function (req, res, next) {
+  res.render('editprofile');
+});
+
+router.all('/editprofile', function (req, res, next) {
+  var dd = req.body;
+  
+  console.log(edit);
+
+  DbPost.pushPost(dd);
+ 
+  res.render('index', { title: 'done' });
+
 });
 
 module.exports = router;
