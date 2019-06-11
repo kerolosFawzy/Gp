@@ -2,133 +2,132 @@
 <html lang="en">
 
 <head>
-    <%- include('includes/head.ejs') %>
-    
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <%- include('includes/head.ejs') %>
 
-    <!-- Page Title -->
-    <title>Edit Post</title>
- 
-    <!-- Favicon -->
 
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="/css/animate-3.7.0.css">
-    <link rel="stylesheet" href="/css/font-awesome-4.7.0.min.css">
-    <link rel="stylesheet" href="/fonts/flat-icon/flaticon.css">
-    <link rel="stylesheet" href="/css/bootstrap-4.1.3.min.css">
-    <link rel="stylesheet" href="/css/owl-carousel.min.css">
-    <link rel="stylesheet" href="/css/nice-select.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/styles.css">
+  <title>Edit Post</title>
+
+  <!-- Favicon -->
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="/css/animate-3.7.0.css">
+  <link rel="stylesheet" href="/css/font-awesome-4.7.0.min.css">
+  <link rel="stylesheet" href="/fonts/flat-icon/flaticon.css">
+  <link rel="stylesheet" href="/css/bootstrap-4.1.3.min.css">
+  <link rel="stylesheet" href="/css/owl-carousel.min.css">
+  <link rel="stylesheet" href="/css/nice-select.css">
+  <link rel="stylesheet" href="/css/styles.css">
   <!--  <link rel="stylesheet" href="/css/profile.css"> -->
 
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-    
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
+
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
+
+
+  <link rel="stylesheet" href="/css/elegant-icons-style.css" />
+  <link rel="stylesheet" href="/css/headerStyle.css">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 </head>
 
 <body>
 
-    <!-- <%- include('includes/header.ejs') %> -->
-
-    <div class="container">
+  <div class="container">
+    <div class="box">  
       <h1>Edit Profile</h1>
-        <hr>
-      <div class="row">
-        <!-- left column -->
-        <div class="col-md-3">
-          <div class="text-center">
-            <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-            <h6>Upload a different photo...</h6>
-            
-            <input type="file" class="form-control">
-          </div>
+    <hr>
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+          <h6>Upload a different photo...</h6>
+
+          <input type="file" class="form-control">
         </div>
-        
-        <!-- edit form column -->
-        <div class="col-md-9 personal-info">
-          <div class="alert alert-info alert-dismissable">
-            <a class="panel-close close" data-dismiss="alert">×</a> 
-            <i class="fa fa-coffee"></i>
-            This is an <strong>.alert</strong>. Use this to show important messages to the user.
-          </div>
-          <h3>Personal info</h3>
-          
-          <form action="/editProfile" method="POST" class="form-horizontal" role="form">
-            <div class="form-group">
-              <label class="col-lg-3 control-label">First name:</label>
-              <div class="col-lg-8">
-                <input class="form-control" name="First_name"  type="text" value="">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Last name:</label>
-              <div class="col-lg-8">
-                <input class="form-control" name="Last_name" type="text" value="">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Company:</label>
-              <div class="col-lg-8">
-                <input class="form-control" name="Company" type="text" value="">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Email:</label>
-              <div class="col-lg-8">
-                <input class="form-control" name="Email" type="text" value="mbakry@gmail.com">
-              </div>
-            </div>
+      </div>
 
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Skills:</label>
-              <div class="col-lg-8">
-                <input class="form-control" name="Skills" type="text" value="">
-              </div>
-            </div>
-            
-            
-            
-
-            <div class="form-group">
-              <label class="col-md-3 control-label">Edit Work Link:</label>
-              <div class="col-md-8">
-                <input class="form-control" name="Edit_Work_Link" type="text" value="">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-md-3 control-label">Edit Description:</label>
-              <div class="col-md-8">
-                <input class="form-control" name="Edit_Description" type="textarea" value="">
-              </div>
-            </div>
-
-            
-
-            
-            <div class="form-group">
-              <label class="col-md-3 control-label"></label>
-              <div class="col-md-8">
-                <input type="button" class="btn btn-primary" value="Save Changes">
-                <span></span>
-                <input type="reset" class="btn btn-default" value="Cancel">
-              </div>
-            </div>
-          </form>
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a>
+          <i class="fa fa-coffee"></i>
+          This is an <strong>.alert</strong>. Use this to show important messages to the user.
         </div>
+        <h3>Personal info</h3>
+
+        <form action="/editProfile" method="POST" class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">First name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="First_name" type="text" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Last name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="Last_name" type="text" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Company:</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="Company" type="text" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Email:</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="Email" type="text" value="mbakry@gmail.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Skills:</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="Skills" type="text" value="">
+            </div>
+          </div>
+
+
+
+
+          <div class="form-group">
+            <label class="col-md-3 control-label">Edit Work Link:</label>
+            <div class="col-md-8">
+              <input class="form-control" name="Edit_Work_Link" type="text" value="">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label">Edit Description:</label>
+            <div class="col-md-8">
+              <input class="form-control" name="Edit_Description" type="textarea" value="">
+            </div>
+          </div>
+
+
+
+
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input type="button" class="btn btn-primary" value="Save Changes">
+              <span></span>
+              <input type="reset" class="btn btn-default" value="Cancel">
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
+    </div>
+    
   </div>
   <hr>
 
-      <!-- Javascript -->
+  <!-- Javascript -->
 
-      <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 
 </body>
