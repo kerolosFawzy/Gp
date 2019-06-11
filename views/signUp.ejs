@@ -10,16 +10,10 @@
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
         id="bootstrap-css">
 
-    <!-- Bootstrap CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <!-- bootstrap theme -->
     <link href="/css/bootstrap-theme.css" rel="stylesheet">
-
-    <!--external css-->
-    <!-- font icon -->
     <link href="/css/elegant-icons-style.css" rel="stylesheet" />
     <link href="/css/font-awesome.css" rel="stylesheet" />
-    <!-- Custom styles -->
     <link href="/css/style.css" rel="stylesheet">
 
     <link href="/css/style-responsive.css" rel="stylesheet" />
@@ -47,29 +41,22 @@
                 <%- include('includes/address_html.ejs')%>
 
                 <div class="form-group">
+                    <label>Skills </label>
                     <dl class="dropdown">
                         <dt>
-                            <a href="#">
+                            <a>
                                 <span class="hida">Select</span>
                                 <p class="multiSel"></p>
                             </a>
                         </dt>
-
                         <dd>
-                            <div class="mutliSelect" >
+                            <div class="mutliSelect">
                                 <ul>
+                                    <% for(i=1 ; i< data.length ; i++ ) { %>
+                                    <% var skill = data[i] ;  %>
                                     <li>
-                                        <input name="skills" type="checkbox" value="Apple" />Apple</li>
-                                    <li>
-                                        <input name="skills" type="checkbox" value="Blackberry" />Blackberry</li>
-                                    <li>
-                                        <input name="skills" type="checkbox" value="HTC" />HTC</li>
-                                    <li>
-                                        <input name="skills" type="checkbox" value="Sony Ericson" />Sony Ericson</li>
-                                    <li>
-                                        <input name="skills" type="checkbox" value="Motorola" />Motorola</li>
-                                    <li>
-                                        <input name="skills" type="checkbox" value="Nokia" />Nokia</li>
+                                        <input name="skills" type="checkbox" value=<%= skill %> /> <%= skill %></li>
+                                    <% } %>
                                 </ul>
                             </div>
                         </dd>
@@ -118,12 +105,13 @@
 
                 <div class="form-group">
                     <label class="custom-file-label" for="validatedCustomFile">Upload Your CV</label>
-                    <input name="cv" type="file" class="custom-file-input" id="validatedCustomFile" required>
+                    <input name="cv" type="file" accept=".doc , .pdf" class="custom-file-input" id="validatedCustomFile"
+                        required>
                 </div>
 
                 <div class="form-group">
                     <label>Upload Your Profile Picture</label>
-                    <input name="pic" id="pic" type="file" class="form-control-file">
+                    <input name="pic" id="pic" type="file" accept="image/*" class="form-control-file" required>
                 </div>
 
                 <% if(err) { %>

@@ -1,7 +1,9 @@
 var db = require("./conn");
 var temp;
+
 module.exports.pushPost = post => {
-  postsRef.push(post);
+  console.log(post);
+  db.dbRef.child('posts').push(post);
 };
 
 module.exports.updatePost = (postId, post) => {
@@ -13,12 +15,12 @@ module.exports.removePost = (postId) => {
 };
 
 module.exports.getPost = async (postId) => {
-  console.log("in database ");
 
   await db.dbRef.child("posts").child(postId).on('value', function (snap) {
     temp = snap.val();
     return;
   });
+
   return temp;
 };
 

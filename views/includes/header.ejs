@@ -13,7 +13,10 @@
 
     </div>
     <ul class="navbar-nav pull-right navbar-ml top-menu">
-      <% if(false) { %>
+
+      <% if(logged) { %>
+
+
       <li id="mail_notificatoin_bar" class="dropdown">
 
         <a data-toggle="dropdown" class="dropdown-toggle" href="#" style=" color: #bdbdbd; font-size: 15pt">
@@ -69,9 +72,13 @@
       <li class="dropdown">
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
           <span class="profile-ava">
-            <img alt="" src="/img/avatar1_small.jpg">
+            <% if(logged.img) { %>
+            <img style="height: 30pt" alt="profile" src=<%= logged.img %>>
+            <% }else{ %>
+            <img style="height: 30pt" alt="profile" src="./img/avatar-1">
+            <%}%>
           </span>
-          <span id="username">Jenifer Smith</span>
+          <span id="username"><%= logged.name %></span>
           <b class="caret"></b>
         </a>
 
@@ -79,21 +86,25 @@
           <div class="log-arrow-up"></div>
 
           <li class="eborder-top">
-            <a href="#"><i class="icon_profile"></i> My Profile</a>
+            <a href="/profile"><i class="icon_profile"></i> My Profile</a>
           </li>
           <li>
-            <a href="/login"><i class="icon_key_alt"></i> Logout </a>
+            <a href="/user/logout"><i class="icon_key_alt"></i> Logout </a>
           </li>
         </ul>
       </li>
+
       <% }else{ %>
+
       <li class="nav-item">
         <a class="btn btn-primary" href="/login" style="margin-right: 20pt">Login</a>
       </li>
       <li class="nav-item">
         <a class="btn btn-success" href="/switch">Join Us Now</a>
       </li>
+
       <%}%>
+    
     </ul>
   </div>
 </nav>
