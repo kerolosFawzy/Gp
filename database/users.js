@@ -141,9 +141,8 @@ module.exports.CompanysignUp = async (user) => {
 
 
 module.exports.userUpdate = (userId, user) => {
-    db
-        .dbRef
-        .ref("users/" + userId)
+    usersRef
+        .child(userId)
         .set(user);
 };
 

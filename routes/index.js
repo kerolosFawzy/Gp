@@ -1,15 +1,16 @@
 var express = require('express');
 var router = express.Router();
-const DbPost = require('../database/posts');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 var upload = multer({
   dest: 'uploads'
 });
 
+const DbUser = require('../database/users');
 var storage = require('../database/storage');
 var skillsRef = require('../database/skills');
 let utilies = require('../database/utilies');
+const DbPost = require('../database/posts');
 
 router.use(bodyParser.json());
 
@@ -100,17 +101,58 @@ router.get('/ten', function (req, res, next) {
   res.render('topten', { logged: bool });
 });
 
-router.get('/editpost', (req, res, next) => {
+router.get('/editjobpost', async (req, res, next) => {
+  let data = await skillsRef.getSkills();
   let bool = utilies.checkSession(req);
 
-  res.render('editpost', { logged: bool });
+  if (bool) {
+    var post = await DbPost.getPost(1);
+   
+    res.render('editJobPost', { logged: bool, data: data , post : post });
+  }
+  else {
+    res.render('login', { err: '' });
+  }
 });
 
-router.get('/editprofile', (req, res, next) => {
+router.post('/editjobpost', async (req, res, next) => {
   let bool = utilies.checkSession(req);
-  res.render('editprofile', { logged: bool });
+
+  await DbPost.updatePost(1, req.body);
+
+  res.render('index', { logged: bool });
 });
 
+
+router.get('/editprofile', async (req, res, next) => {
+  let bool = utilies.checkSession(req);
+  if (bool) {
+    let data = await skillsRef.getSkills();
+
+    res.render('editprofile', { logged: bool, data: data });
+  } else {
+    res.render('login', { err: '' });
+  }
+
+});
+
+router.post('/editprofile', upload.single(), async (req, res, next) => {
+  let bool = utilies.checkSession(req);
+  var files = req.files;
+  console.log(bool);
+
+  let data = req.body;
+  if (files) {
+    console.log(files[0]);
+    await storage.uploadProfilePic(bool.uid, files[0]);
+    data.img = await storage.getPicUrl(bool.uid);
+  }
+  console.log(data);
+
+  await DbUser.userUpdate(bool.uid, data);
+
+  res.render('profile', { logged: bool });
+});
 
 router.get('/applied', function (req, res, next) {
   let bool = utilies.checkSession(req);

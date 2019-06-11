@@ -6,8 +6,8 @@ module.exports.pushPost = post => {
   db.dbRef.child('posts').push(post);
 };
 
-module.exports.updatePost = (postId, post) => {
-  db.dbRef.child("posts").child(postId).set(post);
+module.exports.updatePost = async (postId, post) => {
+  await db.dbRef.child("posts").child(postId).set(post);
 };
 
 module.exports.removePost = (postId) => {

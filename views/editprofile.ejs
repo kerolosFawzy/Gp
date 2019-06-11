@@ -5,7 +5,7 @@
   <%- include('includes/head.ejs') %>
 
 
-  <title>Edit Post</title>
+  <title>Edit Profile</title>
 
   <!-- Favicon -->
 
@@ -18,7 +18,9 @@
   <link rel="stylesheet" href="/css/nice-select.css">
   <link rel="stylesheet" href="/css/styles.css">
   <!--  <link rel="stylesheet" href="/css/profile.css"> -->
-
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <!-- load bootstrap css -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
 
@@ -27,100 +29,227 @@
   <link rel="stylesheet" href="/css/headerStyle.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
+  <style>
+    .dropdown {
+      transform: translateY(-50%);
+      margin-top: 30pt;
+    }
+
+    a {
+      color: #fff;
+    }
+
+    .dropdown dd,
+    .dropdown dt {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .dropdown ul {
+      margin: -1px 0 0 0;
+    }
+
+    .dropdown dd {
+      position: relative;
+    }
+
+    .dropdown a,
+    .dropdown a:visited {
+      color: #fff;
+      text-decoration: none;
+      outline: none;
+      font-size: 12px;
+    }
+
+    .dropdown dt a {
+      background-color: #4f6877;
+      display: block;
+      padding: 8px 20px 5px 10px;
+      min-height: 25px;
+      line-height: 24px;
+      overflow: hidden;
+      border: 0;
+      width: 272px;
+    }
+
+    .dropdown dt a span,
+    .multiSel span {
+      cursor: pointer;
+      display: inline-block;
+      padding: 0 3px 2px 0;
+    }
+
+    .dropdown dd ul {
+      background-color: #4f6877;
+      border: 0;
+      color: #fff;
+      display: none;
+      left: 0px;
+      padding: 2px 15px 2px 5px;
+      position: absolute;
+      top: 2px;
+      width: 280px;
+      list-style: none;
+      height: 100px;
+      overflow: auto;
+    }
+
+    .dropdown span.value {
+      display: none;
+    }
+
+    .dropdown dd ul li a {
+      padding: 5px;
+      display: block;
+    }
+
+    .dropdown dd ul li a:hover {
+      background-color: #fff;
+    }
+  </style>
+
 </head>
 
 <body>
 
   <div class="container">
-    <div class="box">  
+    <div class="box">
       <h1>Edit Profile</h1>
-    <hr>
-    <div class="row">
-      <!-- left column -->
-      <div class="col-md-3">
-        <div class="text-center">
-          <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-          <h6>Upload a different photo...</h6>
+      <hr>
+      <div class="row">
 
-          <input type="file" class="form-control">
+
+        <div class="col-md-9 personal-info">
+          <div class="alert alert-info alert-dismissable">
+            <a class="panel-close close" data-dismiss="alert">×</a>
+            <i class="fa fa-coffee"></i>
+            This is an <strong>.alert</strong>. Use this to show important messages to the user.
+          </div>
+          <h3>Personal info</h3>
+
+          <form action="/editProfile" method="POST" class="form-horizontal" role="form">
+
+            <div class="col-md-3">
+              <div class="text-center">
+                <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+                <h6>Upload a different photo...</h6>
+
+                <input type="file" class="form-control">
+              </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            <div class="form-group">
+              <label class="col-lg-3 control-label"> name:</label>
+              <div class="col-lg-8">
+                <input class="form-control" name="name" placeholder="" type="text" value="name">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Email:</label>
+              <div class="col-lg-8">
+                <input class="form-control" name="Email" placeholder="" type="text" value="mbakry@gmail.com">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Phone:</label>
+              <div class="col-lg-8">
+                <input class="form-control" name="Phone" placeholder="" type="text" value="Phone">
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Profession:</label>
+              <div class="col-lg-8">
+                <input class="form-control" name="Profession" placeholder="" type="text" value="Profession">
+              </div>
+            </div>
+
+            <p>Timeline</p>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Experience:</label>
+              <div class="col-lg-8">
+                <input class="form-control" name="Experience" placeholder="" type="text" value="Experience">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Hourly Rate:</label>
+              <div class="col-lg-8">
+                <input class="form-control" name="Hourly_Rate" placeholder="" type="text" value="Hourly_Rate">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Total Projects:</label>
+              <div class="col-lg-8">
+                <input class="form-control" name="Total_Projects" placeholder="" type="text" value="Total_Projects">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">English Level:</label>
+              <div class="col-lg-8">
+                <input class="form-control" name="English_Level" placeholder="" type="text" value="English Level">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Availability:</label>
+              <div class="col-lg-8">
+                <input class="form-control" name="Availability" placeholder="" type="text" value="Availability">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Skills </label>
+              <dl class="dropdown">
+                <dt>
+                  <a>
+                    <span class="hida">Select</span>
+                    <p class="multiSel"></p>
+                  </a>
+                </dt>
+                <dd>
+                  <div class="mutliSelect">
+                    <ul>
+                      <% for(i=1 ; i< data.length ; i++ ) { %>
+                      <% var skill = data[i] ;  %>
+                      <li>
+                        <input name="skills" type="checkbox" value=<%= skill %> /> <%= skill %></li>
+                      <% } %>
+                    </ul>
+                  </div>
+                </dd>
+              </dl>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-3 control-label"></label>
+              <div class="col-md-8">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <span></span>
+                <input type="reset" class="btn btn-default" value="Cancel">
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-
-      <!-- edit form column -->
-      <div class="col-md-9 personal-info">
-        <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a>
-          <i class="fa fa-coffee"></i>
-          This is an <strong>.alert</strong>. Use this to show important messages to the user.
-        </div>
-        <h3>Personal info</h3>
-
-        <form action="/editProfile" method="POST" class="form-horizontal" role="form">
-          <div class="form-group">
-            <label class="col-lg-3 control-label">First name:</label>
-            <div class="col-lg-8">
-              <input class="form-control" name="First_name" type="text" value="">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Last name:</label>
-            <div class="col-lg-8">
-              <input class="form-control" name="Last_name" type="text" value="">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Company:</label>
-            <div class="col-lg-8">
-              <input class="form-control" name="Company" type="text" value="">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Email:</label>
-            <div class="col-lg-8">
-              <input class="form-control" name="Email" type="text" value="mbakry@gmail.com">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Skills:</label>
-            <div class="col-lg-8">
-              <input class="form-control" name="Skills" type="text" value="">
-            </div>
-          </div>
-
-
-
-
-          <div class="form-group">
-            <label class="col-md-3 control-label">Edit Work Link:</label>
-            <div class="col-md-8">
-              <input class="form-control" name="Edit_Work_Link" type="text" value="">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-md-3 control-label">Edit Description:</label>
-            <div class="col-md-8">
-              <input class="form-control" name="Edit_Description" type="textarea" value="">
-            </div>
-          </div>
-
-
-
-
-          <div class="form-group">
-            <label class="col-md-3 control-label"></label>
-            <div class="col-md-8">
-              <input type="button" class="btn btn-primary" value="Save Changes">
-              <span></span>
-              <input type="reset" class="btn btn-default" value="Cancel">
-            </div>
-          </div>
-        </form>
-      </div>
     </div>
-    </div>
-    
+
   </div>
   <hr>
 
@@ -129,7 +258,40 @@
   <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
+  <script>
 
+    $(".dropdown dt a").on('click', function () {
+      $(".dropdown dd ul").slideToggle('fast');
+    });
+
+    $(".dropdown dd ul li a").on('click', function () {
+      $(".dropdown dd ul").hide();
+    });
+
+    function getSelectedValue(id) {
+      return $("#" + id).find("dt a span.value").html();
+    }
+
+    $(document).bind('click', function (e) {
+      var $clicked = $(e.target);
+      if (!$clicked.parents().hasClass("dropdown")) $(".dropdown dd ul").hide();
+    });
+
+    $('.mutliSelect input[type="checkbox"]').on('click', function () {
+      var title = $(this).closest('.mutliSelect').find('input[type="checkbox"]').val(),
+        title = $(this).val() + ",";
+
+      if ($(this).is(':checked')) {
+        var html = '<span title="' + title + '">' + title + '</span>';
+        $('.multiSel').append(html);
+        $(".hida").hide();
+      } else {
+        $('span[title="' + title + '"]').remove();
+        var ret = $(".hida");
+        $('.dropdown dt a').append(ret);
+      }
+    });
+  </script>
 </body>
 
 </html>

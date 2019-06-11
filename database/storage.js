@@ -42,9 +42,11 @@ module.exports.uploadCv = async (userId, Cv) => {
 
 
 module.exports.getPicUrl = async (userId) => {
+
     await db.bucket.getFiles({ prefix: 'pic/' + userId }).then((file) => {
-        var token = file[0][0].metadata.metadata.firebaseStorageDownloadTokens;
-        basePicUrl = basePicUrl + userId + '?alt=media&token=' + token;
+        console.log(file[0][0]);
+      //  var token = file[0][0].metadata.metadata.firebaseStorageDownloadTokens;
+        basePicUrl = basePicUrl + userId + '?alt=media&token=' + '0ac44c73-7d8a-464d-8891-a0409d423386';
     }).catch((err) => {
         console.log(err.message);
     });
@@ -55,8 +57,8 @@ module.exports.getPicUrl = async (userId) => {
 
 module.exports.getCvUrl = async (userId) => {
     await db.bucket.getFiles({ prefix: 'cv/' + userId }).then((file) => {
-        var token = file[0][0].metadata.metadata.firebaseStorageDownloadTokens;
-        baseCvUrl = baseCvUrl + userId + '?alt=media&token=' + token;
+     //   var token = file[0][0].metadata.firebaseStorageDownloadTokens;
+        baseCvUrl = baseCvUrl + userId + '?alt=media&token=' +  '0ac44c73-7d8a-464d-8891-a0409d423386';
     }).catch((err) => {
         console.log(err.message);
     });

@@ -54,7 +54,7 @@ router.use('/signup', upload.any(), async (req, res, next) => {
     if (err != null) {
         return res.render('signUp', { err: err });
     }
-    res.render('login');
+    res.render('login', { err: '' });
 });
 
 router.post('/signupcompany', upload.any(), async (req, res, next) => {
@@ -83,7 +83,7 @@ router.post('/signupcompany', upload.any(), async (req, res, next) => {
     if (err != null) {
         return res.render('signUpCompany', { err: err });
     }
-    res.render('index', { title: 'done' });
+    res.render('login', { err: '' });
 });
 
 router.get('/logout', (req, res, next) => {
