@@ -7,11 +7,11 @@ module.exports.pushPost = post => {
 };
 
 module.exports.updatePost = (postId, post) => {
-  dbRef.ref("posts/" + postId).set(post);
+  db.dbRef.child("posts").child(postId).set(post);
 };
 
 module.exports.removePost = (postId) => {
-  dbRef.ref("posts/" + postId).set(null);
+  db.dbRef.child("posts").child(postId).set(null);
 };
 
 module.exports.getPost = async (postId) => {

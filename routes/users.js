@@ -111,10 +111,6 @@ router.get('/logout', (req, res, next) => {
     res.render('login', { err: null });
 });
 
-router.get('/editprofile', (req, res, next) => {
-    console.log('here');
-    res.render('editprofile');
-});
 
 
 
