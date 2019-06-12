@@ -27,6 +27,17 @@ router.all('/', function (req, res, next) {
   });
 });
 
+router.post('/search', async (req, res, next) => {
+  let data = await DbPost.getAllPosts();
+
+  let result = utilies.searchFilter(data, req.body.jopType, req.body.country, null);
+
+  let bool = utilies.checkSession(req);
+  res.render('search', {
+    logged: bool
+  });
+});
+
 router.get('/signupapplicant', async (req, res, next) => {
   let data = await skillsRef.getSkills();
   console.log(data);
@@ -106,9 +117,9 @@ router.get('/editjobpost', async (req, res, next) => {
   let bool = utilies.checkSession(req);
 
   if (bool) {
-    var post = await DbPost.getPost(1);
-   
-    res.render('editJobPost', { logged: bool, data: data , post : post });
+    var post = await DbPost.getPost("-LgyY7sRLxy2yZWqS4vv");
+    console.log(post);
+    res.render('editJobPost', { logged: bool, data: data, post: post });
   }
   else {
     res.render('login', { err: '' });
@@ -117,12 +128,35 @@ router.get('/editjobpost', async (req, res, next) => {
 
 router.post('/editjobpost', async (req, res, next) => {
   let bool = utilies.checkSession(req);
-
-  await DbPost.updatePost(1, req.body);
+  console.log(req.body);
+  await DbPost.updatePost("-LgyY7sRLxy2yZWqS4vv", req.body);
 
   res.render('index', { logged: bool });
 });
 
+
+
+router.get('/profile', function (req, res, next) {
+  let bool = utilies.checkSession(req);
+  var data = {
+    UserID: '55',
+    name: 'bakry',
+    Email: 'mbd ',
+    Phone: '0114555',
+    Company: ' goojal',
+    Profession: ' software ',
+    Profession: ' software ',
+    Experience: '55 ',
+    Hourly_Rate: ' 55',
+    Total_Projects: '40',
+    Edit_SKILLS: ' css',
+    English_Level: ' 8',
+    Availability: '8',
+    Your_Bio: 'food',
+    Edit_Work_Link: ' www.www.com '
+  };
+  res.render('profile', { logged: bool, data: data });
+});
 
 router.get('/editprofile', async (req, res, next) => {
   let bool = utilies.checkSession(req);

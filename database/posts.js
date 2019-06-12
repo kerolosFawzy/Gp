@@ -25,3 +25,13 @@ module.exports.getPost = async (postId) => {
 };
 
 
+module.exports.getAllPosts = async (postId) => {
+
+  await db.dbRef.child("posts").on('value', function (snap) {
+    temp = snap.val();
+    return;
+  });
+  return temp;
+};
+
+

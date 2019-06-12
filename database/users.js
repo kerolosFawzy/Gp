@@ -10,7 +10,7 @@ let Error;
 
 
 module.exports.login = async (user) => {
-    Error = "Error Undefined";
+    
     userUid = null;
     await db
         .firebase
@@ -107,7 +107,7 @@ module.exports.CompanysignUp = async (user) => {
         .createUserWithEmailAndPassword(user.email, user.password)
         .then(async (logedInUser) => {
             let uid = logedInUser.user.uid;
-            storage.uploadProfilePic(uid, user.files[0]);
+            await storage.uploadProfilePic(uid, user.files[0]);
             user.img = await storage.getPicUrl(uid);
 
             user.password = null;
