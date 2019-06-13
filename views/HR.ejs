@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <%- include('includes/head.ejs') %>
+
     <%- include('includes/profilecss.ejs') %>
 </head>
 
@@ -16,53 +18,48 @@
                     <div class="profile-img">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
                             alt="" />
-                        <div class="file btn btn-lg btn-primary">
-                            Change Photo
-                            <input type="file" name="file" />
-                        </div>
+             
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
-                            Kshiti Ghelani
+                            <p><%= hr.name %></p>
                         </h5>
                         <h6>
-                            HR for Developer company
+                            <p><%= hr.Profession %></p>
                         </h6>
-
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="about.html" role="tab"
                                     aria-controls="home" aria-selected="true">About</a>
                             </li>
+                           
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a class="profile-edit-btn btn btn-success">Edit Profile</a>
+                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-work">
-                        <p>WORK LINK</p>
-                        <a href="">Website Link</a><br />
-                        <a href="">Bootsnipp Profile</a><br />
-                        <a href="">Bootply Profile</a>
-                    
+                        <h4>WORK LINK</h4>
+                        <a href=""><%= hr.Edit_Work_Link %></a><br />
+                       
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="tab-content profile-tab" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
+                            
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Name</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>Kshiti Ghelani</p>
+                                    <p><%= hr.name%></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -70,7 +67,7 @@
                                     <label>Email</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>kshitighelani@gmail.com</p>
+                                    <p><%= hr.Email%></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -78,19 +75,25 @@
                                     <label>Phone</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>123 456 7890</p>
+                                    <p><%= hr.Phone%></p>
                                 </div>
                             </div>
-                          
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Profession</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><%= hr.Profession%></p>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
                 </div>
             </div>
         </form>
-        <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Reast Password</a>
         <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">View Posts</a>
-        <a href="/addpost" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">>Add Jop Post</a>
+        <a href="addpost" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">>Add Jop Post</a>
 
     </div>
 

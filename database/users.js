@@ -8,9 +8,8 @@ let userUid;
 let mUser;
 let Error;
 
-
 module.exports.login = async (user) => {
-    
+
     userUid = null;
     await db
         .firebase
@@ -61,8 +60,9 @@ module.exports.signUp = async (user) => {
         .then(async (logedInUser) => {
             let uid = logedInUser.user.uid;
 
-            storage.uploadCv(uid, user.files[0]);
-            storage.uploadProfilePic(uid, user.files[1]);
+            await storage.uploadProfilePic(uid, user.files[1]);
+
+            await storage.uploadCv(uid, user.files[0]);
 
             user.cv = await storage.getCvUrl(uid);
             user.img = await storage.getPicUrl(uid);
@@ -70,7 +70,7 @@ module.exports.signUp = async (user) => {
             user.password = null;
             user.files = null;
 
-            usersRef
+            await usersRef
                 .child(uid.toString())
                 .set(user, function (error) {
                     if (error) {
@@ -97,7 +97,6 @@ module.exports.signUp = async (user) => {
 
 };
 
-
 module.exports.CompanysignUp = async (user) => {
     console.log(user)
 
@@ -113,7 +112,7 @@ module.exports.CompanysignUp = async (user) => {
             user.password = null;
             user.files = null;
 
-            usersRef
+            await usersRef
                 .child(uid.toString())
                 .set(user, function (error) {
                     if (error) {
@@ -139,7 +138,6 @@ module.exports.CompanysignUp = async (user) => {
 
 };
 
-
 module.exports.userUpdate = (userId, user) => {
     usersRef
         .child(userId)
@@ -147,8 +145,8 @@ module.exports.userUpdate = (userId, user) => {
 };
 
 module.exports.userRemove = (userId) => {
-    db.dbRef
+    db
+        .dbRef
         .ref("users/" + userId)
         .set(null);
 };
-

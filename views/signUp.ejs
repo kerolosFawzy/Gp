@@ -99,6 +99,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Hourly Rate
+                    </label>
+                    <input name="Hourly_Rate" id="experience" type="number" class="form-control"
+                        placeholder="Hourly Rate" autofocus required>
+                </div>
+
+                
+                <div class="form-group">
                     <label>Describe yourself
                     </label>
                     <textarea name="description" id="description" type="text" class="md-textarea form-control" rows="5"
@@ -118,7 +126,8 @@
 
                 <% if(err) { %>
                 <label class="alert alert-danger">
-                    <%= err %></label>
+                    <%= err %>
+                </label>
                 <% } %>
 
                 <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>

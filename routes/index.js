@@ -16,7 +16,6 @@ router.use(bodyParser.json());
 
 /* GET home page. */
 router.get('/login', function (req, res, next) {
-  let bool = utilies.checkSession(req);
   res.render('login', { err: null });
 });
 
@@ -47,7 +46,7 @@ router.get('/search', async (req, res, next) => {
 
   for (var i in data)
     result.push([i, data[i]]);
-  
+
   console.log(result);
 
   res.render('search', { logged: bool, data: result });
@@ -68,24 +67,6 @@ router.get('/switch', function (req, res, next) {
   res.render('signupSwitch', { err: null });
 });
 
-
-router.get('/hr', function (req, res, next) {
-  let bool = utilies.checkSession(req);
-
-  res.render('HR', { logged: bool });
-});
-
-router.get('/admin', function (req, res, next) {
-  let bool = utilies.checkSession(req);
-
-  res.render('admin', { logged: bool });
-});
-
-router.get('/profile', function (req, res, next) {
-  let bool = utilies.checkSession(req);
-
-  res.render('profile', { logged: bool });
-});
 
 router.get('/addpost', async (req, res, next) => {
   let bool = utilies.checkSession(req);
@@ -110,11 +91,52 @@ router.get('/contact-us', function (req, res, next) {
   res.render('contact-us', { logged: bool });
 });
 
+router.get('/profile', function (req, res, next) {
+  let bool = utilies.checkSession(req);
+  if (bool) {
+    if (bool.role == 2) {
+
+      bool.Edit_Work_Link = ' www.www.com ';
+      console.log(bool);
+      res.render('profile', { logged: bool });
+    } else {
+      res.render('404');
+    }
+  } else {
+    res.render('login', { err: null });
+  }
+});
+
+router.get('/hr', function (req, res, next) {
+  let bool = utilies.checkSession(req);
+  if (bool) {
+    if (bool.role == 3) {
+      var hr = {
+        name: bool.name,
+        Email: bool.email,
+        Phone: '0114555',
+        Company: bool.company_name,
+        Profession: ' HR FOR ' + bool.company_name + ' Company ',
+        Your_Bio: bool.description,
+        Edit_Work_Link: ' www.www.com '
+      };
+      res.render('HR', { logged: bool, hr: hr });
+    } else {
+      res.render('404');
+    }
+  } else {
+    res.render('login', { err: null });
+  }
+
+});
+
+
 router.get('/adress_html', function (req, res, next) {
   let bool = utilies.checkSession(req);
 
   res.render('adress_html', { logged: bool });
 });
+
 router.get('/search', function (req, res, next) {
   let bool = utilies.checkSession(req);
 
@@ -150,28 +172,6 @@ router.post('/editjobpost', async (req, res, next) => {
 });
 
 
-
-router.get('/profile', function (req, res, next) {
-  let bool = utilies.checkSession(req);
-  var data = {
-    UserID: '55',
-    name: 'bakry',
-    Email: 'mbd ',
-    Phone: '0114555',
-    Company: ' goojal',
-    Profession: ' software ',
-    Profession: ' software ',
-    Experience: '55 ',
-    Hourly_Rate: ' 55',
-    Total_Projects: '40',
-    Edit_SKILLS: ' css',
-    English_Level: ' 8',
-    Availability: '8',
-    Your_Bio: 'food',
-    Edit_Work_Link: ' www.www.com '
-  };
-  res.render('profile', { logged: bool, data: data });
-});
 
 router.get('/editprofile', async (req, res, next) => {
   let bool = utilies.checkSession(req);

@@ -4,6 +4,7 @@ const DbUser = require('../database/users');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 let utilies = require('../database/utilies');
+var skillsRef = require('../database/skills');
 
 var upload = multer({
     dest: 'uploads'
@@ -30,6 +31,8 @@ router.post('/login', async (req, res, next) => {
 router.use('/signup', upload.any(), async (req, res, next) => {
     var val = req.body;
     var files = req.files;
+    let data = await skillsRef.getSkills();
+
     console.log(files);
 
     let user = {
@@ -51,8 +54,8 @@ router.use('/signup', upload.any(), async (req, res, next) => {
     var err = await DbUser.signUp(user);
     console.log("err = " + err)
 
-    if (err != null) {
-        return res.render('signUp', { err: err });
+    if (err) {
+        return res.render('signUp', { err: err, data: data  });
     }
     res.render('login', { err: '' });
 });
@@ -80,7 +83,7 @@ router.post('/signupcompany', upload.any(), async (req, res, next) => {
     var err = await DbUser.CompanysignUp(user);
     console.log("err = " + err)
 
-    if (err != null) {
+    if (err) {
         return res.render('signUpCompany', { err: err });
     }
     res.render('login', { err: '' });
