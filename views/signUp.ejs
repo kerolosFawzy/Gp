@@ -52,11 +52,13 @@
                         <dd>
                             <div class="mutliSelect">
                                 <ul>
+
                                     <% for(i=1 ; i< data.length ; i++ ) { %>
                                     <% var skill = data[i] ;  %>
                                     <li>
                                         <input name="skills" type="checkbox" value=<%= skill %> /> <%= skill %></li>
                                     <% } %>
+
                                 </ul>
                             </div>
                         </dd>

@@ -31,6 +31,8 @@ module.exports.searchFilter = (posts, jobtype, position, jopRole) => {
             if (result[i][1].position == position)
                 selected.push(result[i]);
         }
+    } else {
+        selected = result;
     }
 
     if (jobtype) {
@@ -38,6 +40,8 @@ module.exports.searchFilter = (posts, jobtype, position, jopRole) => {
             if (selected[i][1].jobtype == jobtype)
                 finalResult.push(selected[i]);
         }
+    } else {
+        finalResult = selected;
     }
 
     console.log(finalResult);

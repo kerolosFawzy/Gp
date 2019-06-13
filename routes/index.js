@@ -30,12 +30,27 @@ router.all('/', function (req, res, next) {
 router.post('/search', async (req, res, next) => {
   let data = await DbPost.getAllPosts();
 
-  let result = utilies.searchFilter(data, req.body.jopType, req.body.country, null);
+  let result = await utilies.searchFilter(data, req.body.jopType, req.body.country, null);
 
-  let bool = utilies.checkSession(req);
+  let bool = await utilies.checkSession(req);
+
   res.render('search', {
-    logged: bool
+    logged: bool, data: result
   });
+
+});
+
+router.get('/search', async (req, res, next) => {
+  let bool = await utilies.checkSession(req);
+  let data = await DbPost.getAllPosts();
+  var result = [];
+
+  for (var i in data)
+    result.push([i, data[i]]);
+  
+  console.log(result);
+
+  res.render('search', { logged: bool, data: result });
 });
 
 router.get('/signupapplicant', async (req, res, next) => {
