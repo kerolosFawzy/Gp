@@ -209,10 +209,13 @@ router.get('/applied', function (req, res, next) {
   res.render('applicants-applied', { logged: bool });
 });
 
-router.get('/details', async (req, res, next) => {
-  let bool = utilies.checkSession(req);
-  var post = await DbPost.getPost(1);
+router.post('/details', async (req, res, next) => {
 
+  let bool = utilies.checkSession(req);
+  console.log(req.body);
+
+  var post = await DbPost.getPost(req.body.id);
+  console.log(post);
   res.render('job-details', { data: post, logged: bool });
 });
 

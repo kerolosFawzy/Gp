@@ -72,157 +72,43 @@
             <% if(data.length>=1 ) { %>
             <% for(i=0 ; i< data.length ; i++ ) { %>
             <% var post = data[i][1] ;  %>
-            <div class="single-job mb-4 d-lg-flex justify-content-between">
-              <div class="job-text">
-                <h4><%= post.user_job %></h4>
-                <ul class="mt-4">
-                  <li class="mb-3">
-                    <h5><i class="fa fa-map-marker"></i> <%= post.position %></h5>
-                  </li>
-                  <li class="mb-3">
-                    <h5>
-                      <i class="fa fa-pie-chart"></i><%= post.company %>
-                    </h5>
-                  </li>
-                  <li>
-                    <h5>
-                      <i class="fa fa-clock-o"></i> <%= post.Salary %>$
-                    </h5>
-                  </li>
-                </ul>
+            <form method="POST">
+              <input type="hidden" id="id" name="id" value=<%= data[i][0] %>>
+              <div class="single-job mb-4 d-lg-flex justify-content-between">
+                <div class="job-text">
+                  <h4><%= post.user_job %></h4>
+                  <ul class="mt-4">
+                    <li class="mb-3">
+                      <h5><i class="fa fa-map-marker"></i> <%= post.position %></h5>
+                    </li>
+                    <li class="mb-3">
+                      <h5>
+                        <i class="fa fa-pie-chart"></i><%= post.company %>
+                      </h5>
+                    </li>
+                    <li>
+                      <h5>
+                        <i class="fa fa-clock-o"></i> <%= post.Salary %>$
+                      </h5>
+                    </li>
+                  </ul>
+                </div>
+                <div class="job-img align-self-center">
+                  <img src="img/job1.png" alt="job" />
+                </div>
+                <div class="job-btn align-self-center">
+                  <button type="submit" formaction="/details" class="third-btn job-btn1">View Details</button>
+                  <button type="submit" formaction="/login" class="third-btn">apply</button>
+                </div>
               </div>
-              <div class="job-img align-self-center">
-                <img src="img/job1.png" alt="job" />
-              </div>
-              <div class="job-btn align-self-center">
-                <a href="#" class="third-btn job-btn1">full time</a>
-                <a href="#" class="third-btn">apply</a>
-              </div>
-            </div>
+            </form>
+
             <% } %>
             <% }else{ %>
             <h1 style="text-align: center;color: brown;"> No Match Found please Search Again </h1>
             <% } %>
 
-            <!-- <div class="single-job mb-4 d-lg-flex justify-content-between">
-              <div class="job-text">
-                <h4>Asst. Manager, Production (Woven Dyeing)</h4>
-                <ul class="mt-4">
-                  <li class="mb-3">
-                    <h5><i class="fa fa-map-marker"></i> new yourk, USA</h5>
-                  </li>
-                  <li class="mb-3">
-                    <h5>
-                      <i class="fa fa-pie-chart"></i> Applied Chemistry &
-                      Chemical Engineering / Chemistry
-                    </h5>
-                  </li>
-                  <li>
-                    <h5>
-                      <i class="fa fa-clock-o"></i> Deadline Deadline: Dec 11,
-                      2018
-                    </h5>
-                  </li>
-                </ul>
-              </div>
-              <div class="job-img align-self-center">
-                <img src="img/job2.png" alt="job" />
-              </div>
-              <div class="job-btn align-self-center">
-                <a href="#" class="third-btn job-btn2">full time</a>
-                <a href="#" class="third-btn">apply</a>
-              </div>
-            </div>
 
-            <div class="single-job mb-4 d-lg-flex justify-content-between">
-              <div class="job-text">
-                <h4>Deputy Manager/ Assistant Manager - Footwear</h4>
-                <ul class="mt-4">
-                  <li class="mb-3">
-                    <h5><i class="fa fa-map-marker"></i> new yourk, USA</h5>
-                  </li>
-                  <li class="mb-3">
-                    <h5>
-                      <i class="fa fa-pie-chart"></i> Applied Chemistry &
-                      Chemical Engineering / Chemistry
-                    </h5>
-                  </li>
-                  <li>
-                    <h5>
-                      <i class="fa fa-clock-o"></i> Deadline Deadline: Dec 11,
-                      2018
-                    </h5>
-                  </li>
-                </ul>
-              </div>
-              <div class="job-img align-self-center">
-                <img src="img/job3.png" alt="job" />
-              </div>
-              <div class="job-btn align-self-center">
-                <a href="#" class="third-btn job-btn3">full time</a>
-                <a href="#" class="third-btn">apply</a>
-              </div>
-            </div>
-
-            <div class="single-job mb-4 d-lg-flex justify-content-between">
-              <div class="job-text">
-                <h4>R&D Manager (Technical Lab Department)</h4>
-                <ul class="mt-4">
-                  <li class="mb-3">
-                    <h5><i class="fa fa-map-marker"></i> new yourk, USA</h5>
-                  </li>
-                  <li class="mb-3">
-                    <h5>
-                      <i class="fa fa-pie-chart"></i> Applied Chemistry &
-                      Chemical Engineering / Chemistry
-                    </h5>
-                  </li>
-                  <li>
-                    <h5>
-                      <i class="fa fa-clock-o"></i> Deadline Deadline: Dec 11,
-                      2018
-                    </h5>
-                  </li>
-                </ul>
-              </div>
-              <div class="job-img align-self-center">
-                <img src="img/job4.png" alt="job" />
-              </div>
-              <div class="job-btn align-self-center">
-                <a href="#" class="third-btn job-btn4">full time</a>
-                <a href="#" class="third-btn">apply</a>
-              </div>
-            </div>
-
-            <div class="single-job d-lg-flex justify-content-between">
-              <div class="job-text">
-                <h4>Manager/ Asst. Manager (Quality Assurance)</h4>
-                <ul class="mt-4">
-                  <li class="mb-3">
-                    <h5><i class="fa fa-map-marker"></i> new yourk, USA</h5>
-                  </li>
-                  <li class="mb-3">
-                    <h5>
-                      <i class="fa fa-pie-chart"></i> Applied Chemistry &
-                      Chemical Engineering / Chemistry
-                    </h5>
-                  </li>
-                  <li>
-                    <h5>
-                      <i class="fa fa-clock-o"></i> Deadline Deadline: Dec 11,
-                      2018
-                    </h5>
-                  </li>
-                </ul>
-              </div>
-              <div class="job-img align-self-center">
-                <img src="img/job5.png" alt="job" />
-              </div>
-              <div class="job-btn align-self-center">
-                <a href="#" class="third-btn job-btn2">full time</a>
-                <a href="#" class="third-btn">apply</a>
-              </div>
-            </div> -->
 
           </div>
         </div>

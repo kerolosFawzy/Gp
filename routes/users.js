@@ -28,7 +28,7 @@ router.post('/login', async (req, res, next) => {
 });
 
 
-router.use('/signup', upload.any(), async (req, res, next) => {
+router.post('/signup', upload.any(), async (req, res, next) => {
     var val = req.body;
     var files = req.files;
     let data = await skillsRef.getSkills();

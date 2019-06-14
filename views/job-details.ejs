@@ -16,6 +16,15 @@
     <link rel="stylesheet" href="/css/elegant-icons-style.css" />
     <link rel="stylesheet" href="/css/headerStyle.css">
 
+    <style>
+        p {
+            font-size: 14pt;
+        }
+
+        li {
+            font-size: 14pt;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,23 +38,30 @@
         <div class="box">
             <form class="form">
 
-                <h1><b><%= data.jobTitle %></b></h1>
+                <h1><b><%= data.user_job %></b></h1>
+                <br>
                 <h3>Job Description : </h3>
-                <p><%= data.jobDesc %></p>
+                <p><%= data.Description %></p>
                 <h3>Responsibilities :</h3>
-                <p> <%= data.Resposibilities %></p>
+                <p> <%= data.Responsibilities %></p>
+
                 <h3> Skills needed :</h3>
                 <ul>
-                    <% for(var skill of data.skills) { %>
+                    <% for(i=0 ; i< data.skills.length ; i++ ) { %>
+                    <% var skill = data.skills[i] ;  %>
                     <li><%= skill %></li>
                     <% } %>
                 </ul>
+
                 <h3>Salary : </h3>
-                <p><%= data.salary %></p>
+                <p><%= data.Salary %></p>
+
                 <h3>Company address : </h3>
-                <p><%= data.companyAddress %></p>
+                <p><%= data.position %></p>
+
                 <h3> HR Email :</h3>
                 <p><%= data.HrEmail %></p>
+
                 <button class="btn btn-primary btn-lg btn-block apply" type="submit">Apply</button>
             </form>
 
