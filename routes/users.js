@@ -47,34 +47,36 @@ router.post('/signup', upload.any(), async (req, res, next) => {
         experience_years: val.experience,
         description: val.description,
         skills: val.skills,
+        Phone: val.phone,
+        Hourly_Rate: val.Hourly_Rate,
         role: 2,
         files: files
     };
 
     router.all('/editprofile', function (req, res, next) {
         var dd = req.body;
-          var edit = {
-            First_name : dd .user_job,
-            Last_name : dd .Last_name,
-            Company : dd .Company,
-            Email : dd .Email,
-            Skills : dd .Skills,    
-            Edit_Work_Link : dd .JEdit_Work_Link,   
-            Edit_Description : dd .Edit_Description         
-         };
+        var edit = {
+            First_name: dd.user_job,
+            Last_name: dd.Last_name,
+            Company: dd.Company,
+            Email: dd.Email,
+            Skills: dd.Skills,
+            Edit_Work_Link: dd.JEdit_Work_Link,
+            Edit_Description: dd.Edit_Description
+        };
         // console.log(data)
-        console.log(edit );
-      
-        DbPost.pushPost(dd );
-       
+        console.log(edit);
+
+        DbPost.pushPost(dd);
+
         res.render('index', { title: 'done' });
-      
-      });
+
+    });
     var err = await DbUser.signUp(user);
     console.log("err = " + err)
 
     if (err) {
-        return res.render('signUp', { err: err, data: data  });
+        return res.render('signUp', { err: err, data: data });
     }
     res.render('login', { err: '' });
 });
@@ -93,6 +95,7 @@ router.post('/signupcompany', upload.any(), async (req, res, next) => {
         country: val.country,
         city: val.city,
         address: val.address,
+        Phone: val.phone,
         Foundation: val.Foundation,
         description: val.description,
         role: 3,

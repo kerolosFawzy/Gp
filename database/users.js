@@ -39,15 +39,16 @@ module.exports.login = async (user) => {
 }
 
 module.exports.getUser = async (userId) => {
-    await db
-        .dbRef
-        .child("users")
-        .child(userId.toString())
-        .on('value', (snap) => {
-            mUser = snap.val();
-            return;
-        });
-    return mUser;
+    return new Promise((resolve, reject) => {
+        db
+            .dbRef
+            .child("users")
+            .child(userId.toString())
+            .on('value', (snap) => {
+                mUser = snap.val();
+                resolve(mUser);
+            });
+    });
 };
 
 module.exports.signUp = async (user) => {
@@ -70,15 +71,18 @@ module.exports.signUp = async (user) => {
             user.password = null;
             user.files = null;
 
-            await usersRef
-                .child(uid.toString())
-                .set(user, function (error) {
-                    if (error) {
-                        console.log(error);
-                        Error = error;
-                    }
-                });
-            console.log(user);
+            new Promise((resolve, reject) => {
+                usersRef
+                    .child(uid.toString())
+                    .set(user, function (error) {
+                        if (error) {
+                            console.log(error);
+                            Error = error;
+                        }
+                        resolve();
+                    });
+            });
+
         })
         .catch(function (error) {
             var errorCode = error.code;
@@ -112,14 +116,17 @@ module.exports.CompanysignUp = async (user) => {
             user.password = null;
             user.files = null;
 
-            await usersRef
-                .child(uid.toString())
-                .set(user, function (error) {
-                    if (error) {
-                        console.log(error);
-                        Error = error;
-                    }
-                });
+            new Promise((resolve, reject) => {
+                usersRef
+                    .child(uid.toString())
+                    .set(user, function (error) {
+                        if (error) {
+                            console.log(error);
+                            Error = error;
+                        }
+                        resolve();
+                    });
+            });
         })
         .catch(function (error) {
             var errorCode = error.code;
@@ -139,14 +146,26 @@ module.exports.CompanysignUp = async (user) => {
 };
 
 module.exports.userUpdate = (userId, user) => {
-    usersRef
-        .child(userId)
-        .set(user);
+    return new Promise((resolve, reject) => {
+        usersRef
+            .child(userId)
+            .set(user);
+        resolve();
+    });
+
 };
 
 module.exports.userRemove = (userId) => {
-    db
-        .dbRef
-        .ref("users/" + userId)
-        .set(null);
+
+    return new Promise((resolve, reject) => {
+        db
+            .dbRef
+            .ref("users/" + userId)
+            .set(null);
+        resolve();
+    });
+
 };
+
+// return new Promise((resolve, reject) => {});
+

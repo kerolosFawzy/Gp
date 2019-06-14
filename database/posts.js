@@ -2,8 +2,12 @@ var db = require("./conn");
 var temp;
 
 module.exports.pushPost = post => {
-  console.log(post);
-  db.dbRef.child('posts').push(post);
+  return new Promise((resolve, reject) => {
+    db.dbRef.child("posts").push(post).then((id) => {
+      temp = id.path.pieces_[1];
+      resolve(temp);
+    });
+  });
 };
 
 module.exports.updatePost = async (postId, post) => {
@@ -15,23 +19,23 @@ module.exports.removePost = (postId) => {
 };
 
 module.exports.getPost = async (postId) => {
-
-  await db.dbRef.child("posts").child(postId).on('value', function (snap) {
-    temp = snap.val();
-    return;
+  return new Promise((resolve, reject) => {
+    db.dbRef.child("posts").child(postId).once('value', (snap) => {
+      temp = snap.val();
+      resolve(temp);
+    });
   });
-
-  return temp;
 };
 
 
-module.exports.getAllPosts = async (postId) => {
+module.exports.getAllPosts = async () => {
 
-  await db.dbRef.child("posts").on('value', function (snap) {
-    temp = snap.val();
-    return;
+  return new Promise((resolve, reject) => {
+    db.dbRef.child("posts").once('value', (snap) => {
+      temp = snap.val();
+      resolve(temp);
+    });
   });
-  return temp;
 };
 
 

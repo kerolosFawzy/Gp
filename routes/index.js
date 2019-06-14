@@ -42,6 +42,8 @@ router.post('/search', async (req, res, next) => {
 router.get('/search', async (req, res, next) => {
   let bool = await utilies.checkSession(req);
   let data = await DbPost.getAllPosts();
+  console.log(data);
+
   var result = [];
 
   for (var i in data)
@@ -67,6 +69,28 @@ router.get('/switch', function (req, res, next) {
   res.render('signupSwitch', { err: null });
 });
 
+// router.get('/addpost', async (req, res, next) => {
+//   //let bool = utilies.checkSession(req);
+//   let bool = {
+//     Foundation: '1998',
+//     address: 'asdfsf dfs gfd  ',
+//     city: 'cario',
+//     company_name: 'ibm',
+//     country: 'EG',
+//     description: 'fmkfd sfds   ',
+//     email: 'kerofawzyhr@gmail.com',
+//     img:
+//       'https://firebasestorage.googleapis.com/v0/b/gp-project-9231d.appspot.com/o/pic%2FzN8QIT7RkHOZe5C8GXvRXItnIfE2?alt=media&token=0ac44c73-7d8a-464d-8891-a0409d423386',
+//     name: 'hr ',
+//     role: 3,
+//     uid: 'zN8QIT7RkHOZe5C8GXvRXItnIfE2'
+//   };
+
+//   let data = await skillsRef.getSkills();
+
+//   res.render('addpost', { logged: bool, data: data });
+
+// });
 
 router.get('/addpost', async (req, res, next) => {
   let bool = utilies.checkSession(req);
@@ -78,6 +102,23 @@ router.get('/addpost', async (req, res, next) => {
   }
   res.render('index', { logged: bool });
 });
+
+router.post('/addpost', async (req, res, next) => {
+  let bool = utilies.checkSession(req);
+  var data = req.body;
+  data.HrEmail = bool.email;
+  data.img = bool.img;
+  data.company_name = bool.company_name;
+  console.log(data);
+  let id = await DbPost.pushPost(data);
+
+  var post = await DbPost.getPost(id);
+  console.log(post);
+  res.render('job-details', { data: post, logged: bool });
+
+});
+
+
 
 router.get('/about', function (req, res, next) {
   let bool = utilies.checkSession(req);
@@ -137,11 +178,7 @@ router.get('/adress_html', function (req, res, next) {
   res.render('adress_html', { logged: bool });
 });
 
-router.get('/search', function (req, res, next) {
-  let bool = utilies.checkSession(req);
 
-  res.render('search', { logged: bool });
-});
 
 router.get('/ten', function (req, res, next) {
   let bool = utilies.checkSession(req);
@@ -222,7 +259,7 @@ router.post('/details', async (req, res, next) => {
 router.get('/editJobPost', async (req, res, next) => {
   var edit = await DbPost.updatePost(1);
   console.log(edit);
-  res.render('editJobPost', {select:skills});
+  res.render('editJobPost', { select: skills });
 });
 
 
@@ -236,11 +273,11 @@ router.get('/editprofile', function (req, res, next) {
 
 router.all('/editprofile', function (req, res, next) {
   var dd = req.body;
-  
+
   console.log(edit);
 
   DbPost.pushPost(dd);
- 
+
   res.render('index', { title: 'done' });
 
 });

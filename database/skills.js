@@ -6,12 +6,15 @@ var skills;
 
 
 module.exports.getSkills = async () => {
-    await db
-        .dbRef
-        .child("skills")
-        .on('value', (snap) => {
-            skills = snap.val();
-            return;
-        });
-    return skills;
+    return new Promise((resolve, reject) => {
+        db
+            .dbRef
+            .child("skills")
+            .on('value', (snap) => {
+                skills = snap.val();
+                resolve(skills);
+            });
+       
+    });
+
 }
