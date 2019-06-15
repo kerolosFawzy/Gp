@@ -23,10 +23,10 @@
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
-                            <p><%= hr.name %></p>
+                            <p><%= logged.name %></p>
                         </h5>
                         <h6>
-                            <p><%= hr.Profession %></p>
+                            <p>iam hr for <%= logged.company_name %> company </p>
                         </h6>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
@@ -44,8 +44,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-work">
-                        <h4>WORK LINK</h4>
-                        <a href=""><%= hr.Edit_Work_Link %></a><br />
+                        
                        
                     </div>
                 </div>
@@ -58,7 +57,7 @@
                                     <label>Name</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><%= hr.name%></p>
+                                    <p><%= logged.name%></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -66,7 +65,7 @@
                                     <label>Email</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><%= hr.Email%></p>
+                                    <p><%= logged.email%></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -74,15 +73,23 @@
                                     <label>Phone</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><%= hr.Phone%></p>
+                                    <p><%= logged.Phone%></p>
                                 </div>
                             </div>
                             <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Foundation Year:</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><%= logged.Foundation%></p>
+                                    </div>
+                                </div>
+                            <div class="row">
                                 <div class="col-md-6">
-                                    <label>Profession</label>
+                                    <label>Company Description</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><%= hr.Profession%></p>
+                                    <p><%= logged.description%></p>
                                 </div>
                             </div>
                         </div>

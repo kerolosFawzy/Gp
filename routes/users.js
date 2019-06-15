@@ -15,7 +15,6 @@ const DbPost = require('../database/posts');
 router.use(bodyParser.json());
 
 
-
 router.post('/login', async (req, res, next) => {
     var response = await DbUser.login({ email: req.body.email, password: req.body.password });
     console.log(response);
@@ -37,8 +36,6 @@ router.post('/signup', upload.any(), async (req, res, next) => {
     var files = req.files;
     let data = await skillsRef.getSkills();
 
-    console.log(files);
-
     let user = {
         name: val.name,
         email: val.email,
@@ -57,27 +54,7 @@ router.post('/signup', upload.any(), async (req, res, next) => {
         files: files
     };
 
-    router.all('/editprofile', function (req, res, next) {
-        var dd = req.body;
-        var edit = {
-            First_name: dd.user_job,
-            Last_name: dd.Last_name,
-            Company: dd.Company,
-            Email: dd.Email,
-            Skills: dd.Skills,
-            Edit_Work_Link: dd.JEdit_Work_Link,
-            Edit_Description: dd.Edit_Description
-        };
-        // console.log(data)
-        console.log(edit);
-
-        DbPost.pushPost(dd);
-
-        res.render('index', { title: 'done' });
-
-    });
     var err = await DbUser.signUp(user);
-    console.log("err = " + err)
 
     if (err) {
         return res.render('signUp', { err: err, data: data });
@@ -89,7 +66,6 @@ router.post('/signupcompany', upload.any(), async (req, res, next) => {
     console.log('here');
     var val = req.body;
     var files = req.files;
-    console.log(files);
 
     let user = {
         name: val.name,
@@ -107,7 +83,6 @@ router.post('/signupcompany', upload.any(), async (req, res, next) => {
     };
 
     var err = await DbUser.CompanysignUp(user);
-    console.log("err = " + err)
 
     if (err) {
         return res.render('signUpCompany', { err: err });
@@ -192,17 +167,47 @@ router.post('/viewprofile', async (req, res, next) => {
 
 });
 
-router.post('/viewcv', async (req, res, next) => {
-    let id = req.body.user;
-    let user = await DbUser.getUser(id);
+router.post('/topten', async (req, res, next) => {
+    let users = await DbUser.getAllUsers();
+    let bool = utilies.checkSession(req);
+    var data = [];
+    var result = [];
 
-    if (user) {
-        if (user.cv)
-            res.redirect(user.cv);
+    let post = await DbPost.getPost(req.body.id);
+    //let post = await DbPost.getPost("-LhLJIWDVMxHEamSV215");
+
+    for (var i in users)
+        data.push([i, users[i]]);
+
+    for (i = 0; i < data.length; i++) {
+        if (data[i][1].role == 2) {
+            result.push(data[i]);
+        }
     }
 
+    for (i = 0; i < result.length; i++) {
+        let score = 0;
+        for (j = 0; j < post.skills.length; j++) {
+
+            for (k = 0; k < result[i][1].skills.length; k++) {
+                if (result[i][1].skills[k] == post.skills[j]) {
+                    score++;
+                }
+                if (result[i][1].major_skill == post.user_job) {
+                    score = +3;
+                }
+
+            }
+
+        }
+        result[i][1].score = ((score / (post.skills.length + 3)) * 100).toFixed(1);
+    }
+    result.sort((a, b) => {
+        return b[1].score - a[1].score;
+    });
+
+    res.render('topten', { logged: bool, users: result });
+
 });
-
-
 
 module.exports = router;

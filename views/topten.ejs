@@ -1,112 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('includes/head.ejs') %>
 
-    <title>top-ten</title>
+<head>
+  <%- include('includes/head.ejs') %>
 
-    <link rel="stylesheet" href="/css/animate-3.7.0.css" />
-    <link rel="stylesheet" href="/fonts/flat-icon/flaticon.css" />
-    <link rel="stylesheet" href="/css/bootstrap-4.1.3.min.css" />
-    <link rel="stylesheet" href="/css/owl-carousel.min.css" />
-    <link rel="stylesheet" href="/css/nice-select.css" />
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/styles.css" />
-  
-    <link rel="stylesheet" href="/css/elegant-icons-style.css" />
-    <link rel="stylesheet" href="/css/headerStyle.css">
+  <title>top-ten</title>
 
-  </head>
-  <body>
-    <%- include('includes/header.ejs') %>
+  <link rel="stylesheet" href="/css/animate-3.7.0.css" />
+  <link rel="stylesheet" href="/fonts/flat-icon/flaticon.css" />
+  <link rel="stylesheet" href="/css/bootstrap-4.1.3.min.css" />
+  <link rel="stylesheet" href="/css/owl-carousel.min.css" />
+  <link rel="stylesheet" href="/css/nice-select.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
 
-    <div class="preloader">
-      <div class="spinner"></div>
-    </div>
-    <section id="container" class="">
-      <header class="header-area single-page">
-        <div class="page-title text-center">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6 offset-md-3">
-                <h1><b>Best Candidates!</b></h1>
-                <p>
-                  Hello! based on th job post you uploaded we tried to help by
-                  gathering the best candidates that matched you job based on
-                  their skills you can view each one of them and contact anyone
-                  if you see him fit.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+  <link rel="stylesheet" href="/css/elegant-icons-style.css" />
+  <link rel="stylesheet" href="/css/headerStyle.css">
 
-      <section class="jobs-area section-padding">
+</head>
+
+<body>
+  <%- include('includes/header.ejs') %>
+
+  <div class="preloader">
+    <div class="spinner"></div>
+  </div>
+  <section id="container" class="">
+    <header class="header-area single-page">
+      <div class="page-title text-center">
         <div class="container">
           <div class="row">
-            <div class="col-lg-12">
-              <div class="single-job mb-4 d-lg-flex justify-content-between">
-                <div class="job-text">
-                  <h4><b>Pola Malak Ghabrial</b></h4>
-                  <ul class="mt-4">
-                    <li class="mb-3">
-                      <h5><i class="fa fa-map-marker"></i> Cairo,Egypt</h5>
-                    </li>
-                  </ul>
-                </div>
-                <div class="job-text align-self-center">
-                  <h3>Matching Percentage : 100/100</h3>
-                </div>
-                <div class="job-btn align-self-center">
-                  <a href="#" class="third-btn job-btn1">View Profile</a>
-                </div>
-              </div>
-              <div class="single-job mb-4 d-lg-flex justify-content-between">
-                <div class="job-text">
-                  <h4><b>Muhammed Bakry</b></h4>
-                  <ul class="mt-4">
-                    <li class="mb-3">
-                      <h5><i class="fa fa-map-marker"></i> 6 October,Egypt</h5>
-                    </li>
-                  </ul>
-                </div>
-                <div class="job-text align-self-center">
-                  <h3>Matching Percentage : 85/100</h3>
-                </div>
-                <div class="job-btn align-self-center">
-                  <a href="#" class="third-btn job-btn1">View Profile</a>
-                </div>
-              </div>
-              <div class="single-job mb-4 d-lg-flex justify-content-between">
-                <div class="job-text">
-                  <h4><b>Abanoub Talaat</b></h4>
-                  <ul class="mt-4">
-                    <li class="mb-3">
-                      <h5><i class="fa fa-map-marker"></i> Shoubra,Egypt</h5>
-                    </li>
-                  </ul>
-                </div>
-                <div class="job-text align-self-center">
-                  <h3>Matching Percentage : 90/100</h3>
-                </div>
-                <div class="job-btn align-self-center">
-                  <a href="#" class="third-btn job-btn1">View Profile</a>
-                </div>
-              </div>
+            <div class="col-md-6 offset-md-3">
+              <h1><b>Best Candidates!</b></h1>
+              <p>
+                Hello! based on th job post you uploaded we tried to help by
+                gathering the best candidates that matched you job based on
+                their skills you can view each one of them and contact anyone
+                if you see him fit.
+              </p>
             </div>
           </div>
         </div>
-      </section>
-    </section>
+      </div>
+    </header>
 
-    <script src="/js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="/js/vendor/bootstrap-4.1.3.min.js"></script>
-    <script src="/js/vendor/wow.min.js"></script>
-    <script src="/js/vendor/owl-carousel.min.js"></script>
-    <script src="/js/vendor/jquery.nice-select.min.js"></script>
-    <script src="/js/vendor/ion.rangeSlider.js"></script>
-    <script src="/js/main.js"></script>
-    
-  </body>
+    <section class="jobs-area section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <% for(i=0 ; i < users.length && i < 10 ; i++ ) { %>
+            <% var user = users[i][1] ;  %>
+            <div class="single-job mb-4 d-lg-flex justify-content-between">
+              <div class="job-text">
+                <h4><b><%= user.name %></b></h4>
+                <ul class="mt-4">
+                  <li class="mb-3">
+                    <h5><i class="fa fa-map-marker"></i> <%= user.city %> , <%= user.country %></h5>
+                  </li>
+                </ul>
+              </div>
+              <div class="job-text align-self-center">
+                <h3>Matching Percentage : <%= user.score %>/100</h3>
+              </div>
+              <div class="job-btn align-self-center">
+                <form method="POST">
+                  <% console.log(users[i][0]); %>
+                  <input type="hidden" id="user" name="user" value=<%= users[i][0] %>>
+                  <button style="width: 100%" type="submit" formaction="/user/viewprofile" class="third-btn job-btn1">
+                    View Profile
+                  </button>
+                </form>
+              </div>
+            </div>
+            <% } %>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <script src="/js/vendor/jquery-2.2.4.min.js"></script>
+  <script src="/js/vendor/bootstrap-4.1.3.min.js"></script>
+  <script src="/js/vendor/wow.min.js"></script>
+  <script src="/js/vendor/owl-carousel.min.js"></script>
+  <script src="/js/vendor/jquery.nice-select.min.js"></script>
+  <script src="/js/vendor/ion.rangeSlider.js"></script>
+  <script src="/js/main.js"></script>
+
+</body>
+
 </html>

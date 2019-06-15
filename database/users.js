@@ -9,7 +9,7 @@ let mUser;
 let Error;
 
 module.exports.login = async (user) => {
-    Error=null ; 
+    Error = null;
     userUid = null;
     await db
         .firebase
@@ -166,6 +166,19 @@ module.exports.userRemove = (userId) => {
         resolve();
     });
 
+};
+
+
+module.exports.getAllUsers = () => {
+
+    return new Promise((resolve, reject) => {
+        db
+            .dbRef
+            .child("users")
+            .on('value', (snap) => {
+                resolve(snap.val());
+            });
+    });
 };
 
 // return new Promise((resolve, reject) => {});

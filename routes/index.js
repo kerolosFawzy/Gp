@@ -140,16 +140,8 @@ router.get('/hr', function (req, res, next) {
   let bool = utilies.checkSession(req);
   if (bool) {
     if (bool.role == 3) {
-      var hr = {
-        name: bool.name,
-        Email: bool.email,
-        Phone: '0114555',
-        Company: bool.company_name,
-        Profession: ' HR FOR ' + bool.company_name + ' Company ',
-        Your_Bio: bool.description,
-        Edit_Work_Link: ' www.www.com '
-      };
-      res.render('HR', { logged: bool, hr: hr });
+     
+      res.render('HR', { logged: bool });
     } else {
       res.render('404');
     }
@@ -245,11 +237,6 @@ router.post('/details', async (req, res, next) => {
   res.render('job-details', { data: post, logged: bool, message: null });
 });
 
-router.get('/editJobPost', async (req, res, next) => {
-  var edit = await DbPost.updatePost(1);
-  console.log(edit);
-  res.render('editJobPost', { select: skills });
-});
 
 
 router.get('/applied', function (req, res, next) {
