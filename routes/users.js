@@ -150,7 +150,9 @@ router.post('/viewapplied', async (req, res, next) => {
             console.log(applied);
             if (applied) {
                 for (i = 0; i < applied.length; i++) {
-                    users.push(await DbUser.getUser(applied[i]));
+                    let user = await DbUser.getUser(applied[i]);
+                    user.uid = applied[i];
+                    users.push(user);
                 }
                 console.log(users);
                 res.render('applicants-applied', {
@@ -168,6 +170,24 @@ router.post('/viewapplied', async (req, res, next) => {
         }
     } else {
         res.render('login', { err: null });
+    }
+
+});
+
+router.post('/viewprofile', async (req, res, next) => {
+    let id = req.body.user;
+    let bool = utilies.checkSession(req);
+    let user = await DbUser.getUser(id);
+
+    if (user) {
+        if (user.role == 2) {
+
+            user.Edit_Work_Link = ' www.www.com ';
+            console.log(user);
+            res.render('profile', { logged: bool, user: user });
+        } else {
+            res.render('404');
+        }
     }
 
 });

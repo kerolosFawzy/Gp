@@ -68,9 +68,10 @@
               </div>
               <div class="job-btn align-self-center">
                 <form method="POST">
-                  <input type="hidden" id="id" name="id" value=<%= user.uid %>>
-                  <a href="#" class="third-btn job-btn1">View Profile</a>
-                  <a href="#" class="third-btn job-btn3">View CV</a>
+                  <input type="hidden" id="user" name="user" value=<%= user.uid %>>
+                  <button style="width: 100%" type="submit" formaction="/user/viewprofile"
+                    class="third-btn job-btn1">View Profile</a>
+                    <button style="width: 100%" type="submit" class="third-btn job-btn3">View CV</a>
                 </form>
 
               </div>

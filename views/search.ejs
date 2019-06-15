@@ -75,7 +75,7 @@
           <div class="col-lg-12">
             <% if(data.length>=1 ) { %>
             <% for(i=0 ; i< data.length ; i++ ) { %>
-            <% var post = data[i][1] ;  %>
+            <% var post = data[i][1];  %>
             <form method="POST">
               <input type="hidden" id="id" name="id" value=<%= data[i][0] %>>
               <div class="single-job mb-4 d-lg-flex justify-content-between">
@@ -97,8 +97,12 @@
                     </li>
                   </ul>
                 </div>
-                <div class="job-img align-self-center">
-                  <img src="img/job1.png" alt="job" />
+                <div class=" job-img align-self-center">
+                  <% if(post.img) {%>
+                  <img style=" width: 25% " class="rounded-circle mx-auto d-block" src=<%= post.img %> />
+                  <%}else{%>
+                  <img  class="rounded-circle mx-auto d-block" src="img/job1.png" alt="job" />
+                  <%}%>
                 </div>
                 <div class="job-btn align-self-center">
                   <button type="submit" formaction="/details" class="third-btn job-btn1">View Details</button>
@@ -106,18 +110,15 @@
                 </div>
               </div>
             </form>
-
             <% } %>
-            <% }else{ %>
-            <h1 style="text-align: center;color: brown;"> No Match Found please Search Again </h1>
-            <% } %>
+                  <% }else{ %>
+                  <h1 style="text-align: center;color: brown;"> No Match Found please Search Again </h1>
+                  <% } %>
 
-
+                </div>
+              </div>
 
           </div>
-        </div>
-       
-      </div>
     </section>
     <!-- Jobs Area End -->
   </section>

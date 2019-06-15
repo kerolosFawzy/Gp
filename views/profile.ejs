@@ -17,17 +17,17 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-img">
-                        <img src=<%= logged.img %> />
+                        <img src=<%= user.img %> />
 
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
-                            <p><%= logged.name %></p>
+                            <p><%= user.name %></p>
                         </h5>
                         <h6>
-                            <p><%=  logged.major_skill %></p>
+                            <p><%=  user.major_skill %></p>
                         </h6>
 
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -43,9 +43,11 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a href="/editprofile" class="profile-edit-btn btn btn-primary"  >
+                    <% if (user.uid == logged.uid ) {%>
+                    <a href="/editprofile" class="profile-edit-btn btn btn-primary">
                         Edit profile
                     </a>
+                    <%}%>
                 </div>
             </div>
             <div class="row">
@@ -53,88 +55,88 @@
                 <div class="col-md-4">
                     <div class="profile-work">
                         <h4>WORK LINK</h4>
-                        <a href=""><%= logged.Edit_Work_Link %></a><br />
-                        <h4>SKILLS</h4>
-                        <ul>
-                            <% for(i=1 ; i< logged.skills.length ; i++ ) { %>
-                            <% var skill = logged.skills[i] ;  %>
-                            <li>
-                                <label>
-                                    <%= skill %>
-                                </label>
-                            </li>
-                            <% } %>
-                        </ul>
-                    </div>
+                        <a href=""><%= user.Edit_Work_Link %></a><br />
+                    <h4>SKILLS</h4>
+                    <ul>
+                        <% for(i=1 ; i< user.skills.length ; i++ ) { %>
+                        <% var skill = user.skills[i] ;  %>
+                        <li>
+                            <label>
+                                <%= skill %>
+                            </label>
+                        </li>
+                        <% } %>
+                    </ul>
                 </div>
+            </div>
 
 
-                <div class="col-md-8">
-                    <div class="tab-content profile-tab" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Name</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p><%= logged.name %></p>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Name</label>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Email</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p><%= logged.email %></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Phone</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p><%= logged.Phone %></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Profession</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p><%= logged.major_skill %></p>
-                                </div>
+                            <div class="col-md-6">
+                                <p><%= user.name %></p>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Experience</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p><%= logged.experience_years %></p>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Hourly Rate</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p><%= logged.Hourly_Rate %></p>
-                                </div>
+                            <div class="col-md-6">
+                                <p><%= user.email %></p>
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><%= user.Phone %></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Profession</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><%= user.major_skill %></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Experience</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><%= user.experience_years %></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Hourly Rate</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p><%= user.Hourly_Rate %></p>
+                            </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Your Bio</label><br />
-                                    <p><%= logged.description %></p>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Your Bio</label><br />
+                                <p><%= user.description %></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
+    </div>
+    </form>
     </div>
 
 

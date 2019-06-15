@@ -127,7 +127,7 @@ router.get('/profile', function (req, res, next) {
 
       bool.Edit_Work_Link = ' www.www.com ';
       console.log(bool);
-      res.render('profile', { logged: bool });
+      res.render('profile', { logged: bool, user: bool });
     } else {
       res.render('404');
     }
@@ -225,7 +225,7 @@ router.post('/editprofile', upload.single(), async (req, res, next) => {
 
   await DbUser.userUpdate(bool.uid, data);
 
-  res.render('profile', { logged: bool });
+  res.render('profile', { logged: bool, user: bool });
 });
 
 router.get('/applied', function (req, res, next) {
