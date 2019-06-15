@@ -36,7 +36,8 @@
             <div class="spinner"></div>
         </div>
         <div class="box">
-            <form class="form">
+            <form class="form" action="/detailsapply" method="POST">
+                <input type="hidden" id="id" name="id" value=<%= data.id %>>
 
                 <h1><b><%= data.user_job %></b></h1>
                 <br>
@@ -46,13 +47,14 @@
                 <p> <%= data.Responsibilities %></p>
 
                 <h3> Skills needed :</h3>
+                <% if(data.skills){ %>
                 <ul>
                     <% for(i=0 ; i< data.skills.length ; i++ ) { %>
                     <% var skill = data.skills[i] ;  %>
                     <li><%= skill %></li>
                     <% } %>
                 </ul>
-
+                <% } %>
                 <h3>Salary : </h3>
                 <p><%= data.Salary %></p>
 
@@ -63,6 +65,9 @@
                 <p><%= data.HrEmail %></p>
 
                 <button class="btn btn-primary btn-lg btn-block apply" type="submit">Apply</button>
+                <label style="font-size: 20pt">
+                    <%= message %>
+                </label>
             </form>
 
         </div>

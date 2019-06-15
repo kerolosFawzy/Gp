@@ -1,7 +1,4 @@
 var db = require("./conn");
-var skillsRef = db
-    .dbRef
-    .child("skills");
 var skills;
 
 

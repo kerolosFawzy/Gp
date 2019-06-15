@@ -19,6 +19,16 @@ router.get('/login', function (req, res, next) {
   res.render('login', { err: null });
 });
 
+router.get('/test', async (req, res, next) => {
+  let bool = utilies.checkSession(req);
+
+  var data = await DbPost.getAllHrPosts('zN8QIT7RkHOZe5C8GXvRXItnIfE2');
+  console.log(data);
+  res.render('hrPostList', {
+    logged: bool, data: data
+  });
+});
+
 router.all('/', function (req, res, next) {
   let bool = utilies.checkSession(req);
   res.render('index', {
@@ -34,7 +44,7 @@ router.post('/search', async (req, res, next) => {
   let bool = await utilies.checkSession(req);
 
   res.render('search', {
-    logged: bool, data: result
+    logged: bool, data: result, message: null
   });
 
 });
@@ -51,7 +61,7 @@ router.get('/search', async (req, res, next) => {
 
   console.log(result);
 
-  res.render('search', { logged: bool, data: result });
+  res.render('search', { logged: bool, data: result, message: null });
 });
 
 router.get('/signupapplicant', async (req, res, next) => {
@@ -68,29 +78,6 @@ router.get('/signupcompany', function (req, res, next) {
 router.get('/switch', function (req, res, next) {
   res.render('signupSwitch', { err: null });
 });
-
-// router.get('/addpost', async (req, res, next) => {
-//   //let bool = utilies.checkSession(req);
-//   let bool = {
-//     Foundation: '1998',
-//     address: 'asdfsf dfs gfd  ',
-//     city: 'cario',
-//     company_name: 'ibm',
-//     country: 'EG',
-//     description: 'fmkfd sfds   ',
-//     email: 'kerofawzyhr@gmail.com',
-//     img:
-//       'https://firebasestorage.googleapis.com/v0/b/gp-project-9231d.appspot.com/o/pic%2FzN8QIT7RkHOZe5C8GXvRXItnIfE2?alt=media&token=0ac44c73-7d8a-464d-8891-a0409d423386',
-//     name: 'hr ',
-//     role: 3,
-//     uid: 'zN8QIT7RkHOZe5C8GXvRXItnIfE2'
-//   };
-
-//   let data = await skillsRef.getSkills();
-
-//   res.render('addpost', { logged: bool, data: data });
-
-// });
 
 router.get('/addpost', async (req, res, next) => {
   let bool = utilies.checkSession(req);
@@ -109,12 +96,13 @@ router.post('/addpost', async (req, res, next) => {
   data.HrEmail = bool.email;
   data.img = bool.img;
   data.company_name = bool.company_name;
+  data.id = bool.uid;
   console.log(data);
   let id = await DbPost.pushPost(data);
 
   var post = await DbPost.getPost(id);
   console.log(post);
-  res.render('job-details', { data: post, logged: bool });
+  res.render('job-details', { data: post, logged: bool, message: null });
 
 });
 
@@ -253,7 +241,8 @@ router.post('/details', async (req, res, next) => {
 
   var post = await DbPost.getPost(req.body.id);
   console.log(post);
-  res.render('job-details', { data: post, logged: bool });
+  post.id = req.body.id;
+  res.render('job-details', { data: post, logged: bool, message: null });
 });
 
 router.get('/editJobPost', async (req, res, next) => {
@@ -267,19 +256,42 @@ router.get('/applied', function (req, res, next) {
   res.render('applicants-applied');
 });
 
-router.get('/editprofile', function (req, res, next) {
-  res.render('editprofile');
+router.post('/apply', async (req, res, next) => {
+  let bool = utilies.checkSession(req);
+  let data = await DbPost.getAllPosts();
+  var result = [];
+  for (var i in data)
+    result.push([i, data[i]]);
+
+
+  if (bool) {
+    if (bool.role == 2) {
+      var message = await DbPost.apply(req.body.id, bool.uid);
+      res.render('search', { logged: bool, message: message, data: result });
+    } else {
+      res.render('search', { logged: bool, message: "you are not allowed to apply", data: result });
+    }
+  } else {
+    res.render('login', { err: "You have to login first" });
+  }
 });
 
-router.all('/editprofile', function (req, res, next) {
-  var dd = req.body;
+router.post('/detailsapply', async (req, res, next) => {
+  let bool = utilies.checkSession(req);
 
-  console.log(edit);
+  var post = await DbPost.getPost(req.body.id);
+  post.id = req.body.id;
 
-  DbPost.pushPost(dd);
-
-  res.render('index', { title: 'done' });
-
+  if (bool) {
+    if (bool.role == 2) {
+      var message = await DbPost.apply(req.body.id, bool.uid);
+      res.render('job-details', { logged: bool, message: message, data: post });
+    } else {
+      res.render('job-details', { logged: bool, message: "you are not allowed to apply", data: post });
+    }
+  } else {
+    res.render('login', { err: "You have to login first" });
+  }
 });
 
 module.exports = router;

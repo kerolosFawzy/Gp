@@ -149,7 +149,7 @@ module.exports.userUpdate = (userId, user) => {
     return new Promise((resolve, reject) => {
         usersRef
             .child(userId)
-            .set(user);
+            .update(user);
         resolve();
     });
 

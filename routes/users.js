@@ -1,16 +1,20 @@
 var express = require('express');
 var router = express.Router();
-const DbUser = require('../database/users');
 const bodyParser = require('body-parser');
 const multer = require('multer');
-let utilies = require('../database/utilies');
-var skillsRef = require('../database/skills');
-
 var upload = multer({
-    dest: 'uploads'
+  dest: 'uploads'
 });
 
+const DbUser = require('../database/users');
+var storage = require('../database/storage');
+var skillsRef = require('../database/skills');
+let utilies = require('../database/utilies');
+const DbPost = require('../database/posts');
+
 router.use(bodyParser.json());
+
+
 
 router.post('/login', async (req, res, next) => {
     var response = await DbUser.login({ email: req.body.email, password: req.body.password });
@@ -113,6 +117,14 @@ router.post('/signupcompany', upload.any(), async (req, res, next) => {
 
 router.get('/logout', (req, res, next) => {
     req.session.destroy();
+
+    res.render('login', { err: null });
+});
+
+
+router.get('/posts', (req, res, next) => {
+    let bool = utilies.checkSession(req);
+
 
     res.render('login', { err: null });
 });
