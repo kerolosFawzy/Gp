@@ -3,7 +3,7 @@ var router = express.Router();
 const bodyParser = require('body-parser');
 const multer = require('multer');
 var upload = multer({
-  dest: 'uploads'
+    dest: 'uploads'
 });
 
 const DbUser = require('../database/users');
@@ -122,11 +122,54 @@ router.get('/logout', (req, res, next) => {
 });
 
 
-router.get('/posts', (req, res, next) => {
+router.get('/posts', async (req, res, next) => {
     let bool = utilies.checkSession(req);
+    if (bool.role == 3) {
+        var data = await DbPost.getAllHrPosts(bool.uid);
+        console.log(data);
+        res.render('hrPostList', {
+            logged: bool, data: data
+        });
+    } else {
+        res.render('404');
+    }
 
+});
 
-    res.render('login', { err: null });
+router.post('/viewapplied', async (req, res, next) => {
+    let bool = utilies.checkSession(req);
+    if (bool) {
+        if (utilies.checkHr(bool)) {
+            var data = await DbPost.getPost(req.body.id);
+            console.log(data);
+            var applied = [];
+            var users = [];
+
+            applied = data.applied;
+
+            console.log(applied);
+            if (applied) {
+                for (i = 0; i < applied.length; i++) {
+                    users.push(await DbUser.getUser(applied[i]));
+                }
+                console.log(users);
+                res.render('applicants-applied', {
+                    logged: bool, data: users
+                });
+
+            } else {
+                res.render('applicants-applied', {
+                    logged: bool, data: users
+                });
+            }
+
+        } else {
+            res.render('404');
+        }
+    } else {
+        res.render('login', { err: null });
+    }
+
 });
 
 

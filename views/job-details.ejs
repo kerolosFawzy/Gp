@@ -43,8 +43,12 @@
                 <br>
                 <h3>Job Description : </h3>
                 <p><%= data.Description %></p>
+                
                 <h3>Responsibilities :</h3>
                 <p> <%= data.Responsibilities %></p>
+
+                <h3>Job Type :</h3>
+                <p> <%= data.jobtype %></p>
 
                 <h3> Skills needed :</h3>
                 <% if(data.skills){ %>
@@ -55,18 +59,24 @@
                     <% } %>
                 </ul>
                 <% } %>
+
                 <h3>Salary : </h3>
-                <p><%= data.Salary %></p>
+                <p><%= data.Salary %> <%= data.cunn %></p>
 
                 <h3>Company address : </h3>
-                <p><%= data.position %></p>
+                <p><%= data.country %></p>
+
+                <h3>Company Name : </h3>
+                <p><%= data.company_name %></p>
 
                 <h3> HR Email :</h3>
                 <p><%= data.HrEmail %></p>
 
                 <button class="btn btn-primary btn-lg btn-block apply" type="submit">Apply</button>
-                <label style="font-size: 20pt">
-                    <%= message %>
+                <label style="font-size: 20pt ; text-align: center ; color: black">
+                    <strong>
+                        <%= message %>
+                    </strong>
                 </label>
             </form>
 

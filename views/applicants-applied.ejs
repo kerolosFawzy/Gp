@@ -48,68 +48,44 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
+            <% if(data){ %>
+            <% for(i=0 ; i < data.length ; i++ ) { %>
+            <% var user = data[i] ;  %>
             <div class="single-job mb-4 d-lg-flex justify-content-between">
               <div class="job-text">
-                <h4><b>Pola Malak Ghabrial</b></h4>
+                <h4><b><%= user.name %></b></h4>
                 <ul class="mt-4">
                   <li class="mb-3">
-                    <h5><i class="fa fa-map-marker"></i> Cairo,Egypt</h5>
+                    <h5><i class="fa fa-map-marker"></i><%= user.city %> , <%= user.country %></h5>
                   </li>
                   <li class="mb-3">
-                    <h5><i class="fa fa-code"></i> year of experience : 2</h5>
+                    <h5><i class="fa fa-code"></i> year of experience : <%= user.experience_years %></h5>
                   </li>
                   <li class="mb-3">
-                    <h5><i class="fa fa-info"></i>Position: Web designer</h5>
+                    <h5><i class="fa fa-info"></i>Position: <%= user.major_skill %></h5>
                   </li>
                 </ul>
               </div>
               <div class="job-btn align-self-center">
-                <a href="#" class="third-btn job-btn1">View Profile</a>
-                <a href="#" class="third-btn job-btn3">View CV</a>
+                <form method="POST">
+                  <input type="hidden" id="id" name="id" value=<%= user.uid %>>
+                  <a href="#" class="third-btn job-btn1">View Profile</a>
+                  <a href="#" class="third-btn job-btn3">View CV</a>
+                </form>
+
               </div>
             </div>
-            <div class="single-job mb-4 d-lg-flex justify-content-between">
-              <div class="job-text">
-                <h4><b>Kirollos Fawzy</b></h4>
-                <ul class="mt-4">
-                  <li class="mb-3">
-                    <h5><i class="fa fa-map-marker"></i> Giza,Egypt</h5>
-                  </li>
-                  <li class="mb-3">
-                    <h5><i class="fa fa-code"></i> year of experience : 3</h5>
-                  </li>
-                  <li class="mb-3">
-                    <h5>
-                      <i class="fa fa-info"></i>Position: Xamarin Developer
-                    </h5>
-                  </li>
-                </ul>
-              </div>
-              <div class="job-btn align-self-center">
-                <a href="#" class="third-btn job-btn1">View Profile</a>
-                <a href="#" class="third-btn job-btn3">View CV</a>
-              </div>
-            </div>
-            <div class="single-job mb-4 d-lg-flex justify-content-between">
-              <div class="job-text">
-                <h4><b>Abanoub Talaat</b></h4>
-                <ul class="mt-4">
-                  <li class="mb-3">
-                    <h5><i class="fa fa-map-marker"></i> Shoubra,Egypt</h5>
-                  </li>
-                  <li class="mb-3">
-                    <h5><i class="fa fa-code"></i> year of experience : 0</h5>
-                  </li>
-                  <li class="mb-3">
-                    <h5><i class="fa fa-info"></i>Position: Web developer</h5>
-                  </li>
-                </ul>
-              </div>
-              <div class="job-btn align-self-center">
-                <a href="#" class="third-btn job-btn1">View Profile</a>
-                <a href="#" class="third-btn job-btn3">View CV</a>
-              </div>
-            </div>
+            <% } %>
+
+            <% }else{ %>
+
+            <h1 class="single-job mb-4 d-lg-flex justify-content-between">
+              No body Applied For this Job
+            </h1>
+
+            <% } %>
+
+
           </div>
         </div>
       </div>

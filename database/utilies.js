@@ -30,7 +30,7 @@ module.exports.searchFilter = (posts, jobtype, position, jopRole) => {
 
         if (position) {
             for (i = 0; i < result.length; i++) {
-                if (result[i][1].position == position)
+                if (result[i][1].country == position)
                     selected.push(result[i]);
             }
         } else {
