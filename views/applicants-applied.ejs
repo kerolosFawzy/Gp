@@ -48,7 +48,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <% if(data){ %>
+            
+            <% if(data.length > 1){ %>
             <% for(i=0 ; i < data.length; i++ ) { %>
             <% var user = data[i] ;  %>
             <div class="single-job mb-4 d-lg-flex justify-content-between">
@@ -71,7 +72,7 @@
                   <input type="hidden" id="user" name="user" value=<%= user.uid %>>
                   <button style="width: 100%" type="submit" formaction="/user/viewprofile"
                     class="third-btn job-btn1">View Profile</button>
-                  <a target="_blanck" class="third-btn job-btn3" style="width: 100%" href=<%= user.cv %> >View CV</a>
+                  <a target="_blanck" class="third-btn job-btn3" style="width: 100%" href=<%= user.cv %>>View CV</a>
                 </form>
 
               </div>
@@ -80,7 +81,7 @@
 
             <% }else{ %>
 
-            <h1 class="single-job mb-4 d-lg-flex justify-content-between">
+            <h1 style="text-align: center;" class="single-job mb-4 d-lg-flex justify-content-between">
               No body Applied For this Job
             </h1>
 

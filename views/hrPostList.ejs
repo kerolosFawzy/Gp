@@ -36,33 +36,33 @@
             <form method="POST">
               <input type="hidden" id="id" name="id" value=<%= data[i][0] %>>
               <div class="single-job mb-4 d-lg-flex justify-content-between">
-                <div class="job-text">
+                <div class="job-text col-4">
                   <h4><%= post.user_job %></h4>
                   <ul class="mt-4">
                     <li class="mb-3">
-                      <h5><i class="fa fa-map-marker"></i> <%= post.position %></h5>
+                      <h5><i class="fa fa-map-marker"></i> <%= post.position %>  <%= post.country %></h5>
                     </li>
                     <li class="mb-3">
                       <h5>
-                        <i class="fa fa-pie-chart"></i><%= post.company %>
+                        <i class="fa fa-pie-chart"></i><%= post.company_name %>
                       </h5>
                     </li>
                     <li>
                       <h5>
-                        <i class="fa fa-clock-o"></i> <%= post.Salary %>$
+                        <i class="fa fa-clock-o"></i> <%= post.Salary %> <%= post.cunn %> 
                       </h5>
                     </li>
                   </ul>
                 </div>
                 <div class="job-img align-self-center">
                   <% if(post.img) {%>
-                  <img style=" width: 25% " class="rounded-circle mx-auto d-block" src=<%= post.img %> />
+                  <img style=" width: 50% " class="rounded-circle mx-auto d-block" src=<%= post.img %> />
                   <%}else{%>
                   <img class="rounded-circle mx-auto d-block" src="/img/job1.png" alt="job" />
                   <%}%>
                 </div>
-                <div class="job-btn align-self-center">
-                  <button type="submit" formaction="/details" class="third-btn job-btn1">View Details</button>
+                <div style="width: 50%"   class=" job-btn align-self-center">
+                  <button style="width: 100%" type="submit" formaction="/details" class="third-btn job-btn1">View Details</button>
                   <button type="submit" formaction="/user/viewapplied" class="third-btn">View Applied</button>
                   <br>             
                   <button style="margin-top: 7%; margin-right: 1%;" type="submit" formaction="/user/topten" class="third-btn">View Top Ten</button>

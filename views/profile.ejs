@@ -6,6 +6,18 @@
     <%- include('includes/head.ejs') %>
 
     <%- include('includes/profilecss.ejs') %>
+
+
+    <style>
+        p {
+            font-size: 14pt;
+        }
+
+        label {
+            font-size: 16pt;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -17,7 +29,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="profile-img">
-                        <img src=<%= user.img %> />
+                        <img class="rounded" src=<%= user.img %> />
 
                     </div>
                 </div>
@@ -44,28 +56,27 @@
                 </div>
                 <div class="col-md-2">
                     <% if (user.uid == logged.uid ) {%>
-                    <a href="/editprofile" class="profile-edit-btn btn btn-primary">
+                    <a href="/editprofile" class=" btn btn-success">
                         Edit profile
                     </a>
                     <%}%>
+                  
                 </div>
             </div>
             <div class="row">
 
                 <div class="col-md-4">
                     <div class="profile-work">
-                        <h4>WORK LINK</h4>
-                        <a href=""><%= user.Edit_Work_Link %></a><br />
-                    <h4>SKILLS</h4>
+                    <h4 style="margin-top: 6%">SKILLS</h4>
                     <ul>
                         <% for(i=1 ; i< user.skills.length ; i++ ) { %>
-                        <% var skill = user.skills[i] ;  %>
-                        <li>
-                            <label>
-                                <%= skill %>
-                            </label>
-                        </li>
-                        <% } %>
+                    <% var skill = user.skills[i] ;  %>
+                    <li>
+                        <label>
+                           <%= i %>- <%= skill %>
+                        </label>
+                    </li>
+                    <% } %>
                     </ul>
                 </div>
             </div>
@@ -135,6 +146,10 @@
                     </div>
                 </div>
             </div>
+            <a target="_blanck" style="margin-left:5% " class=" btn btn-success btn-lg"
+                href=<%= user.cv %>>
+                view Cv
+            </a>
     </div>
     </form>
     </div>

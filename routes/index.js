@@ -171,7 +171,7 @@ router.get('/editjobpost', async (req, res, next) => {
   let bool = utilies.checkSession(req);
 
   if (bool) {
-    var post = await DbPost.getPost("-LgyY7sRLxy2yZWqS4vv");
+    var post = await DbPost.getPost("-LhRwf9IQT3VDEcUBGht");
     console.log(post);
     res.render('editJobPost', { logged: bool, data: data, post: post });
   }
