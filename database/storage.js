@@ -1,6 +1,6 @@
 var db = require("./conn");
 let basePicUrl = 'https://firebasestorage.googleapis.com/v0/b/gp-project-9231d.appspot.com/o/pic%2F';
-let baseCvUrl = 'https://firebasestorage.googleapis.com/v0/b/gp-project-9231d.appspot.com/o/cv%2F';
+let baseCvUrl = 'https://firebasestorage.googleapis.com/v0/b/gp-project-9231d.appspot.com/o/Cv%2F';
 
 
 module.exports.uploadProfilePic = async (userId, Picture) => {
@@ -62,7 +62,7 @@ module.exports.getPicUrl = async (userId) => {
 module.exports.getCvUrl = async (userId) => {
 
     return new Promise((resolve, rej) => {
-        db.bucket.getFiles({ prefix: 'cv/' + userId }).then((file) => {
+        db.bucket.getFiles({ prefix: 'Cv/' + userId }).then((file) => {
             //   var token = file[0][0].metadata.firebaseStorageDownloadTokens;
             baseCvUrl = baseCvUrl + userId + '?alt=media&token=' + '0ac44c73-7d8a-464d-8891-a0409d423386';
             resolve(baseCvUrl);

@@ -192,6 +192,16 @@ router.post('/viewprofile', async (req, res, next) => {
 
 });
 
+router.post('/viewcv', async (req, res, next) => {
+    let id = req.body.user;
+    let user = await DbUser.getUser(id);
+
+    if (user) {
+        if (user.cv)
+            res.redirect(user.cv);
+    }
+
+});
 
 
 
