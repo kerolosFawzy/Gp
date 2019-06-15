@@ -9,7 +9,7 @@ let mUser;
 let Error;
 
 module.exports.login = async (user) => {
-
+    Error=null ; 
     userUid = null;
     await db
         .firebase
@@ -21,7 +21,6 @@ module.exports.login = async (user) => {
             }
         })
         .catch(function (error) {
-            var errorCode = error.code;
             var errorMessage = error.message;
             Error = errorMessage;
         });
@@ -52,47 +51,48 @@ module.exports.getUser = async (userId) => {
 };
 
 module.exports.signUp = async (user) => {
-    console.log(user)
-
-    await db
-        .firebase
-        .auth()
-        .createUserWithEmailAndPassword(user.email, user.password)
-        .then(async (logedInUser) => {
-            let uid = logedInUser.user.uid;
-
-            await storage.uploadProfilePic(uid, user.files[1]);
-
-            await storage.uploadCv(uid, user.files[0]);
-
-            user.cv = await storage.getCvUrl(uid);
-            user.img = await storage.getPicUrl(uid);
-
-            user.password = null;
-            user.files = null;
-
-            new Promise((resolve, reject) => {
-                usersRef
-                    .child(uid.toString())
-                    .set(user, function (error) {
-                        if (error) {
-                            console.log(error);
-                            Error = error;
-                        }
-                        resolve();
-                    });
+    Error = null;
+    let uid;
+    await new Promise((resolve, reject) => {
+        db
+            .firebase
+            .auth()
+            .createUserWithEmailAndPassword(user.email, user.password)
+            .then(async (logedInUser) => {
+                uid = logedInUser.user.uid;
+                resolve(uid);
+            })
+            .catch(function (error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                if (errorMessage) {
+                    Error = errorMessage;
+                }
             });
+    });
 
-        })
-        .catch(function (error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            if (errorMessage) {
-                Error = errorMessage;
-                console.log(Error);
-            }
+    if (uid) {
+        await storage.uploadCv(uid, user.files[0]);
+        await storage.uploadProfilePic(uid, user.files[1]);
+
+        user.cv = await storage.getCvUrl(uid);
+        user.img = await storage.getPicUrl(uid);
+
+        user.password = null;
+        user.files = null;
+
+        new Promise((resolve, reject) => {
+            usersRef
+                .child(uid.toString())
+                .set(user, function (error) {
+                    if (error) {
+                        console.log(error);
+                        Error = error;
+                    }
+                    resolve();
+                });
         });
-
+    }
     if (Error) {
         console.log("error before return " + Error)
         return Error;
@@ -102,31 +102,14 @@ module.exports.signUp = async (user) => {
 };
 
 module.exports.CompanysignUp = async (user) => {
-    console.log(user)
-
+    Error = null;
+    let uid;
     await db
         .firebase
         .auth()
         .createUserWithEmailAndPassword(user.email, user.password)
         .then(async (logedInUser) => {
-            let uid = logedInUser.user.uid;
-            await storage.uploadProfilePic(uid, user.files[0]);
-            user.img = await storage.getPicUrl(uid);
-
-            user.password = null;
-            user.files = null;
-
-            new Promise((resolve, reject) => {
-                usersRef
-                    .child(uid.toString())
-                    .set(user, function (error) {
-                        if (error) {
-                            console.log(error);
-                            Error = error;
-                        }
-                        resolve();
-                    });
-            });
+            uid = logedInUser.user.uid;
         })
         .catch(function (error) {
             var errorCode = error.code;
@@ -136,7 +119,25 @@ module.exports.CompanysignUp = async (user) => {
                 console.log(Error);
             }
         });
+    if (uid) {
+        await storage.uploadProfilePic(uid, user.files[0]);
+        user.img = await storage.getPicUrl(uid);
 
+        user.password = null;
+        user.files = null;
+
+        new Promise((resolve, reject) => {
+            usersRef
+                .child(uid.toString())
+                .set(user, function (error) {
+                    if (error) {
+                        console.log(error);
+                        Error = error;
+                    }
+                    resolve();
+                });
+        });
+    }
     if (Error) {
         console.log("error before return " + Error)
         return Error;
